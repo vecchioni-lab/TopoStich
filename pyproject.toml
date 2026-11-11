@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "TopoStich"
+version = "0.3.0"
+description = "Convert PDB/mmCIF coordinates to core CIF with nucleotide atom recognition"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "vecchioni-lab"}]
+dependencies = ["gemmi>=0.7.5,<0.8"]
+
+[project.optional-dependencies]
+catalog = ["openpyxl>=3.1,<4"]
+
+[project.scripts]
+topostich = "topostich.cli:main"
+topostich-cgd = "topostich.cgd:main"
+
+[project.urls]
+Repository = "https://github.com/vecchioni-lab/TopoStich"
+Issues = "https://github.com/vecchioni-lab/TopoStich/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+topostich = ["data/*.json"]

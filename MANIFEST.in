@@ -1,0 +1,7 @@
+include AGENTS.md CHANGELOG.md
+recursive-include docs *.md *.json
+recursive-include schemas *.json
+recursive-include tests *.py
+recursive-include tools *.py
+recursive-include tools *.java
+recursive-include src/topostich/data *.json

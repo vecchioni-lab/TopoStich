@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "project": "TopoStich",
+  "updated": "2026-11-11",
+  "status": "0.3.0-local-implementation",
+  "owner": "vecchioni-lab",
+  "purpose": "Convert DNA/RNA PDB or PDBx/mmCIF coordinates to core CIF with residue-aware nucleotide atom recognition and optional linear backbone traces. Export chain-aware O3-prime graphs as Systre CRYSTAL CGD and native ChimeraX marker/link views.",
+  "standing_user_requirements": [
+    "Installable after every substantial patch, not only at formal releases.",
+    "Maintain clear human-readable and machine-readable intent in the repository.",
+    "CGD export keeps chains separate; explicit nick/junction and symmetry-image joins await defined rules.",
+    "Publish as an independent vecchioni-lab Git repository named TopoStich."
+  ],
+  "runtime": {
+    "python": ">=3.10",
+    "dependencies": [
+      "gemmi>=0.7.5,<0.8"
+    ],
+    "entry_point": "topostich",
+    "entry_points": [
+      "topostich",
+      "topostich-cgd"
+    ]
+  },
+  "input": {
+    "formats": [
+      "PDB",
+      "PDBx/mmCIF"
+    ],
+    "detection": "content; --input-format auto|pdb|mmcif override",
+    "model_selection": "one-based file encounter order, default first",
+    "path": "explicit CLI path",
+    "mmcif_blocks": "exactly one macromolecular coordinate block"
+  },
+  "outputs": {
+    "default": "core CIF",
+    "supported": [
+      "core CIF",
+      "PDB",
+      "PDBx/mmCIF",
+      "Systre CGD CRYSTAL (separate command)",
+      "ChimeraX CMM (CGD companion)"
+    ],
+    "existing_path_policy": "refuse overwrite",
+    "receipt_schema": "schemas/conversion-receipt.schema.json",
+    "reference_policy": "self-contained coordinates and edges; source SHA-256 and basename are provenance",
+    "pdb_precision": "0.001 A coordinates; 0.01 occupancy/B. Refuse field overflow.",
+    "cgd_receipt_schema": "schemas/cgd-receipt.schema.json"
+  },
+  "selection": {
+    "explicit_all_atoms": {
+      "cli": "-atom -all",
+      "aliases": [
+        "-atom all",
+        "--atom -all",
+        "--atom all"
+      ],
+      "behavior": "same as no atom flags; all atoms in selected model, respecting an explicit --altloc",
+      "mixed_named_selections": "reject before writing output",
+      "receipt_atom_selection": []
+    },
+    "no_atom_flags": "all atoms; preserve explicit CONECT and unambiguous same-image struct_conn links; report unsupported image/unresolved mmCIF links",
+    "backbone_order": [
+      "P",
+      "O5'",
+      "C5'",
+      "C4'",
+      "C3'",
+      "O3'"
+    ],
+    "residue_order": "input file order; numbering and insertion codes are identities, not sorting keys",
+    "missing_atom_policy": "skip and bridge within existing segment",
+    "boundaries": [
+      "chain changes",
+      "TER",
+      "MODEL/ENDMDL",
+      "mmCIF label_asym_id changes"
+    ],
+    "alternate_locations": "preserved in all-atom conversion; explicit choice required for selected trace"
+  },
+  "crystallography": {
+    "core_cif_requires": [
+      "real CRYST1 cell",
+      "space-group symbol"
+    ],
+    "coordinate_policy": "fractionalize without wrapping, minimizing, or changing the lattice",
+    "scale_policy": "precise cell for conventional PDB-rounded matrices; retain full-precision native mmCIF matrices and nonzero shifts",
+    "symmetry_policy": "copy declared PDB/mmCIF fractional operations; otherwise retain symbol and report",
+    "graph_policy": "explicit endpoint links; no distance-based perception or chemical bond-order inference"
+  },
+  "non_goals": [
+    "sticky-end inference",
+    "base-pair inference",
+    "chemical restraint generation",
+    "deposition validation",
+    "NASolve pipeline modification",
+    "sugar ring graph construction",
+    "ribbon construction",
+    "automatic component-specific atom-map corrections"
+  ],
+  "quality_gates": [
+    "fail-before regression",
+    "focused tests",
+    "complete tests",
+    "sdist build",
+    "wheel from relocated sdist",
+    "clean wheel installation",
+    "installed CLI smoke test",
+    "installed full suite",
+    "packaged lookup data present after clean install",
+    "native mmCIF installed CLI smoke test",
+    "explicit -atom -all installed CLI smoke test",
+    "CGD regressions",
+    "installed topostich-cgd smoke check"
+  ],
+  "external_validation": {
+    "ToposPro": "not yet executed",
+    "Phenix": "not required",
+    "Coot": "not required",
+    "Systre": "19.6.0 native parser, node degrees, consecutive labels and finite component checks passed for 8D93; cosine-roundoff cell warning diagnosed; no net identification.",
+    "ChimeraX": "1.12 (2026-06-12): native CMM import passed for both 8D93 views, including all nodes, links and notes."
+  },
+  "distribution": {
+    "github": "https://github.com/vecchioni-lab/TopoStich",
+    "pypi": "not published",
+    "license": "owner decision pending"
+  },
+  "recognition": {
+    "api": "topostich.nucleotides",
+    "roles": [
+      "sugar",
+      "phosphate",
+      "base",
+      "unknown",
+      "ambiguous"
+    ],
+    "lookup": "residue code -> canonical role -> actual observed atom name",
+    "catalog": "src/topostich/data/nucleotide_atoms.json",
+    "schema": "schemas/nucleotide-atom-catalog.schema.json",
+    "source": "NARestraints/restraints/data/Ligands.xlsx working snapshot; SHA-256 recorded in catalog",
+    "source_mutation": false,
+    "duplicate_policy": "most distinct observed mapped names; retain unresolved ties",
+    "extra_sugar_atoms": "recognized internally; no new CLI trace order",
+    "chemical_topology_inference": false,
+    "live_workbook_dependency": false
+  },
+  "cgd_export": {
+    "status": "IMPLEMENTED_CHAIN_AWARE; STITCHING_PENDING",
+    "decision_date": "2026-11-11",
+    "format": "Systre/Gavrog CGD",
+    "extension": ".cgd",
+    "dialect": "CRYSTAL block, named source node plus fractional neighbor-image coordinates",
+    "record_order": [
+      "crystal",
+      "name <identifier>",
+      "cell <a> <b> <c> <alpha> <beta> <gamma>",
+      "group <space-group>",
+      "atom <label> <degree> <fract_x> <fract_y> <fract_z>",
+      "edge <source-label> <neighbor-image fract_x> <neighbor-image fract_y> <neighbor-image fract_z>",
+      "end"
+    ],
+    "representation": "One nucleotide is represented by one node at its observed O3-prime atom coordinate; no base centroid or fitted pseudoatom.",
+    "representative_atom": "O3'",
+    "coordinates": "Fractional coordinates in the declared cell; retain negative and greater-than-one neighbor coordinates to identify the intended periodic image.",
+    "node_degree": "Actual incident edge count; special positions rejected pending stabilizer-aware support.",
+    "graph": "Explicit consecutive retained O3-prime nodes within each original segment; no joins across boundaries or symmetry copies.",
+    "stitching_scope": [
+      "nicks",
+      "junctions",
+      "symmetry-related copies and lattice translations"
+    ],
+    "pending": [
+      "Precise nick endpoint and image selection rules",
+      "Junction routing and graph-connectivity rules",
+      "Stabilizer-aware special positions",
+      "Live ToposPro import"
+    ],
+    "existing_missing_atom_policy": "Continue skipping missing selected O3-prime atoms and bridging within the original strand segment; no invented coordinates.",
+    "existing_modes": "Existing CIF/PDB/mmCIF conversion remains available.",
+    "reference_inputs": [
+      "User screenshots provided 2026-11-11: 14.51.27 and 14.52.59"
+    ],
+    "references": [
+      "https://topospro.com/software/topospro/manual/creating-a-new-database-from-cif-shelx-or-systre-formats/",
+      "https://raw.githubusercontent.com/odf/gavrog/master/src/org/gavrog/joss/pgraphs/io/NetParser.java"
+    ],
+    "command": "topostich-cgd",
+    "api": "topostich.cgd.export_cgd",
+    "position_guard": "Reject special positions and symmetry overlaps within a conservative 0.003 per conventional fractional coordinate, modulo translations.",
+    "views": {
+      "asymmetric_unit": "--cmm, original Cartesian coordinates",
+      "symmetry": "--crystal-cmm, intact conventional symmetry copies, separate models, no joins"
+    },
+    "receipt_schema": "schemas/cgd-receipt.schema.json"
+  },
+  "agent_handoff": "docs/agent-handoff.json",
+  "next_work": {
+    "status": "PLANNED_NOT_IMPLEMENTED",
+    "task": "Integrate collaborator logic engine to identify and serialize symmetry-related backbone connections at nicks and junctions.",
+    "scientific_logic_owner": "Lab member/collaborator; existing engine reported by user, interface/location not yet supplied.",
+    "topostich_role": "Resolve identities and relative crystal images; validate and export explicit periodic links in the exact CGD dialect, with matching viewer/provenance.",
+    "handoff": "docs/agent-handoff.json",
+    "current_default": "Unstitched chain-aware graph; unchanged."
+  }
+}

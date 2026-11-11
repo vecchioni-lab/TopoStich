@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TopoStich residue atom lookup snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "source", "semantics", "normalization", "header_base_atoms", "record_count", "residue_count", "duplicate_codes", "excluded_non_atom_cells", "records"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "path", "sha256", "sheets"],
+      "properties": {
+        "repository": {"type": "string"}, "path": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "sheets": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "semantics": {"type": "string"}, "normalization": {"type": "string"},
+    "header_base_atoms": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "record_count": {"type": "integer", "minimum": 1},
+    "residue_count": {"type": "integer", "minimum": 1},
+    "duplicate_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "excluded_non_atom_cells": {
+      "type": "array", "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["sheet", "row", "column", "header"],
+        "properties": {"sheet": {"type": "string"}, "row": {"type": "integer", "minimum": 2},
+          "column": {"type": "integer", "minimum": 1}, "header": {"type": "string"}}
+      }
+    },
+    "records": {
+      "type": "array", "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["code", "source_sheet", "source_row", "base_analog", "sugar_type", "positions", "substituents"],
+        "properties": {
+          "code": {"type": "string", "minLength": 1},
+          "source_sheet": {"type": "string"}, "source_row": {"type": "integer", "minimum": 2},
+          "base_analog": {"type": "string"}, "sugar_type": {"type": "string"},
+          "positions": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}},
+          "substituents": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}}
+        }
+      }
+    }
+  }
+}

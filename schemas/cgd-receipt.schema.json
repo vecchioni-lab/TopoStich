@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TopoStich CGD graph receipt",
+  "description": "Self-contained graph and identities; source name and hash are provenance, not operational paths.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "format",
+    "tool_version",
+    "name",
+    "source_name",
+    "source_sha256",
+    "source_format",
+    "model",
+    "altloc",
+    "representative_atom",
+    "cell",
+    "space_group",
+    "symmetry_operations",
+    "node_count",
+    "edge_count",
+    "directed_edge_rows",
+    "segment_count",
+    "nodes",
+    "edges",
+    "missing_atoms",
+    "stitching",
+    "warnings",
+    "artifacts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "format": {
+      "const": "Systre CGD CRYSTAL"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_format": {
+      "enum": [
+        "pdb",
+        "mmcif"
+      ]
+    },
+    "model": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "altloc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "representative_atom": {
+      "const": "O3'"
+    },
+    "cell": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "space_group": {
+      "type": "string"
+    },
+    "symmetry_operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "node_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "edge_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "directed_edge_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "segment_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "chain",
+          "seq",
+          "insertion",
+          "residue",
+          "atom",
+          "altloc",
+          "label_asym",
+          "label_seq",
+          "label_comp",
+          "label_atom",
+          "description",
+          "label",
+          "degree",
+          "segment",
+          "cartesian",
+          "fractional"
+        ],
+        "properties": {
+          "chain": {
+            "type": "string"
+          },
+          "seq": {
+            "type": "string"
+          },
+          "insertion": {
+            "type": "string"
+          },
+          "residue": {
+            "type": "string"
+          },
+          "atom": {
+            "type": "string"
+          },
+          "altloc": {
+            "type": "string"
+          },
+          "label_asym": {
+            "type": "string"
+          },
+          "label_seq": {
+            "type": "string"
+          },
+          "label_comp": {
+            "type": "string"
+          },
+          "label_atom": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string",
+            "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+          },
+          "degree": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "segment": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "cartesian": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "fractional": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "missing_atoms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stitching": {
+      "const": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "sha256"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

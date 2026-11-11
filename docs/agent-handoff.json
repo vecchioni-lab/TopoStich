@@ -1,0 +1,305 @@
+{
+  "document_type": "TopoStich agent and collaborator handoff",
+  "document_version": 1,
+  "updated": "2026-11-11",
+  "implementation_version": "0.3.0",
+  "status": "DOCUMENTATION_ONLY; EXISTING_CHAIN_AWARE_EXPORT_IMPLEMENTED; SYMMETRY_CONNECTION_INTEGRATION_NEXT",
+  "authority": "Current user instructions govern scope. This file distinguishes implemented behavior from proposed integration details; it does not claim that an external interface has been agreed or implemented.",
+  "read_first": [
+    "AGENTS.md",
+    "README.md",
+    "docs/intent.json",
+    "docs/architecture.md",
+    "docs/cgd.md",
+    "docs/development-handoff.md",
+    "CHANGELOG.md"
+  ],
+  "mission": {
+    "product": "An independently installable toolkit for converting nucleic-acid coordinates into explicit topological graphs and files that collaborators can inspect and analyze.",
+    "current_model": "Represent each nucleotide by one node at its observed O3-prime atom and retain ordered backbone connectivity within each original strand segment.",
+    "next_problem": "Find the symmetry-related backbone connections across nicks and junctions, then encode those connections with the correct images in the existing Systre CGD dialect.",
+    "scientific_owner": "Lab member/collaborator supplies the existing logic engine that determines which sites connect and to which crystal images. Its location, invocation and input/output contract have not been supplied here.",
+    "topostich_responsibility": "Map engine results onto explicit nucleotide/node identities, validate image references, preserve graph connectivity and provenance, and write auditable Systre and viewing artifacts.",
+    "downstream": "ToposPro/Systre topological analysis; ChimeraX for graph inspection. Links represent the chosen topological model and do not assert chemical bonds or ideal bond lengths.",
+    "longer_term": "Sugar recognition supports possible future ribbons; ribbon construction is not part of the next symmetry-link integration."
+  },
+  "component_map": [
+    {
+      "path": "src/topostich/cli.py",
+      "purpose": "Existing topostich command: all-atom or selected linear-backbone conversion to core CIF, PDB or PDBx/mmCIF. Preserve its flags and behavior."
+    },
+    {
+      "path": "src/topostich/__main__.py",
+      "purpose": "Enables python -m topostich."
+    },
+    {
+      "path": "src/topostich/__init__.py",
+      "purpose": "Package version, currently 0.3.0."
+    },
+    {
+      "path": "src/topostich/converter.py",
+      "purpose": "Shared Atom/Pdb containers; PDB reader, format dispatch, model/alternate selection, chain/TER segments, backbone order, fractional transforms, existing output writers and receipts. Private underscore helpers are implementation details, not an external engine API."
+    },
+    {
+      "path": "src/topostich/mmcif_input.py",
+      "purpose": "Gemmi-backed native mmCIF reader; retains precision and author/label identities. Unsupported symmetry-image struct_conn links are currently omitted with warnings; it is not the future stitching engine."
+    },
+    {
+      "path": "src/topostich/nucleotides.py",
+      "purpose": "Residue-aware lookup of sugar, phosphate, base, unknown and ambiguous atom roles from observed atom names. Provides classify_atom and recognize_residue; does not infer bonds."
+    },
+    {
+      "path": "src/topostich/data/nucleotide_atoms.json",
+      "purpose": "Packaged NARestraints-derived atom-name catalog. Runtime has no workbook or NASolve dependency; provenance is recorded in the catalog."
+    },
+    {
+      "path": "src/topostich/cgd.py",
+      "purpose": "Separate topostich-cgd command and export_cgd API. Selects observed O3-prime nodes, validates cell/group and positional ambiguity, builds unstitched strand edges, serializes exact CGD dialect, optional CMM views and graph receipt. No external-link argument or engine adapter exists yet."
+    },
+    {
+      "path": "src/topostich/graph_viewer.py",
+      "purpose": "Writes native ChimeraX marker/link CMM from the graph, with chain colors and endpoint markers; optional intact conventional-cell symmetry copies. Current implementation draws edges only when both endpoints are in one segment/model."
+    },
+    {
+      "path": "schemas/conversion-receipt.schema.json",
+      "purpose": "Existing conversion receipt schema 1; retain compatibility."
+    },
+    {
+      "path": "schemas/nucleotide-atom-catalog.schema.json",
+      "purpose": "Atom catalog schema 1; independent of periodic graph connectivity."
+    },
+    {
+      "path": "schemas/cgd-receipt.schema.json",
+      "purpose": "Current graph receipt schema 1: node identities/coordinates, cell/operations, two-label edge pairs, artifacts and hashes. stitching is constrained to false; no edge image information exists."
+    },
+    {
+      "path": "tests/test_converter.py",
+      "purpose": "Synthetic coordinate conversion, selection, crystallographic metadata and output-safety regressions."
+    },
+    {
+      "path": "tests/test_cli_all_atoms.py",
+      "purpose": "Explicit -atom -all CLI compatibility regressions."
+    },
+    {
+      "path": "tests/test_mmcif_input.py",
+      "purpose": "Native mmCIF parsing, identities, precision and input connection regressions."
+    },
+    {
+      "path": "tests/test_nucleotides.py",
+      "purpose": "Residue-dependent recognition and ambiguity regressions."
+    },
+    {
+      "path": "tests/test_cgd.py",
+      "purpose": "O3-prime graph boundaries, missing atoms, image coordinates, CMM, symmetry guard, model/alternates, no-overwrite and CLI regressions."
+    },
+    {
+      "path": "tools/check_install.py",
+      "purpose": "Builds sdist, removes original staging, builds a wheel from relocated extracted source, installs into a fresh venv and runs installed CLI checks and the full suite."
+    },
+    {
+      "path": "tools/CheckCgd.java",
+      "purpose": "Optional Systre 19.6.0 parser audit. Currently requires every edge to join consecutive nodes in one segment and every component to be finite. Those are unstitched-baseline assertions, not requirements for the future periodic graph."
+    },
+    {
+      "path": "tools/build_atom_catalog.py",
+      "purpose": "Explicit development-only regeneration of the packaged atom lookup from the workbook; not a runtime step."
+    },
+    {
+      "path": "pyproject.toml",
+      "purpose": "Install metadata, Python >=3.10, Gemmi runtime dependency and both console entry points."
+    },
+    {
+      "path": "MANIFEST.in",
+      "purpose": "Source-distribution inclusion rules, including docs/*.json and Java audit source."
+    },
+    {
+      "path": ".github/workflows/test.yml",
+      "purpose": "Configured multi-platform tests and clean-install checks; configured workflow is not evidence that remote CI has run."
+    },
+    {
+      "path": ".gitignore",
+      "purpose": "Excludes scientific structures/graphs and local runs; generated data stay out of publication."
+    },
+    {
+      "path": "AGENTS.md",
+      "purpose": "Repository contributor contract, preservation rules and installability gates."
+    },
+    {
+      "path": "README.md",
+      "purpose": "User installation and conversion entry point."
+    },
+    {
+      "path": "docs/intent.json",
+      "purpose": "Machine-readable current behavior, compatibility requirements and planned scope."
+    },
+    {
+      "path": "docs/architecture.md",
+      "purpose": "Current implementation structure and data flow."
+    },
+    {
+      "path": "docs/cgd.md",
+      "purpose": "Exact CGD dialect, ChimeraX usage, 8D93 baseline and known native-tool limitations."
+    },
+    {
+      "path": "docs/nucleotide-recognition.md",
+      "purpose": "Atom-recognition behavior and catalog provenance."
+    },
+    {
+      "path": "docs/development-handoff.md",
+      "purpose": "Previous patch behavior, exact validation and limitations."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "purpose": "User-visible change history and Unreleased notes."
+    }
+  ],
+  "implemented_data_flow": [
+    "Read one selected PDB/mmCIF model with original chain, segment, residue, insertion, alternate and label identities.",
+    "Select observed O3-prime sites; skip missing selections and bridge retained sites only within their existing segment.",
+    "Transform Cartesian coordinates into the declared fractional frame without wrapping individual sites.",
+    "Validate the named space-group setting and input operators; reject unsupported special positions or near symmetry-equivalent nodes.",
+    "Build nodes S<segment>_N<ordinal> and undirected same-image edge pairs.",
+    "Write CGD and optional original-ASU/symmetry-copy CMM views and a JSON receipt using exclusive new output paths."
+  ],
+  "fixed_output_contract": {
+    "format": "Systre/Gavrog .cgd CRYSTAL block; preserve the screenshot-selected dialect.",
+    "grammar": [
+      "crystal",
+      "name <identifier>",
+      "cell <a> <b> <c> <alpha> <beta> <gamma>",
+      "group <space-group-setting>",
+      "atom <label> <degree> <fract_x> <fract_y> <fract_z>",
+      "edge <source-label> <neighbor-image fract_x> <neighbor-image fract_y> <neighbor-image fract_z>",
+      "end"
+    ],
+    "degree": "Count distinct incident neighbors/images after symmetry expansion and duplicate removal; do not hard-code degree 2 or 4.",
+    "reciprocal_rows": "Current output lists both incident directions, with Systre deduplicating the undirected edge. For image links, the reciprocal relation needs the inverse affine mapping; simply copying the forward image or negating the translation is generally wrong.",
+    "coordinate_policy": "Keep cell, setting and unwrapped neighbor-image coordinates, including negative and greater-than-one values. Wrapping independently destroys the selected image.",
+    "format_distinction": "CGD is a graph format, not core CIF or PDBx/mmCIF. Preserve the separate existing coordinate-conversion commands."
+  },
+  "next_integration": {
+    "status": "PLANNED; engine adapter and link schema not implemented",
+    "ownership": {
+      "connection_decisions": "Collaborator existing logic engine",
+      "identity_image_validation_and_export": "TopoStich integration",
+      "scientific_acceptance": "Lab member/collaborator checks intended joins and downstream adjacency"
+    },
+    "first_step": "Obtain the engine entry point, required inputs, coordinate/space-group conventions, and a minimal known-correct output including a symmetry-related connection. Agree the adapter contract before coding against it.",
+    "proposed_engine_input": "Original structure when the engine requires full atoms, plus the selected graph receipt/node map, source SHA-256, model/altloc, cell and exact symmetry setting. Do not assume O3-prime coordinates alone suffice for the engine.",
+    "proposed_link_information": [
+      "Identity of each source and target nucleotide: node label bound to this source/model/selection, or a complete unambiguous chain+segment+residue+insertion+alternate+label identity.",
+      "Relative target symmetry operator in the same fractional frame, preferably its explicit triplet/matrix rather than an unqualified operation number.",
+      "Integer lattice translation applied after that operator; fractional centering/screw translations belong to the operator.",
+      "Connection kind such as nick or junction, decision status, and engine/rule provenance; preserve ambiguity rather than choosing silently.",
+      "Any confidence, evidence and direction/routing information the engine already supplies; its score semantics are not invented by TopoStich."
+    ],
+    "proposed_image_convention": {
+      "status": "PROPOSAL_TO_AGREE_WITH_ENGINE_OWNER; not a shipped input format",
+      "source": "Source endpoint normalized to its stored asymmetric-unit representative f_source.",
+      "target": "For target representative f_target and affine operator g(f)=R*f+t, use f_target_image=R*f_target+t+n, with n an integer vector applied after g.",
+      "both_endpoints_transformed": "If the engine returns two absolute images, first transform the whole edge by the inverse source-image transform to derive the relative relation; retain the original mapping as provenance.",
+      "reverse": "If h(f)=R*f+t+n, the reverse source image is h_inverse(f_source). Preserve fractional and integer translation bookkeeping when normalizing this inverse.",
+      "illustrative_only": {
+        "source_label": "S1_N12",
+        "target_label": "S2_N1",
+        "target_symmetry_operation": "x,y,z",
+        "target_lattice_translation": [
+          1,
+          0,
+          0
+        ],
+        "meaning": "Illustrative data shape: link to the target one cell along a. This is NOT an inferred or approved connection in 8D93."
+      }
+    },
+    "work_items": [
+      "Separate graph construction, engine adaptation and export so the unstitched baseline remains independently reproducible.",
+      "Add a documented explicit-link input/API using the agreed engine contract; do not invent the collaborator scientific selection logic.",
+      "Resolve identities against source hash, model, atom selection and label mapping. Generated S/N labels are local to one graph, not universal residue identifiers.",
+      "Validate operators/settings and image coordinates; distinguish legitimate parallel image links from duplicates, including symmetry-equivalent and reversed descriptions.",
+      "Represent periodic edges with endpoint identities and relative images. Two-label pairs alone are insufficient. Plan a versioned CGD receipt change while preserving or clearly migrating schema 1.",
+      "Emit the exact named-source neighbor-image EDGE records, inverse reciprocal records and correctly recomputed expanded node degrees.",
+      "Extend the CMM viewer to draw cross-segment and cross-image links explicitly in a bounded image window. Current per-segment models cannot silently discard new links; consider a shared expanded marker set or a supported inter-model representation.",
+      "Split native Systre validation into unstitched baseline checks and stitched graph checks. CheckCgd.java currently rejects cross-segment, nonconsecutive and periodic links intentionally; those checks must not be reused unchanged for stitched output.",
+      "Compare engine output, serialized CGD adjacency and the displayed graph; obtain a live ToposPro import check with the collaborator."
+    ],
+    "not_yet_decided": [
+      "Engine package/path/version and invocation",
+      "Exact link input serialization and CLI spelling",
+      "Nick endpoint selection, junction routing and direction semantics",
+      "Ambiguous matches, loops and special-position/stabilizer handling",
+      "Expected connected components and periodic rank of the scientifically correct stitched 8D93 graph"
+    ],
+    "do_not_assume": [
+      "Nearest endpoints necessarily connect",
+      "All chain boundaries are nicks",
+      "Every junction has degree four",
+      "Every input must become a single connected three-periodic net",
+      "Operation numbers are interchangeable across sources/settings",
+      "A successfully parsed file proves ToposPro retained its graph"
+    ]
+  },
+  "baseline_8d93": {
+    "source": "Public 8D93 coordinates, checksum-bound local example; no coordinates embedded in this document.",
+    "source_sha256": "91db1085ca5ca585655912ca169dde1fb10e6071558c5c03a37fcecd5b0cf247",
+    "observed_graph": {
+      "nodes": 42,
+      "undirected_edges": 38,
+      "segments": 4,
+      "chain_node_counts": {
+        "A": 12,
+        "B": 7,
+        "C": 14,
+        "D": 9
+      },
+      "missing_O3_selections": 0,
+      "stitching": false
+    },
+    "cell": [
+      105.547,
+      105.547,
+      96.268,
+      90,
+      90,
+      120
+    ],
+    "space_group": "R3:H",
+    "local_example": {
+      "anchor": "repository root",
+      "path": "local/8D93_O3_CGD_2026-11-11",
+      "optional": true,
+      "distributed": false,
+      "instructions": "Use its README.txt, sources/8D93.pdb and 8D93_O3_graph.json when present. Otherwise use an explicitly supplied structure and record its checksum; do not search other workspaces by basename."
+    },
+    "native_systre_baseline": "19.6.0: 126 primitive-cell nodes, 114 edges and 12 finite components; a documented cosine-roundoff warning is separate from graph correctness.",
+    "native_chimerax_baseline": "1.12: ASU 42 markers/38 links; conventional symmetry copies 378 markers/342 links. Symmetry display does not stitch the graph.",
+    "ToposPro": "Live import not yet tested."
+  },
+  "acceptance_for_next_patch": [
+    "Keep current unstitched output available and all existing CIF/PDB/mmCIF behavior compatible.",
+    "Add fail-before regressions using small synthetic graphs, including identity and nonidentity symmetry, nonzero and negative cell translations, inverses, deduplication, junction degree, unresolved identities and ambiguous matches.",
+    "Prove declared degrees and periodic adjacency survive native parsing; retain source coordinates and selected image translations.",
+    "Ensure every accepted edge, including a cross-segment/image edge, is drawn in the matching viewer or explicitly reported outside its finite display window.",
+    "Record accepted/rejected/ambiguous engine decisions and engine version/configuration in provenance; do not silently omit links.",
+    "Run focused and complete tests; build sdist and relocated wheel and test a fresh installed package after every substantial patch.",
+    "Report observed components and periodic rank rather than forcing a target topology; ask the collaborator to confirm scientific connectivity and live ToposPro import."
+  ],
+  "validation_commands": [
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -p test_cgd.py -v",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v",
+    "python3 tools/check_install.py"
+  ],
+  "prior_validation": "0.3.0 implementation: 8 focused tests; 48 source tests; 48 clean-installed tests passed. These are prior results, not tests newly run for this documentation update.",
+  "preservation_and_distribution": [
+    "Do not overwrite inputs, previous outputs or unrelated dirty files.",
+    "Keep generated structures, graphs, scientific runs and local environments out of commits.",
+    "Use repository-relative references and explicit dataset paths/checksums.",
+    "No NASolve/Phenix/Coot dependency is required.",
+    "GitHub publishing is a separate stepwise task; this documentation change does not publish anything."
+  ],
+  "this_update": {
+    "behavior_before_after": "Documentation adds component responsibilities and the collaborator-engine integration plan; executable behavior remains 0.3.0.",
+    "schema_impact": "This handoff has document_version 1. Runtime graph/conversion/catalog schemas are unchanged. Proposed periodic-link fields are not implemented.",
+    "validation": "Parse JSON, verify repository paths/entry-point descriptions and cross-document links, check diff whitespace. No runtime test or install rebuild required for this documentation-only change.",
+    "generated_artifacts": "None; prior scientific outputs unchanged."
+  }
+}

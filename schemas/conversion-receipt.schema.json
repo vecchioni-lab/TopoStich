@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TopoStich conversion receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "version", "source_name", "source_sha256", "output_name", "output_sha256", "output_format", "model", "atom_selection", "atom_count", "bond_count", "segment_count", "missing_count", "missing", "warnings"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "version": {"type": "string"},
+    "source_name": {"type": "string"},
+    "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "output_name": {"type": "string"},
+    "output_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "output_format": {"enum": ["cif", "pdb", "mmcif"]},
+    "model": {"type": "integer", "minimum": 1},
+    "atom_selection": {"type": "array", "uniqueItems": true, "items": {"enum": ["P", "O5'", "C5'", "C4'", "C3'", "O3'"]}},
+    "atom_count": {"type": "integer", "minimum": 1},
+    "bond_count": {"type": "integer", "minimum": 0},
+    "segment_count": {"type": "integer", "minimum": 1},
+    "missing_count": {"type": "integer", "minimum": 0},
+    "missing": {"type": "array", "items": {"type": "string"}},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}
