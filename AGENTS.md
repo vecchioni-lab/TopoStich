@@ -8,20 +8,24 @@ Before edits, inspect `git status --short`, `README.md`, `docs/intent.json`,
 The active user request takes precedence over old handoffs. Preserve unrelated
 dirty files and all original scientific inputs.
 
-Read `docs/agent-handoff.json` for the component map and next task. Simon clarified
-on 2026-11-11 that the collaborator already has the connection-finding logic
-engine. The next integration should consume its symmetry-aware backbone links
-and write them in the existing CGD dialect; do not invent a replacement engine.
-Current 0.3.0 behavior remains unstitched until that integration is implemented.
+Read `docs/agent-handoff.json` for the component map and next task. The
+collaborator's connection logic lives in the NAtopo project. 0.4.0 ports its
+P…O3′ backbone-join rule and its non-backbone pi-stack junction rule into
+`stitching.py` (opt-in `topostich-cgd --stitch-nicks/--stitch-junctions`,
+requested 2026-11-11). Keep those rules aligned with NAtopo rather than
+inventing replacements. Audit stitched output with `tools/check_stitched_cgd.py`.
 
 ## Scope and scientific behavior
 
 - The product converts PDB/PDBx-mmCIF to core CIF, optionally selecting a linear
   DNA/RNA backbone trace. PDB and PDBx/mmCIF are alternative coordinate outputs.
-- Respect chain, TER and model boundaries. No stitching, symmetry seam joining,
-  sticky-end inference, distance-based bond guessing, or chemical repairs are
-  authorized by the initial scope. Missing selected atoms are bridged within
-  their existing chain/TER segment.
+- Respect chain, TER and model boundaries. The coordinate converter and the
+  default CGD export never stitch. The only authorized stitching is opt-in in
+  `topostich-cgd`: NAtopo-rule backbone nick joins (`--stitch-nicks`) and
+  NAtopo-rule stacking junctions (`--stitch-junctions`). Both report
+  unstitched candidates with a status instead of choosing silently. No
+  hydrogen-bond stitching, general bond guessing, or chemical repairs. Missing
+  selected atoms are bridged within their chain/TER segment.
 - Keep crystal coordinates, symmetry and graph connectivity distinct. Do not
   label a format check as a live ToposPro compatibility test.
 - Keep the package independent of NASolve/Phenix/Coot. Do not add a dependency

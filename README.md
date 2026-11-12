@@ -5,13 +5,15 @@ Optionally select backbone atoms and connect them in strand order. Python
 3.10+; Gemmi is installed automatically. Phenix, Coot, Excel and NASolve are
 not required.
 
-This first release performs conversion and within-strand tracing. It does not
-stitch chains, close loops, infer sticky ends or add symmetry-related links.
+Conversion and within-strand tracing never stitch chains. The separate
+`topostich-cgd` graph exporter can optionally stitch **backbone nicks**
+(`--stitch-nicks`) and **stacking junctions** (`--stitch-junctions`) across
+chains and symmetry images, using the P…O3′ join and non-backbone pi-stack
+rules from the lab's NAtopo project. Hydrogen bonds and other contacts are
+not stitched.
 
 For agents and incoming collaborators, start with [the component map and next
-symmetry-connection task](docs/agent-handoff.json). The collaborator supplies
-the connection-finding logic; TopoStich will integrate and export its image-aware
-links. That integration is planned, not yet implemented.
+symmetry-connection task](docs/agent-handoff.json).
 
 ## Install
 
@@ -43,8 +45,20 @@ topostich-cgd 8D93.pdb --out 8D93_O3.cgd --cmm 8D93_chains.cmm \
   --crystal-cmm 8D93_symmetry.cmm --receipt 8D93_graph.json
 ```
 
-This keeps chain/TER segments separate; nick and junction stitching is pending.
-The following existing conversion commands continue to work unchanged.
+This keeps chain/TER segments separate. Add `--stitch-nicks` to join
+unambiguous backbone nicks and `--stitch-junctions` to join base stacks that
+continue a helix past a strand end. Joins to symmetry-related or translated
+copies become explicit periodic CGD edges (see [nick](docs/cgd.md#backbone-nick-stitching)
+and [junction](docs/cgd.md#junction-stitching) stitching):
+
+```sh
+topostich-cgd 7SE0.cif --stitch-nicks --stitch-junctions --out 7SE0_stitched.cgd \
+  --cmm 7SE0_stitched.cmm --receipt 7SE0_stitched.json
+```
+
+`tools/check_stitched_cgd.py` audits a stitched file against its receipt with
+Systre's own parser ([native audit](docs/cgd.md#native-systre-audit)). The
+following existing conversion commands continue to work unchanged.
 
 Keep every atom in the first model, with its original position:
 

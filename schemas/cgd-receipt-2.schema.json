@@ -1,0 +1,1225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TopoStich CGD graph receipt with stitching",
+  "description": "Schema 2 is written only when nick and/or junction stitching is requested; unstitched exports keep schema 1. Adds periodic joins with relative symmetry images, every nick and junction candidate with its status, and the rule parameters. Source name and hash are provenance, not operational paths.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "format",
+    "tool_version",
+    "name",
+    "source_name",
+    "source_sha256",
+    "source_format",
+    "model",
+    "altloc",
+    "representative_atom",
+    "cell",
+    "space_group",
+    "symmetry_operations",
+    "node_count",
+    "edge_count",
+    "directed_edge_rows",
+    "segment_count",
+    "nodes",
+    "edges",
+    "missing_atoms",
+    "stitching",
+    "warnings",
+    "artifacts",
+    "trace_edge_count",
+    "stitched_edge_count",
+    "stitched_edge_counts",
+    "stitched_edges",
+    "join_candidates",
+    "junction_candidates",
+    "stitch_parameters"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "format": {
+      "const": "Systre CGD CRYSTAL"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_format": {
+      "enum": [
+        "pdb",
+        "mmcif"
+      ]
+    },
+    "model": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "altloc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "representative_atom": {
+      "const": "O3'"
+    },
+    "cell": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "space_group": {
+      "type": "string"
+    },
+    "symmetry_operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "node_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "edge_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "directed_edge_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "segment_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "chain",
+          "seq",
+          "insertion",
+          "residue",
+          "atom",
+          "altloc",
+          "label_asym",
+          "label_seq",
+          "label_comp",
+          "label_atom",
+          "description",
+          "label",
+          "degree",
+          "segment",
+          "cartesian",
+          "fractional"
+        ],
+        "properties": {
+          "chain": {
+            "type": "string"
+          },
+          "seq": {
+            "type": "string"
+          },
+          "insertion": {
+            "type": "string"
+          },
+          "residue": {
+            "type": "string"
+          },
+          "atom": {
+            "type": "string"
+          },
+          "altloc": {
+            "type": "string"
+          },
+          "label_asym": {
+            "type": "string"
+          },
+          "label_seq": {
+            "type": "string"
+          },
+          "label_comp": {
+            "type": "string"
+          },
+          "label_atom": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string",
+            "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+          },
+          "degree": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "segment": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "cartesian": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "fractional": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "missing_atoms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stitching": {
+      "const": true
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "sha256"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "trace_edge_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stitched_edge_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stitched_edge_counts": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "backbone_join",
+          "backbone_join_o5",
+          "deposited_link",
+          "junction_stack"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "stitched_edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "target",
+          "kind",
+          "operation",
+          "lattice_translation",
+          "image_operation",
+          "reverse_image_operation",
+          "target_image_fractional",
+          "reverse_image_fractional",
+          "target_image_cartesian",
+          "reverse_image_cartesian",
+          "distance_A",
+          "source_description",
+          "target_description",
+          "evidence"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "pattern": "^S[0-9]+_N[1-9][0-9]*$",
+            "description": "Node in its stored position (3' end for nicks; first residue for junctions)"
+          },
+          "target": {
+            "type": "string",
+            "pattern": "^S[0-9]+_N[1-9][0-9]*$",
+            "description": "Node joined in the image given by image_operation"
+          },
+          "kind": {
+            "enum": [
+              "backbone_join",
+              "backbone_join_o5",
+              "deposited_link",
+              "junction_stack"
+            ]
+          },
+          "operation": {
+            "type": "string",
+            "description": "Space-group operation with translation part in [0,1), fractional frame"
+          },
+          "lattice_translation": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "description": "Integer lattice vector n applied after operation"
+          },
+          "image_operation": {
+            "type": "string",
+            "description": "operation + lattice_translation; the target (or second residue) image"
+          },
+          "reverse_image_operation": {
+            "type": "string",
+            "description": "Inverse affine operation used for the reciprocal CGD row"
+          },
+          "target_image_fractional": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "reverse_image_fractional": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "target_image_cartesian": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "reverse_image_cartesian": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "distance_A": {
+            "type": "number",
+            "minimum": 0,
+            "description": "O3'...P/O5' distance for nicks; base-ring centroid distance for junctions"
+          },
+          "source_description": {
+            "type": "string"
+          },
+          "target_description": {
+            "type": "string"
+          },
+          "evidence": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "o3_atom",
+                  "p_atom"
+                ],
+                "properties": {
+                  "o3_atom": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "chain",
+                      "seq",
+                      "insertion",
+                      "residue",
+                      "atom",
+                      "altloc",
+                      "serial",
+                      "label_asym",
+                      "label_seq",
+                      "description",
+                      "segment"
+                    ],
+                    "properties": {
+                      "chain": {
+                        "type": "string"
+                      },
+                      "seq": {
+                        "type": "string"
+                      },
+                      "insertion": {
+                        "type": "string"
+                      },
+                      "residue": {
+                        "type": "string"
+                      },
+                      "atom": {
+                        "type": "string"
+                      },
+                      "altloc": {
+                        "type": "string"
+                      },
+                      "serial": {
+                        "type": "string"
+                      },
+                      "label_asym": {
+                        "type": "string"
+                      },
+                      "label_seq": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "segment": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
+                    }
+                  },
+                  "p_atom": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "chain",
+                      "seq",
+                      "insertion",
+                      "residue",
+                      "atom",
+                      "altloc",
+                      "serial",
+                      "label_asym",
+                      "label_seq",
+                      "description",
+                      "segment"
+                    ],
+                    "properties": {
+                      "chain": {
+                        "type": "string"
+                      },
+                      "seq": {
+                        "type": "string"
+                      },
+                      "insertion": {
+                        "type": "string"
+                      },
+                      "residue": {
+                        "type": "string"
+                      },
+                      "atom": {
+                        "type": "string"
+                      },
+                      "altloc": {
+                        "type": "string"
+                      },
+                      "serial": {
+                        "type": "string"
+                      },
+                      "label_asym": {
+                        "type": "string"
+                      },
+                      "label_seq": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "segment": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
+                    },
+                    "description": "5' endpoint atom: P, or O5' for the missing-phosphate fallback"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "reason",
+                  "centroid_distance_A",
+                  "plane_angle_deg",
+                  "plane_separation_A",
+                  "lateral_shift_A"
+                ],
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "stack_on_face_without_backbone_continuation",
+                      "non_backbone_stack"
+                    ]
+                  },
+                  "centroid_distance_A": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "plane_angle_deg": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 90
+                  },
+                  "plane_separation_A": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "lateral_shift_A": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "join_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "status",
+          "method",
+          "distance_A",
+          "cutoff_A",
+          "operation",
+          "lattice_translation",
+          "image_operation",
+          "o3_atom",
+          "p_atom",
+          "source",
+          "target"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "backbone_join",
+              "backbone_join_o5",
+              "deposited_link"
+            ]
+          },
+          "status": {
+            "enum": [
+              "stitched",
+              "ambiguous",
+              "segment_internal",
+              "o5_fallback_disabled",
+              "no_graph_node",
+              "duplicate_edge"
+            ]
+          },
+          "method": {
+            "type": "string"
+          },
+          "distance_A": {
+            "type": "number",
+            "minimum": 0
+          },
+          "cutoff_A": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "operation": {
+            "type": "string",
+            "description": "Space-group operation with translation part in [0,1), fractional frame"
+          },
+          "lattice_translation": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "description": "Integer lattice vector n applied after operation"
+          },
+          "image_operation": {
+            "type": "string",
+            "description": "operation + lattice_translation; the target (or second residue) image"
+          },
+          "o3_atom": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "chain",
+              "seq",
+              "insertion",
+              "residue",
+              "atom",
+              "altloc",
+              "serial",
+              "label_asym",
+              "label_seq",
+              "description",
+              "segment"
+            ],
+            "properties": {
+              "chain": {
+                "type": "string"
+              },
+              "seq": {
+                "type": "string"
+              },
+              "insertion": {
+                "type": "string"
+              },
+              "residue": {
+                "type": "string"
+              },
+              "atom": {
+                "type": "string"
+              },
+              "altloc": {
+                "type": "string"
+              },
+              "serial": {
+                "type": "string"
+              },
+              "label_asym": {
+                "type": "string"
+              },
+              "label_seq": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "segment": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          },
+          "p_atom": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "chain",
+              "seq",
+              "insertion",
+              "residue",
+              "atom",
+              "altloc",
+              "serial",
+              "label_asym",
+              "label_seq",
+              "description",
+              "segment"
+            ],
+            "properties": {
+              "chain": {
+                "type": "string"
+              },
+              "seq": {
+                "type": "string"
+              },
+              "insertion": {
+                "type": "string"
+              },
+              "residue": {
+                "type": "string"
+              },
+              "atom": {
+                "type": "string"
+              },
+              "altloc": {
+                "type": "string"
+              },
+              "serial": {
+                "type": "string"
+              },
+              "label_asym": {
+                "type": "string"
+              },
+              "label_seq": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "segment": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "description": "5' endpoint atom: P, or O5' for the missing-phosphate fallback"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "target": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "junction_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "status",
+          "method",
+          "reason",
+          "scope",
+          "distance_A",
+          "operation",
+          "lattice_translation",
+          "image_operation",
+          "residue1",
+          "residue2",
+          "source",
+          "target",
+          "measurements",
+          "backbone_context"
+        ],
+        "properties": {
+          "kind": {
+            "const": "junction_stack"
+          },
+          "status": {
+            "enum": [
+              "stitched",
+              "not_face_junction",
+              "no_graph_node",
+              "duplicate_edge"
+            ]
+          },
+          "method": {
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "stack_on_face_without_backbone_continuation",
+              "non_backbone_stack"
+            ]
+          },
+          "scope": {
+            "enum": [
+              "face",
+              "all"
+            ]
+          },
+          "distance_A": {
+            "type": "number",
+            "minimum": 0
+          },
+          "operation": {
+            "type": "string",
+            "description": "Space-group operation with translation part in [0,1), fractional frame"
+          },
+          "lattice_translation": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "description": "Integer lattice vector n applied after operation"
+          },
+          "image_operation": {
+            "type": "string",
+            "description": "operation + lattice_translation; the target (or second residue) image"
+          },
+          "residue1": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "chain",
+              "seq",
+              "insertion",
+              "residue",
+              "label_asym",
+              "label_seq",
+              "description",
+              "segment"
+            ],
+            "properties": {
+              "chain": {
+                "type": "string"
+              },
+              "seq": {
+                "type": "string"
+              },
+              "insertion": {
+                "type": "string"
+              },
+              "residue": {
+                "type": "string"
+              },
+              "label_asym": {
+                "type": "string"
+              },
+              "label_seq": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "segment": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "description": "First residue, stored position"
+          },
+          "residue2": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "chain",
+              "seq",
+              "insertion",
+              "residue",
+              "label_asym",
+              "label_seq",
+              "description",
+              "segment"
+            ],
+            "properties": {
+              "chain": {
+                "type": "string"
+              },
+              "seq": {
+                "type": "string"
+              },
+              "insertion": {
+                "type": "string"
+              },
+              "residue": {
+                "type": "string"
+              },
+              "label_asym": {
+                "type": "string"
+              },
+              "label_seq": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "segment": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "description": "Second residue, in image_operation"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "target": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^S[0-9]+_N[1-9][0-9]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "measurements": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "centroid_distance_A",
+              "plane_angle_deg",
+              "plane_separation_A",
+              "lateral_shift_A"
+            ],
+            "properties": {
+              "centroid_distance_A": {
+                "type": "number",
+                "minimum": 0
+              },
+              "plane_angle_deg": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 90
+              },
+              "plane_separation_A": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "lateral_shift_A": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          },
+          "backbone_context": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "anchor",
+                "pi_projection_A",
+                "verified_backbone_neighbors",
+                "stack_face_without_verified_backbone"
+              ],
+              "properties": {
+                "anchor": {
+                  "type": "string"
+                },
+                "pi_projection_A": {
+                  "type": "number"
+                },
+                "verified_backbone_neighbors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "residue",
+                      "signed_projection_A",
+                      "same_side_as_pi"
+                    ],
+                    "properties": {
+                      "residue": {
+                        "type": "string"
+                      },
+                      "signed_projection_A": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "same_side_as_pi": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "stack_face_without_verified_backbone": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    },
+    "stitch_parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nicks",
+        "junctions"
+      ],
+      "properties": {
+        "nicks": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "method",
+                "source",
+                "join_cutoff_A",
+                "o5_cutoff_A",
+                "include_o5_fallback",
+                "polymer_link_A",
+                "explicit_covalent_A",
+                "image_search",
+                "loose_endpoints",
+                "candidate_status_counts"
+              ],
+              "properties": {
+                "method": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "join_cutoff_A": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "o5_cutoff_A": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "include_o5_fallback": {
+                  "type": "boolean"
+                },
+                "polymer_link_A": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "explicit_covalent_A": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "image_search": {
+                  "type": "string"
+                },
+                "loose_endpoints": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "candidate_status_counts": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "junctions": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "method",
+                "source",
+                "scope",
+                "centroid_cutoff_A",
+                "max_angle_deg",
+                "max_lateral_shift_A",
+                "min_plane_separation_A",
+                "max_plane_separation_A",
+                "min_side_projection_A",
+                "ring_atom_source",
+                "image_search",
+                "base_planes",
+                "verified_backbone_stacks_excluded",
+                "plane_diagnostics",
+                "candidate_status_counts",
+                "reason_counts"
+              ],
+              "properties": {
+                "method": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "scope": {
+                  "enum": [
+                    "face",
+                    "all"
+                  ]
+                },
+                "centroid_cutoff_A": {
+                  "type": "number"
+                },
+                "max_angle_deg": {
+                  "type": "number"
+                },
+                "max_lateral_shift_A": {
+                  "type": "number"
+                },
+                "min_plane_separation_A": {
+                  "type": "number"
+                },
+                "max_plane_separation_A": {
+                  "type": "number"
+                },
+                "min_side_projection_A": {
+                  "type": "number"
+                },
+                "ring_atom_source": {
+                  "type": "string"
+                },
+                "image_search": {
+                  "type": "string"
+                },
+                "base_planes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "verified_backbone_stacks_excluded": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "plane_diagnostics": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "residue",
+                      "description",
+                      "issue"
+                    ],
+                    "properties": {
+                      "residue": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "issue": {
+                        "enum": [
+                          "unmapped_component",
+                          "ambiguous_ring_atom_mapping",
+                          "missing_ring_atom_mapping",
+                          "incomplete_base_ring",
+                          "unsupported_ring_atom_element",
+                          "degenerate_base_ring"
+                        ]
+                      },
+                      "atoms": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "candidate_status_counts": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "reason_counts": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

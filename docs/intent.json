@@ -2,13 +2,13 @@
   "schema_version": 1,
   "project": "TopoStich",
   "updated": "2026-11-11",
-  "status": "0.3.0-local-implementation",
+  "status": "0.4.0-local-implementation",
   "owner": "vecchioni-lab",
-  "purpose": "Convert DNA/RNA PDB or PDBx/mmCIF coordinates to core CIF with residue-aware nucleotide atom recognition and optional linear backbone traces. Export chain-aware O3-prime graphs as Systre CRYSTAL CGD and native ChimeraX marker/link views.",
+  "purpose": "Convert DNA/RNA PDB or PDBx/mmCIF coordinates to core CIF with residue-aware nucleotide atom recognition and optional linear backbone traces. Export chain-aware O3-prime graphs as Systre CRYSTAL CGD and native ChimeraX marker/link views. Optionally stitch backbone nicks and stacking junctions across chains and symmetry images using NAtopo's P...O3' join and non-backbone pi-stack rules.",
   "standing_user_requirements": [
     "Installable after every substantial patch, not only at formal releases.",
     "Maintain clear human-readable and machine-readable intent in the repository.",
-    "CGD export keeps chains separate; explicit nick/junction and symmetry-image joins await defined rules.",
+    "CGD export keeps chains separate by default; opt-in --stitch-nicks and --stitch-junctions add NAtopo-rule joins and report every unstitched candidate.",
     "Publish as an independent vecchioni-lab Git repository named TopoStich."
   ],
   "runtime": {
@@ -45,7 +45,7 @@
     "receipt_schema": "schemas/conversion-receipt.schema.json",
     "reference_policy": "self-contained coordinates and edges; source SHA-256 and basename are provenance",
     "pdb_precision": "0.001 A coordinates; 0.01 occupancy/B. Refuse field overflow.",
-    "cgd_receipt_schema": "schemas/cgd-receipt.schema.json"
+    "cgd_receipt_schema": "schemas/cgd-receipt.schema.json (unstitched, schema 1); schemas/cgd-receipt-2.schema.json (stitched, schema 2)"
   },
   "selection": {
     "explicit_all_atoms": {
@@ -86,7 +86,7 @@
     "coordinate_policy": "fractionalize without wrapping, minimizing, or changing the lattice",
     "scale_policy": "precise cell for conventional PDB-rounded matrices; retain full-precision native mmCIF matrices and nonzero shifts",
     "symmetry_policy": "copy declared PDB/mmCIF fractional operations; otherwise retain symbol and report",
-    "graph_policy": "explicit endpoint links; no distance-based perception or chemical bond-order inference"
+    "graph_policy": "explicit endpoint links; no distance-based perception or chemical bond-order inference, except the opt-in NAtopo nick and junction screens in topostich-cgd"
   },
   "non_goals": [
     "sticky-end inference",
@@ -111,13 +111,14 @@
     "native mmCIF installed CLI smoke test",
     "explicit -atom -all installed CLI smoke test",
     "CGD regressions",
-    "installed topostich-cgd smoke check"
+    "installed topostich-cgd smoke check",
+    "stitching and junction regressions; installed --stitch-nicks/--stitch-junctions smoke checks"
   ],
   "external_validation": {
     "ToposPro": "not yet executed",
     "Phenix": "not required",
     "Coot": "not required",
-    "Systre": "19.6.0 native parser, node degrees, consecutive labels and finite component checks passed for 8D93; cosine-roundoff cell warning diagnosed; no net identification.",
+    "Systre": "19.6.0 native parser, node degrees, consecutive labels and finite component checks passed for 8D93; cosine-roundoff cell warning diagnosed; no net identification. 0.4.0: tools/check_stitched_cgd.py passed 85 stitched/unstitched exports of 17 crystals with Systre 19.6.0 (edge counts match receipts).",
     "ChimeraX": "1.12 (2026-06-12): native CMM import passed for both 8D93 views, including all nodes, links and notes."
   },
   "distribution": {
@@ -145,7 +146,7 @@
     "live_workbook_dependency": false
   },
   "cgd_export": {
-    "status": "IMPLEMENTED_CHAIN_AWARE; STITCHING_PENDING",
+    "status": "IMPLEMENTED_CHAIN_AWARE; NICK_AND_JUNCTION_STITCHING_OPT_IN",
     "decision_date": "2026-11-11",
     "format": "Systre/Gavrog CGD",
     "extension": ".cgd",
@@ -163,15 +164,14 @@
     "representative_atom": "O3'",
     "coordinates": "Fractional coordinates in the declared cell; retain negative and greater-than-one neighbor coordinates to identify the intended periodic image.",
     "node_degree": "Actual incident edge count; special positions rejected pending stabilizer-aware support.",
-    "graph": "Explicit consecutive retained O3-prime nodes within each original segment; no joins across boundaries or symmetry copies.",
+    "graph": "Explicit consecutive retained O3-prime nodes within each original segment. With --stitch-nicks, additional periodic edges for one-to-one backbone nick joins between segment termini, in any symmetry/lattice image. With --stitch-junctions, periodic edges for NAtopo junction stacks (face scope by default).",
     "stitching_scope": [
-      "nicks",
-      "junctions",
-      "symmetry-related copies and lattice translations"
+      "nicks (implemented, opt-in)",
+      "junctions (implemented, opt-in)",
+      "symmetry-related copies and lattice translations (implemented)"
     ],
     "pending": [
-      "Precise nick endpoint and image selection rules",
-      "Junction routing and graph-connectivity rules",
+      "Reviewed confirm/remove decisions for ambiguous nicks and junctions",
       "Stabilizer-aware special positions",
       "Live ToposPro import"
     ],
@@ -189,17 +189,73 @@
     "position_guard": "Reject special positions and symmetry overlaps within a conservative 0.003 per conventional fractional coordinate, modulo translations.",
     "views": {
       "asymmetric_unit": "--cmm, original Cartesian coordinates",
-      "symmetry": "--crystal-cmm, intact conventional symmetry copies, separate models, no joins"
+      "symmetry": "--crystal-cmm, intact conventional symmetry copies, separate models; nick joins and junction stacks in their own models"
     },
-    "receipt_schema": "schemas/cgd-receipt.schema.json"
+    "receipt_schema": "schemas/cgd-receipt.schema.json",
+    "nick_stitching": {
+      "status": "IMPLEMENTED_OPT_IN",
+      "version": "0.4.0",
+      "module": "src/topostich/stitching.py",
+      "cli": [
+        "--stitch-nicks",
+        "--join-cutoff 3.5",
+        "--o5-cutoff 6.0",
+        "--include-o5-fallback"
+      ],
+      "rule_source": "NAtopo nucleotide_interactions.find_backbone_join_candidates + prepare_nucleotides loose-end rules + build_atom_graph polymer links",
+      "loose_P": "P with own O5' and no inter-residue covalent neighbor",
+      "loose_O3": "O3' with own C3' and no inter-residue covalent neighbor",
+      "existing_link": "consecutive O3'-P 0.8-2.2 A within a segment, or explicit input link 0.8-2.3 A",
+      "join": "loose P...loose O3' < 3.5 A on a different chain copy (other segment or other image)",
+      "o5_fallback": "phosphate-less O5' (own C5') ... loose O3' < 6.0 A; reported only unless --include-o5-fallback",
+      "image_search": "exact: all conventional operations incl. centering, all lattice translations within the cutoff",
+      "acceptance": "stitch only one-to-one joins between segment 3-prime and 5-prime termini; otherwise report status",
+      "statuses": [
+        "stitched",
+        "ambiguous",
+        "segment_internal",
+        "o5_fallback_disabled",
+        "no_graph_node",
+        "duplicate_edge"
+      ],
+      "edge_convention": "source = 3-prime end node at stored position; target = 5-prime strand's first O3-prime node in image g=operation+n; reciprocal row uses g inverse",
+      "receipt_schema": "schemas/cgd-receipt-2.schema.json",
+      "natopo_cross_validation": "identical candidate orbits, images and distances on 17 local nucleic-acid crystals (2026-11-11)"
+    },
+    "junction_stitching": {
+      "status": "IMPLEMENTED_OPT_IN",
+      "version": "0.4.0",
+      "module": "src/topostich/stitching.py",
+      "cli": [
+        "--stitch-junctions",
+        "--junction-scope face|all"
+      ],
+      "rule_source": "NAtopo find_pi_interactions + fit_base_planes + junctions.find_junction_candidates (nonbackbone_pi_stack_v2)",
+      "base_plane": "SVD plane of complete ring heavy atoms (9 purine, 6 pyrimidine); ring names from the packaged NARestraints catalog",
+      "pi_stack": "centroids < 5.5 A, normals within 30 deg, both separations 2.0-4.5 A, both lateral shifts <= 3.0 A",
+      "junction": "pi stack not joined by a verified O3-prime-P bond in the same image",
+      "face_reason": "stack_on_face_without_backbone_continuation when every verified backbone neighbor of an endpoint lies on the opposite face (0.5 A tolerance)",
+      "scopes": {
+        "face": "stitch face junctions only (default)",
+        "all": "stitch every junction candidate"
+      },
+      "statuses": [
+        "stitched",
+        "not_face_junction",
+        "no_graph_node",
+        "duplicate_edge"
+      ],
+      "natopo_cross_validation": "identical junction orbits, images, reasons, distances and excluded-stack counts on 17 local crystals (2026-11-11)"
+    },
+    "native_audit": "tools/check_stitched_cgd.py (+ tools/CheckCgd.java --stitched); CheckCgd default mode is the unstitched baseline"
   },
   "agent_handoff": "docs/agent-handoff.json",
   "next_work": {
-    "status": "PLANNED_NOT_IMPLEMENTED",
-    "task": "Integrate collaborator logic engine to identify and serialize symmetry-related backbone connections at nicks and junctions.",
-    "scientific_logic_owner": "Lab member/collaborator; existing engine reported by user, interface/location not yet supplied.",
+    "status": "NICK_AND_JUNCTION_STITCHING_IMPLEMENTED",
+    "task": "Reviewed decisions for ambiguous candidates (NAtopo decision log), special positions, live ToposPro import.",
+    "scientific_logic_owner": "Lab NAtopo project (ported rule in stitching.py); collaborator confirms scientific connectivity.",
     "topostich_role": "Resolve identities and relative crystal images; validate and export explicit periodic links in the exact CGD dialect, with matching viewer/provenance.",
     "handoff": "docs/agent-handoff.json",
-    "current_default": "Unstitched chain-aware graph; unchanged."
+    "current_default": "Unstitched chain-aware graph unless stitching options are given; unchanged byte-for-byte."
   }
 }

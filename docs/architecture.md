@@ -12,6 +12,35 @@ rolled back on I/O failure. A separate schema-1 CGD receipt maps node identities
 coordinates, edges, cell, operations and artifact hashes. Existing conversion
 receipt and nucleotide catalog schemas are unchanged. See `cgd.md` for limits.
 
+`stitching.py` holds the opt-in backbone nick rule ported from NAtopo
+(`nucleotide_interactions.find_backbone_join_candidates`, with the loose-end
+rules of `prepare_nucleotides` and the polymer links of `build_atom_graph`).
+It is called only by `export_cgd` with `stitch_nicks` or `stitch_junctions`. Per residue it finds
+loose P (with own O5′), loose O3′ (with own C3′) and phosphate-less O5′ ends; a
+consecutive O3′–P pair at 0.8–2.2 Å or an explicit input link at 0.8–2.3 Å
+makes an end non-loose. Every space-group operation and every lattice
+translation that can bring a loose O3′ within the cutoff of a 5′ end is
+enumerated exactly (no finite cell window). Candidates on the same chain copy
+are excluded. Joins are stitched only when one-to-one and between segment
+termini; the source is the 3′ end in its stored position and the target is the
+5′ end's first O3′ node in image `g = operation + n`. The reciprocal CGD row
+uses `g⁻¹`, and degrees count distinct neighbor images. Stitched receipts use
+schema 2; unstitched output is byte-identical to 0.3.0.
+
+Junction stitching (`stitch_junctions=True`) uses the same `StitchContext`, so
+nicks are registered first and junction duplicates of existing edges are
+detected. Base planes are SVD fits (a dependency-free Jacobi eigen-solve) of
+complete ring heavy atoms, with ring names from the packaged NARestraints
+catalog. Stacks are enumerated as symmetry orbits: residue pairs `a ≤ b`, every
+operation and lattice translation within the 5.5 Å centroid cutoff, and one of
+`g`/`g⁻¹` for a residue against itself. NAtopo's angle, separation and shift
+limits apply. Verified O3′–P neighbors are excluded, and the face reason comes
+from signed projections onto each endpoint's plane. CGD rows are de-duplicated
+per node, so a join to the node's own image under an involution is one
+neighbor. The viewer draws nick joins and junction stacks in separate models
+with explicit endpoint markers. `tools/CheckCgd.java --stitched` plus
+`tools/check_stitched_cgd.py` compare Systre's parsed adjacency with the receipt.
+
 `src/topostich/converter.py` owns fixed-column PDB parsing, input dispatch, atom selection,
 coordinate transforms, graph construction and the three output writers.
 `src/topostich/cli.py` maps CLI arguments to `convert_file` and serializes the
