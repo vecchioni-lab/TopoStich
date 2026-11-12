@@ -2,6 +2,33 @@
 
 ## [Unreleased]
 
+- Version 0.4.0: opt-in backbone nick and junction stitching for `topostich-cgd`.
+  Nicks
+  (`--stitch-nicks`, `--join-cutoff`, `--o5-cutoff`, `--include-o5-fallback`;
+  API `export_cgd(stitch_nicks=True, ...)`). New `stitching.py` ports NAtopo's
+  loose P…O3′ backbone-join rule (3.5 Å, different chain copy, O5′ fallback
+  6.0 Å) with exact search over all symmetry operations and lattice translations.
+  Only one-to-one joins between segment termini are stitched; ambiguous,
+  internal and fallback candidates are reported with a status.
+- CGD writes stitched edges as neighbor-image rows with inverse-affine
+  reciprocals and recomputed degrees. New schema-2 receipt
+  (`schemas/cgd-receipt-2.schema.json`) for stitched exports. CMM views draw
+  joins in a separate model. Unstitched output and schema-1 receipts are
+  byte-identical to 0.3.0.
+- Opt-in junction stitching (`--stitch-junctions`, `--junction-scope face|all`;
+  API `stitch_junctions=True`). Ports NAtopo's pi-stack screen and
+  `nonbackbone_pi_stack_v2` junction classifier. Ring names come from the
+  packaged residue catalog. The default `face` scope stitches stacks that continue a
+  helix past a strand end. Candidates are reported in `junction_candidates`.
+- CGD rows are de-duplicated per node: a join to a node's own image under an
+  involution is one neighbor (found by the new Systre audit).
+- `tools/CheckCgd.java --stitched` and `tools/check_stitched_cgd.py`: native
+  Systre audit of stitched output against the receipt. The default Java mode
+  remains the strict unstitched baseline.
+- Twenty stitching/junction regressions and installed stitched-CLI smoke checks.
+  Agreement with NAtopo on 17 crystals and the Systre audit of 85 exports are
+  documented in `docs/cgd.md`.
+
 - Add `docs/agent-handoff.json` with a component map, project intent and the
   next collaborator-engine integration task for symmetry-related backbone links.
   Distinguish implemented behavior from proposed image/identity interfaces;

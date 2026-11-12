@@ -2,8 +2,8 @@
   "document_type": "TopoStich agent and collaborator handoff",
   "document_version": 1,
   "updated": "2026-11-11",
-  "implementation_version": "0.3.0",
-  "status": "DOCUMENTATION_ONLY; EXISTING_CHAIN_AWARE_EXPORT_IMPLEMENTED; SYMMETRY_CONNECTION_INTEGRATION_NEXT",
+  "implementation_version": "0.4.0",
+  "status": "NICK_AND_JUNCTION_STITCHING_IMPLEMENTED_OPT_IN; SYSTRE_STITCHED_AUDIT_AVAILABLE",
   "authority": "Current user instructions govern scope. This file distinguishes implemented behavior from proposed integration details; it does not claim that an external interface has been agreed or implemented.",
   "read_first": [
     "AGENTS.md",
@@ -18,7 +18,7 @@
     "product": "An independently installable toolkit for converting nucleic-acid coordinates into explicit topological graphs and files that collaborators can inspect and analyze.",
     "current_model": "Represent each nucleotide by one node at its observed O3-prime atom and retain ordered backbone connectivity within each original strand segment.",
     "next_problem": "Find the symmetry-related backbone connections across nicks and junctions, then encode those connections with the correct images in the existing Systre CGD dialect.",
-    "scientific_owner": "Lab member/collaborator supplies the existing logic engine that determines which sites connect and to which crystal images. Its location, invocation and input/output contract have not been supplied here.",
+    "scientific_owner": "The lab's NAtopo project holds the connection logic. Its backbone-join and junction (non-backbone pi-stack) rules are ported into src/topostich/stitching.py.",
     "topostich_responsibility": "Map engine results onto explicit nucleotide/node identities, validate image references, preserve graph connectivity and provenance, and write auditable Systre and viewing artifacts.",
     "downstream": "ToposPro/Systre topological analysis; ChimeraX for graph inspection. Links represent the chosen topological model and do not assert chemical bonds or ideal bond lengths.",
     "longer_term": "Sugar recognition supports possible future ribbons; ribbon construction is not part of the next symmetry-link integration."
@@ -54,11 +54,23 @@
     },
     {
       "path": "src/topostich/cgd.py",
-      "purpose": "Separate topostich-cgd command and export_cgd API. Selects observed O3-prime nodes, validates cell/group and positional ambiguity, builds unstitched strand edges, serializes exact CGD dialect, optional CMM views and graph receipt. No external-link argument or engine adapter exists yet."
+      "purpose": "Separate topostich-cgd command and export_cgd API. Selects observed O3-prime nodes, validates cell/group and positional ambiguity, builds strand edges, optional --stitch-nicks periodic joins via stitching.py, serializes exact CGD dialect, CMM views and schema-1/schema-2 receipts."
     },
     {
       "path": "src/topostich/graph_viewer.py",
-      "purpose": "Writes native ChimeraX marker/link CMM from the graph, with chain colors and endpoint markers; optional intact conventional-cell symmetry copies. Current implementation draws edges only when both endpoints are in one segment/model."
+      "purpose": "Writes native ChimeraX marker/link CMM from the graph, with chain colors and endpoint markers; optional symmetry copies; nick joins and junction stacks drawn in separate models with explicit image markers."
+    },
+    {
+      "path": "src/topostich/stitching.py",
+      "purpose": "NAtopo-derived nick and junction rules: shared StitchContext (residues, verified O3'-P links, existing edges), exact symmetry/lattice image search, nick one-to-one acceptance, base-plane pi-stack screen with face/non-face junction reasons, candidate statuses, inverse-affine reciprocal images."
+    },
+    {
+      "path": "schemas/cgd-receipt-2.schema.json",
+      "purpose": "Stitched graph receipt schema 2: stitched_edges with operation, lattice translation, forward/reverse images and endpoint identities; join_candidates with status; stitch_parameters."
+    },
+    {
+      "path": "tests/test_stitching.py",
+      "purpose": "Synthetic stitching regressions: translations, screw/inverse, R centering, ambiguity, same-copy exclusion, internal breaks, O5-prime fallback, deposited links, cutoffs, CMM, CLI/schema. tests/test_junctions.py covers face/all scope, stack geometry limits, nick/junction duplicates, unmapped residues, 2-fold self-stacks, CMM and the audit comparison."
     },
     {
       "path": "schemas/conversion-receipt.schema.json",
@@ -70,7 +82,7 @@
     },
     {
       "path": "schemas/cgd-receipt.schema.json",
-      "purpose": "Current graph receipt schema 1: node identities/coordinates, cell/operations, two-label edge pairs, artifacts and hashes. stitching is constrained to false; no edge image information exists."
+      "purpose": "Unstitched graph receipt schema 1 (unchanged): stitching constrained to false."
     },
     {
       "path": "tests/test_converter.py",
@@ -98,7 +110,11 @@
     },
     {
       "path": "tools/CheckCgd.java",
-      "purpose": "Optional Systre 19.6.0 parser audit. Currently requires every edge to join consecutive nodes in one segment and every component to be finite. Those are unstitched-baseline assertions, not requirements for the future periodic graph."
+      "purpose": "Optional Systre 19.6.0 parser audit. Default mode: strict unstitched baseline (consecutive same-segment edges, finite components). --stitched: parse and declared degrees, then prints Systre edges/components for tools/check_stitched_cgd.py."
+    },
+    {
+      "path": "tools/check_stitched_cgd.py",
+      "purpose": "Compiles and runs CheckCgd --stitched with a supplied Systre jar and compares Systre adjacency (node pairs, per-pair edge counts per primitive copy) with the receipt; reports component dimensions."
     },
     {
       "path": "tools/build_atom_catalog.py",
@@ -178,7 +194,7 @@
     "format_distinction": "CGD is a graph format, not core CIF or PDBx/mmCIF. Preserve the separate existing coordinate-conversion commands."
   },
   "next_integration": {
-    "status": "PLANNED; engine adapter and link schema not implemented",
+    "status": "Nick and junction stitching implemented (0.4.0, opt-in). Reviewed decisions pending.",
     "ownership": {
       "connection_decisions": "Collaborator existing logic engine",
       "identity_image_validation_and_export": "TopoStich integration",
@@ -225,9 +241,10 @@
     "not_yet_decided": [
       "Engine package/path/version and invocation",
       "Exact link input serialization and CLI spelling",
-      "Nick endpoint selection, junction routing and direction semantics",
       "Ambiguous matches, loops and special-position/stabilizer handling",
-      "Expected connected components and periodic rank of the scientifically correct stitched 8D93 graph"
+      "Expected connected components and periodic rank of the scientifically correct stitched 8D93 graph",
+      "Whether ambiguous nick candidates should use NAtopo review decisions (bond_decisions.txt) as input",
+      "Which junction scope (face or all) is scientifically appropriate per crystal"
     ],
     "do_not_assume": [
       "Nearest endpoints necessarily connect",
@@ -236,7 +253,20 @@
       "Every input must become a single connected three-periodic net",
       "Operation numbers are interchangeable across sources/settings",
       "A successfully parsed file proves ToposPro retained its graph"
-    ]
+    ],
+    "implemented_nick_stitching": {
+      "convention": "Matches proposed_image_convention: source at stored ASU position; target image f=R*f_target+t+n with n an integer vector after the operation; reverse row uses the inverse affine map.",
+      "natopo_agreement": "Identical candidate orbits/images/distances to NAtopo find_backbone_join_candidates on 17 local crystals.",
+      "not_run": [
+        "ToposPro import",
+        "ChimeraX opening of the stitched-join models"
+      ]
+    },
+    "implemented_junction_stitching": {
+      "rule": "NAtopo nonbackbone_pi_stack_v2; default face scope stitches stacks continuing a helix past a strand end",
+      "natopo_agreement": "Identical junction orbits, images, reasons, centroid distances and excluded backbone-stack counts on 17 local crystals.",
+      "systre": "All 85 exports (17 crystals x 5 configurations) pass tools/check_stitched_cgd.py with Systre 19.6.0."
+    }
   },
   "baseline_8d93": {
     "source": "Public 8D93 coordinates, checksum-bound local example; no coordinates embedded in this document.",
@@ -297,9 +327,9 @@
     "GitHub publishing is a separate stepwise task; this documentation change does not publish anything."
   ],
   "this_update": {
-    "behavior_before_after": "Documentation adds component responsibilities and the collaborator-engine integration plan; executable behavior remains 0.3.0.",
-    "schema_impact": "This handoff has document_version 1. Runtime graph/conversion/catalog schemas are unchanged. Proposed periodic-link fields are not implemented.",
-    "validation": "Parse JSON, verify repository paths/entry-point descriptions and cross-document links, check diff whitespace. No runtime test or install rebuild required for this documentation-only change.",
-    "generated_artifacts": "None; prior scientific outputs unchanged."
+    "behavior_before_after": "0.3.0 unstitched only; 0.4.0 adds opt-in --stitch-nicks and --stitch-junctions. Default output byte-identical.",
+    "schema_impact": "New cgd-receipt-2 schema for stitched exports; schema 1 unchanged.",
+    "validation": "68 source tests; clean installed wheel check PASS; NAtopo cross-validation (nicks and junctions) on 17 crystals; Systre stitched audit of 85 exports.",
+    "generated_artifacts": "None committed; validation outputs kept in scratch storage."
   }
 }

@@ -91,6 +91,25 @@ def main():
         run([python, '-c', "import json,xml.etree.ElementTree as E; "
              "r=json.load(open('graph.json')); assert r['node_count']==1 and r['edge_count']==0; "
              "assert len(E.parse('graph.cmm').getroot().findall('.//marker'))==1"], work, env)
+        # Nick stitching: residue 2 O3' meets residue 1 P one cell along a (2.5 A).
+        nick_input = work / 'nick.pdb'
+        nick_atoms = [('P', 1, .5), ("O5'", 1, 1.5), ("C5'", 1, 2.5), ("C3'", 1, 3.5), ("O3'", 1, 4.5),
+                      ('P', 2, 6.), ("O5'", 2, 7.), ("C5'", 2, 8.), ("C3'", 2, 17.), ("O3'", 2, 18.)]
+        nick_input.write_text(
+            "CRYST1   20.000   30.000   40.000  90.00  90.00  90.00 P 1           1\n"
+            + ''.join(f"ATOM  {i:5d} {name:>4}  DG A{res:4d}    {x:8.3f}   5.000   5.000  1.00 20.00           {name[0]}\n"
+                      for i, (name, res, x) in enumerate(nick_atoms, 1)) + "END\n")
+        run([cgd_command, nick_input, '--out', work/'nick.cgd', '--stitch-nicks',
+             '--cmm', work/'nick.cmm', '--receipt', work/'nick.json'], work, env)
+        run([python, '-c', "import json; r=json.load(open('nick.json')); "
+             "assert r['schema_version']==2 and r['stitched_edge_count']==1, r['stitch_parameters']; "
+             "assert r['stitched_edges'][0]['image_operation']=='x+1,y,z'; "
+             "assert 'edge S1_N1 -0.1 ' in open('nick.cgd').read()"], work, env)
+        run([cgd_command, nick_input, '--out', work/'both.cgd', '--stitch-nicks', '--stitch-junctions',
+             '--junction-scope', 'all', '--receipt', work/'both.json'], work, env)
+        run([python, '-c', "import json; r=json.load(open('both.json')); "
+             "j=r['stitch_parameters']['junctions']; assert j['scope']=='all' and [d['issue'] for d in j['plane_diagnostics']]==['incomplete_base_ring']*2, j; "
+             "assert r['stitched_edge_counts']=={'backbone_join': 1}, r['stitched_edge_counts']"], work, env)
         run([python, '-c', "from topostich.nucleotides import classify_atom; assert classify_atom('DZ', 'C1').role == 'base'"], work, env)
         run([python, "-m", "unittest", "discover", "-s", extracted / "tests", "-v"], work, env)
         print("PASS: sdist, relocated wheel build, clean install, installed CLI and complete installed suite")
