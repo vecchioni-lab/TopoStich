@@ -3,6 +3,7 @@
 Ported from NAtopo's asu_quotient/residue_quotient; the symmetry algebra and
 periodicity are checked directly, then through export_cgd.
 """
+import importlib.util
 import json
 from pathlib import Path
 import tempfile
@@ -30,9 +31,10 @@ class AlgebraTests(unittest.TestCase):
         self.assertEqual(q.compose(screw, screw), (I, (0, 24, 0)))
         self.assertEqual(q.compose(screw, q.inverse(screw)), q.IDENTITY)
         ops = [(1, op('x,y,z')), (2, op('-x,y+1/2,-z'))]
-        self.assertEqual(q.symmetry_code(op('x,y,z+1'), ops), ('1_556', '1', [0, 0, 1]))
-        self.assertEqual(q.symmetry_code(op('-x+1,y-1/2,-z'), ops), ('2_645', '2', [1, -1, 0]))
-        self.assertEqual(q.symmetry_code(op('x+5,y,z'), ops)[0], '1(5, 0, 0)')
+        self.assertEqual(q.symmetry_code(op('x,y,z+1'), ops), ('1_(0,0,+1)', '1', [0, 0, 1]))
+        self.assertEqual(q.symmetry_code(op('-x+1,y-1/2,-z'), ops), ('2_(+1,-1,0)', '2', [1, -1, 0]))
+        self.assertEqual(q.symmetry_code(op('x+5,y,z'), ops)[0], '1_(+5,0,0)')
+        self.assertEqual((q.pdb_symmetry_code('2', [1, -1, 0]), q.pdb_symmetry_code('1', [5, 0, 0])), ('2_645', '1(5, 0, 0)'))
         with self.assertRaises(ValueError):
             q.symmetry_code(op('-x,-y,z'), ops)
 
@@ -107,12 +109,12 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(chain['nodes'][0]['internal_covalent_edges'], 1)
         edge, = chain['edges']
         self.assertEqual((edge['source'], edge['target'], edge['type']), ('S1', 'S1', 'backbone_join'))
-        self.assertIn(edge['symmetry_code'], ('1_655', '1_455'))
+        self.assertEqual((edge['symmetry_code'], edge['pdb_symmetry_code']), ('1_(-1,0,0)', '1_455'))
         part, = chain['periodicity']
         self.assertEqual((part['dimension'], part['translation_basis']), (1, ['[1, 0, 0]']))
         residues = doc['residue_graph']
         self.assertEqual([(e['source'], e['target'], e['type'], e['symmetry_code']) for e in residues['edges']],
-                         [('S1:DG1', 'S1:DG2', 'covalent', '1_555'), ('S1:DG1', 'S1:DG2', 'backbone_join', '1_455')])
+                         [('S1:DG1', 'S1:DG2', 'covalent', '1_(0,0,0)'), ('S1:DG1', 'S1:DG2', 'backbone_join', '1_(-1,0,0)')])
         self.assertTrue(residues['edges'][0]['intra_chain'])
         self.assertEqual(residues['summary'], ['A (2) residues: 1-periodic rod/chain along [1, 0, 0]'])
         self.assertEqual(r['asu_graphs']['chain']['periodicity'], chain['summary'])
@@ -137,7 +139,7 @@ class ExportTests(unittest.TestCase):
         r, doc, out = self.export(crystal(60, 60, 60) + strand(1, 'A', (10, 13.4))
                                   + strand(100, 'B', (20.2, 16.8), dx=-5), stitch_terminal_stacks=True)
         stack, = [e for e in doc['chain_graph']['edges'] if e['type'] == 'terminal_stack']
-        self.assertEqual((stack['source'], stack['target'], stack['symmetry_code']), ('S1', 'S2', '1_555'))
+        self.assertEqual((stack['source'], stack['target'], stack['symmetry_code']), ('S1', 'S2', '1_(0,0,0)'))
         self.assertEqual((stack['polarities'], stack['same_polarity']), (["3'-3'"], True))
         self.assertEqual(stack['residue_pairs'], ["A:DC2 <-> B:DC2 (3'-3')"])
         residue_stack, = [e for e in doc['residue_graph']['edges'] if e['type'] == 'terminal_stack']
@@ -184,7 +186,42 @@ class ExportTests(unittest.TestCase):
             self.assertNotIn('<link', page)
             self.assertNotIn('http://', page.replace('http://www.w3.org/2000/svg', ''))
             self.assertNotIn('https://', page)
-        self.assertIn('1_455', (out/'residue.html').read_text())
+        self.assertIn('1_(-1,0,0)', (out/'residue.html').read_text())
+
+    def test_html_arrowheads_use_the_shared_size(self):
+        from topostich.asu_view import ARROW_SIZE
+        _, _, out = self.export(self.nick_chain(), stitch_nicks=True)
+        self.assertEqual(ARROW_SIZE, {'chain': 16, 'residue': 11})
+        self.assertIn('class="arrow"', (out/'chain.html').read_text())
+        self.assertIn('d="M16,0 ', (out/'chain.html').read_text())
+        self.assertIn('d="M11,0 ', (out/'residue.html').read_text())
+
+    @unittest.skipUnless(importlib.util.find_spec('matplotlib'), 'matplotlib (topostich[png]) not installed')
+    def test_png_images(self):
+        self.source.write_text(self.nick_chain())
+        r = export_cgd(self.source, self.root/'g.cgd', stitch_nicks=True,
+                       asu_chain_png=self.root/'chain.png', asu_residue_png=self.root/'residue.png')
+        for name in ('chain.png', 'residue.png'):
+            self.assertTrue((self.root/name).read_bytes().startswith(b'\x89PNG\r\n\x1a\n'))
+        self.assertEqual([a['name'] for a in r['artifacts']], ['g.cgd', 'chain.png', 'residue.png'])
+
+    def test_png_without_matplotlib_writes_nothing(self):
+        import builtins
+        real = builtins.__import__
+
+        def blocked(name, *args, **kwargs):
+            if name.split('.')[0] == 'matplotlib':
+                raise ImportError(name)
+            return real(name, *args, **kwargs)
+        self.source.write_text(self.nick_chain())
+        builtins.__import__ = blocked
+        try:
+            with self.assertRaisesRegex(ConversionError, r'topostich\[png\]'):
+                export_cgd(self.source, self.root/'g.cgd', asu_chain_png=self.root/'chain.png')
+        finally:
+            builtins.__import__ = real
+        self.assertFalse((self.root/'g.cgd').exists())
+        self.assertFalse((self.root/'chain.png').exists())
 
     def test_outputs_are_never_overwritten(self):
         self.source.write_text(self.nick_chain())

@@ -109,7 +109,8 @@
         "source": "S1",
         "target": "S4",
         "type": "backbone_join",
-        "symmetry_code": "3_555",
+        "symmetry_code": "3_(0,0,0)",
+        "pdb_symmetry_code": "3_555",
         "operator": "3",
         "lattice_translation": [
           0,
@@ -129,7 +130,8 @@
         "source": "S1",
         "target": "S4",
         "type": "terminal_stack",
-        "symmetry_code": "9_555",
+        "symmetry_code": "9_(0,0,0)",
+        "pdb_symmetry_code": "9_555",
         "operator": "9",
         "lattice_translation": [
           0,
@@ -153,7 +155,8 @@
         "source": "S2",
         "target": "S2",
         "type": "backbone_join",
-        "symmetry_code": "3_555",
+        "symmetry_code": "3_(0,0,0)",
+        "pdb_symmetry_code": "3_555",
         "operator": "3",
         "lattice_translation": [
           0,
@@ -173,7 +176,8 @@
         "source": "S3",
         "target": "S3",
         "type": "terminal_stack",
-        "symmetry_code": "9_555",
+        "symmetry_code": "9_(0,0,0)",
+        "pdb_symmetry_code": "9_555",
         "operator": "9",
         "lattice_translation": [
           0,
@@ -845,7 +849,8 @@
         "source": "S1:DG101#1",
         "target": "S1:DA102#2",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -865,7 +870,8 @@
         "source": "S1:DG101#1",
         "target": "S4:DA121#9",
         "type": "terminal_stack",
-        "symmetry_code": "9_555",
+        "symmetry_code": "9_(0,0,0)",
+        "pdb_symmetry_code": "9_555",
         "operator": "9",
         "lattice_translation": [
           0,
@@ -889,7 +895,8 @@
         "source": "S1:DA102#2",
         "target": "S1:DG103#3",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -909,7 +916,8 @@
         "source": "S1:DG103#3",
         "target": "S1:DC104#4",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -929,7 +937,8 @@
         "source": "S1:DC104#4",
         "target": "S1:DA105#5",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -949,7 +958,8 @@
         "source": "S1:DA105#5",
         "target": "S1:DG106#6",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -969,7 +979,8 @@
         "source": "S1:DG106#6",
         "target": "S1:DC107#7",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -989,7 +1000,8 @@
         "source": "S1:DC107#7",
         "target": "S1:DC108#8",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1009,7 +1021,8 @@
         "source": "S1:DC108#8",
         "target": "S1:DT109#9",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1029,7 +1042,8 @@
         "source": "S1:DT109#9",
         "target": "S1:DG110#10",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1049,7 +1063,8 @@
         "source": "S1:DG110#10",
         "target": "S1:DT111#11",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1069,7 +1084,8 @@
         "source": "S1:DT111#11",
         "target": "S1:DA112#12",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1089,7 +1105,8 @@
         "source": "S1:DA112#12",
         "target": "S4:DC113#1",
         "type": "backbone_join",
-        "symmetry_code": "3_555",
+        "symmetry_code": "3_(0,0,0)",
+        "pdb_symmetry_code": "3_555",
         "operator": "3",
         "lattice_translation": [
           0,
@@ -1109,7 +1126,8 @@
         "source": "S2:DA105#1",
         "target": "S2:DC106#2",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1129,7 +1147,8 @@
         "source": "S2:DA105#1",
         "target": "S2:DT114#7",
         "type": "backbone_join",
-        "symmetry_code": "3_555",
+        "symmetry_code": "3_(0,0,0)",
+        "pdb_symmetry_code": "3_555",
         "operator": "3",
         "lattice_translation": [
           0,
@@ -1149,7 +1168,8 @@
         "source": "S2:DC106#2",
         "target": "S2:DA107#3",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1169,7 +1189,8 @@
         "source": "S2:DA107#3",
         "target": "S2:DC111#4",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1189,7 +1210,8 @@
         "source": "S2:DC111#4",
         "target": "S2:DC112#5",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1209,7 +1231,8 @@
         "source": "S2:DC112#5",
         "target": "S2:DG113#6",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1229,7 +1252,8 @@
         "source": "S2:DG113#6",
         "target": "S2:DT114#7",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1249,7 +1273,8 @@
         "source": "S3:DT101#1",
         "target": "S3:DC102#2",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1269,7 +1294,8 @@
         "source": "S3:DT101#1",
         "target": "S3:DC114#14",
         "type": "terminal_stack",
-        "symmetry_code": "5_544",
+        "symmetry_code": "5_(0,-1,-1)",
+        "pdb_symmetry_code": "5_544",
         "operator": "5",
         "lattice_translation": [
           0,
@@ -1293,7 +1319,8 @@
         "source": "S3:DC102#2",
         "target": "S3:DT103#3",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1313,7 +1340,8 @@
         "source": "S3:DT103#3",
         "target": "S3:DG104#4",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1333,7 +1361,8 @@
         "source": "S3:DG104#4",
         "target": "S3:DA105#5",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1353,7 +1382,8 @@
         "source": "S3:DA105#5",
         "target": "S3:DT106#6",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1373,7 +1403,8 @@
         "source": "S3:DT106#6",
         "target": "S3:DG107#7",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1393,7 +1424,8 @@
         "source": "S3:DG107#7",
         "target": "S3:DT108#8",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1413,7 +1445,8 @@
         "source": "S3:DT108#8",
         "target": "S3:DG109#9",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1433,7 +1466,8 @@
         "source": "S3:DG109#9",
         "target": "S3:DG110#10",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1453,7 +1487,8 @@
         "source": "S3:DG110#10",
         "target": "S3:DC111#11",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1473,7 +1508,8 @@
         "source": "S3:DC111#11",
         "target": "S3:DT112#12",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1493,7 +1529,8 @@
         "source": "S3:DT112#12",
         "target": "S3:DG113#13",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1513,7 +1550,8 @@
         "source": "S3:DG113#13",
         "target": "S3:DC114#14",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1533,7 +1571,8 @@
         "source": "S4:DC113#1",
         "target": "S4:DG114#2",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1553,7 +1592,8 @@
         "source": "S4:DG114#2",
         "target": "S4:DG115#3",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1573,7 +1613,8 @@
         "source": "S4:DG115#3",
         "target": "S4:DA116#4",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1593,7 +1634,8 @@
         "source": "S4:DA116#4",
         "target": "S4:DC117#5",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1613,7 +1655,8 @@
         "source": "S4:DC117#5",
         "target": "S4:DA118#6",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1633,7 +1676,8 @@
         "source": "S4:DA118#6",
         "target": "S4:DT119#7",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1653,7 +1697,8 @@
         "source": "S4:DT119#7",
         "target": "S4:DC120#8",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,
@@ -1673,7 +1718,8 @@
         "source": "S4:DC120#8",
         "target": "S4:DA121#9",
         "type": "covalent",
-        "symmetry_code": "1_555",
+        "symmetry_code": "1_(0,0,0)",
+        "pdb_symmetry_code": "1_555",
         "operator": "1",
         "lattice_translation": [
           0,

@@ -29,10 +29,16 @@
   `--asu-residue-html`; schema `schemas/asu-graphs.schema.json`). New
   `asu_graphs.py` ports NAtopo's `asu_quotient`/`residue_quotient` (the folded
   chain and residue views of `main_NAtopo.ipynb`) for covalent bonds and
-  stitched joins only: one edge per symmetry orbit with its PDB `op_klm` code,
+  stitched joins only: one edge per symmetry orbit with its symmetry code
+  `op_(k,l,m)` (signed cell shifts, e.g. `7_(-1,-1,0)`; PDB `op_klm` kept as
+  `pdb_symmetry_code`),
   and per-part periodicity (rank of the cycle-generated translations,
   interpenetrating copies). `asu_view.py` writes self-contained SVG/HTML views
   with NAtopo's layouts. The receipt gains an optional `asu_graphs` summary.
+- PNG images of the ASU graphs (`--asu-chain-png`, `--asu-residue-png`;
+  new `asu_png.py`). They need the optional extra `topostich[png]`
+  (matplotlib). Larger arrowheads in the HTML and PNG views (chain 16,
+  residue 11); NAtopo's Bokeh views were enlarged to match (16 and 14).
 - mmCIF `_struct_conn.conn_type_id` is now kept (`Pdb.conect_types`); only
   covalent types (or untyped PDB CONECT) count as deposited covalent links for
   nick endpoints and ASU graphs. Short `hydrog` records in 5KEK/9ZXK had been

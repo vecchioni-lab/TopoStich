@@ -73,6 +73,10 @@
       "purpose": "Self-contained SVG/HTML views of the two ASU quotient graphs with NAtopo's layouts, type filters, details and pan/zoom."
     },
     {
+      "path": "src/topostich/asu_png.py",
+      "purpose": "PNG images of the ASU quotient graphs with the same layouts as asu_view.py; optional matplotlib (png extra)."
+    },
+    {
       "path": "schemas/asu-graphs.schema.json",
       "purpose": "ASU quotient graph JSON schema 1 (both resolutions)."
     },

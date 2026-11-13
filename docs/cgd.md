@@ -184,9 +184,12 @@ and stitching. The code is a port of NAtopo's `asu_quotient.py` and
   links at 0.8–2.2 Å and deposited covalent links at 0.8–2.3 Å: covalent
   `_struct_conn.conn_type_id` or untyped PDB CONECT, never metal, hydrogen or
   water endpoints), `backbone_join`, `backbone_join_o5` and `terminal_stack`
-  (stitched joins only, as in the CGD). X → Y labelled `2_565` means X of the
+  (stitched joins only, as in the CGD). X → Y labelled `2_(0,+1,0)` means X of the
   original ASU is joined to the copy of Y made by operation 2 then +1 cell
-  along b; `1_555` is inside the ASU. A join with another copy of the same
+  along b; `1_(0,0,0)` is inside the ASU. The label is `op_(k,l,m)`: the
+  operation number, then the signed whole-cell shift along a, b and c. The
+  JSON also gives the PDB form, `op_klm` with each shift + 5 (`2_565`,
+  `1_555`), as `pdb_symmetry_code`. A join with another copy of the same
   node is a self-loop. Operator numbers follow the input file
   (`_space_group_symop.id` or REMARK 290), otherwise Gemmi's order.
   Chain-resolution edges list their residue pairs (with stack polarity);
@@ -204,6 +207,14 @@ HTML pages are self-contained (inline SVG and script, no network): toggle
 edge types, show only symmetry joins, hide labels, hover or tap for details,
 drag to pan and scroll to zoom. Dashed purple edges are 5′-5′ or 3′-3′
 stacks. The CGD itself is unchanged by these options.
+
+`--asu-chain-png FILE.png` and `--asu-residue-png FILE.png` (API:
+`asu_chain_png=`, `asu_residue_png=`) draw the same layouts, colors and
+arrowheads as static PNG images (200 dpi, white background, with the title,
+periodicity lines and a legend). They need matplotlib, installed with the
+optional extra `pip install "topostich[png]"`; without it the export stops
+with that instruction before writing any file. Gemmi remains the only
+required dependency.
 
 On all 17 crystals, with nicks, O5′ fallback and chain-end stacks enabled, the
 residue graph's covalent orbits and its backbone-join orbits (against every

@@ -112,7 +112,7 @@ def main():
              "t=r['stitch_parameters']['terminal_stacks']; assert t['chain_ends']==2 and [d['issue'] for d in t['plane_diagnostics']]==['incomplete_base_ring']*2, t; "
              "assert r['stitched_edge_counts']=={'backbone_join': 1}, r['stitched_edge_counts']; "
              "a=json.load(open('asu.json')); c=a['chain_graph']; "
-             "assert [(e['type'], e['symmetry_code']) for e in c['edges']]==[('backbone_join', '1_455')], c['edges']; "
+             "assert [(e['type'], e['symmetry_code']) for e in c['edges']]==[('backbone_join', '1_(-1,0,0)')], c['edges']; "
              "assert c['periodicity'][0]['dimension']==1 and r['asu_graphs']['chain']['periodicity']==c['summary']; "
              "assert '<svg' in open('chain.html').read() and '<svg' in open('residue.html').read()"], work, env)
         run([python, '-c', "from topostich.nucleotides import classify_atom; assert classify_atom('DZ', 'C1').role == 'base'"], work, env)

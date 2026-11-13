@@ -1951,15 +1951,23 @@
     },
     {
       "name": "8D93_stiched_asu.json",
-      "sha256": "c3f2547196087a8786b3df9cc23b70ecefefaae7f325aaede48d5d344169c54f"
+      "sha256": "d2606bca80f41747756695678c17bbe1f71d0fa1e0e2692fd1d7749ac2ee67ef"
     },
     {
       "name": "8D93_stiched_chains.html",
-      "sha256": "43d8452ae3d3834e224c7292a8eed190d44968b34a1d68c6c6cae64adb04d8f5"
+      "sha256": "11a3ac540a65ef44e36f84e3d88c0504a536c88549843f4e03371d14bc4eee78"
     },
     {
       "name": "8D93_stiched_residues.html",
-      "sha256": "af08e4188945a32143875b845a7b7e0b2d675427ceabbdcdefd2849a92afd835"
+      "sha256": "ed9026ec0c2bd33a07b79215a7849042675963f289a3547d9daec00f213485a5"
+    },
+    {
+      "name": "8D93_stiched_chains.png",
+      "sha256": "fda44b454739ea2de23b09cba7b2c73c00d2f7cd808e1611241116a719fc7cfc"
+    },
+    {
+      "name": "8D93_stiched_residues.png",
+      "sha256": "964f67f0882dbf3dcd30755ce555af002711f612ce03f4870c453dae6f9a6298"
     },
     {
       "name": "8D93_stiched.cmm",

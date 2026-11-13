@@ -1316,15 +1316,23 @@
     },
     {
       "name": "8D93_unstiched_asu.json",
-      "sha256": "46ab17ffac20d230a6fa514fd651361717ecf4b7b19624b133ef933b6949cf00"
+      "sha256": "10faab397044bf70f8e08a85802acfdb30cc39aaefc39855737718fd7ecd4965"
     },
     {
       "name": "8D93_unstiched_chains.html",
-      "sha256": "89a8b42a443ead9c163b084e7fadd8c1637f9e00840121d328efcfefec84c284"
+      "sha256": "f12a14ff36a670d138823e31a356cac74603f83221351b0da45ab451032786c0"
     },
     {
       "name": "8D93_unstiched_residues.html",
-      "sha256": "86c6e001f77d3a306880d152bfa46498770e34370feeaca0ddab0a0de6ceaf51"
+      "sha256": "5301f8951974975483556f8e797db6a19dce54e956d99fef5bfabcd7d8c963f2"
+    },
+    {
+      "name": "8D93_unstiched_chains.png",
+      "sha256": "0066f2ef12805f5d59153b28ebb7230fec2f33c6928376e359e5c8038bc502b1"
+    },
+    {
+      "name": "8D93_unstiched_residues.png",
+      "sha256": "c987f35debe4365a89391a2ed81f44cadbe41f14400b0e7081b9d32717782ba4"
     },
     {
       "name": "8D93_unstiched.cmm",

@@ -17,6 +17,7 @@ from .asu_graphs import EDGE_LABELS
 
 EDGE_COLORS = {'covalent': 'var(--covalent)', 'backbone_join': '#FF7A00', 'backbone_join_o5': '#FFB000',
                'terminal_stack': '#BD45E8'}
+ARROW_SIZE = {'chain': 16, 'residue': 11}  # arrowhead length in view units (HTML) or points (PNG)
 PALETTE = ('#2E86C1', '#E67E22', '#27AE60', '#8E44AD', '#C0392B', '#16A085', '#D4AC0D', '#7F8C8D',
            '#1F618D', '#AF601A')
 
@@ -171,7 +172,8 @@ def _info(lines):
 def _edge_lines(e, labels):
     lines = [EDGE_LABELS.get(e['type'], e['type']),
              f"From (original ASU): {labels[e['source']]}",
-             f"To (copy): {labels[e['target']]} {e['symmetry_code']}" + (' (inside the ASU)' if e['intra_asu'] else ''),
+             f"To (copy): {labels[e['target']]} {e['symmetry_code']}" + (' (inside the ASU)' if e['intra_asu'] else '')
+             + f" [PDB {e['pdb_symmetry_code']}]",
              f"Operation: {e['operation']}   cell translation {e['lattice_translation']}"]
     if e['type'] == 'terminal_stack':
         lines.append(f"End polarity: {', '.join(e['polarities'])}" + (' (same-polarity stack)' if e['same_polarity'] else ''))
@@ -226,14 +228,14 @@ def render_html(graph, *, title=None):
         edge_svg.append(f'<path class="hit" d="{d}" {attrs}/>')
         if not e['intra_asu']:
             angle = math.degrees(math.atan2(-tangent[1], tangent[0]))
-            size = 9 if resolution == 'chain' else 6
+            size = ARROW_SIZE[resolution]
             mx, my = mid[0]*scale, -mid[1]*scale
             arrow_svg.append(f'<path class="arrow" data-type="{e["type"]}" data-sym="1" fill="{stroke}" '
                              f'd="M{size},0 L{-size*.7:.1f},{size*.6:.1f} L{-size*.7:.1f},{-size*.6:.1f} Z" '
                              f'transform="translate({mx:.2f},{my:.2f}) rotate({angle:.1f})"/>')
             tag = e['symmetry_code'] + (' ' + '/'.join(e['polarities']) if e.get('same_polarity') else '')
-            code_svg.append(f'<text class="code" data-type="{e["type"]}" data-sym="1" x="{mx+6:.1f}" '
-                            f'y="{my-4:.1f}" fill="{stroke}">{html.escape(tag)}</text>')
+            code_svg.append(f'<text class="code" data-type="{e["type"]}" data-sym="1" x="{mx+.8*size:.1f}" '
+                            f'y="{my-.5*size:.1f}" fill="{stroke}">{html.escape(tag)}</text>')
     node_svg, label_svg = [], []
     if resolution == 'chain':
         for n in nodes:
@@ -320,7 +322,7 @@ svg.dragging {{ cursor:grabbing; }}
 .nolabels .reslabel, .nolabels .code {{ display:none; }}
 </style></head><body>
 <header><h1>{html.escape(title)}</h1>
-<p>Nodes are the {unit} of the <b>original asymmetric unit</b>. Every edge is one symmetry orbit of covalent bonds or stitched joins: X &rarr; Y labelled g means X of the original ASU is joined to the copy of Y made by <b>symmetry code</b> g (op_klm; 555 = no cell shift; unlabelled = inside the ASU). Self-loops join a node to another copy of itself. Composing the codes around any cycle gives the operation the real lattice path ends on; a non-identity result means the graph continues through the crystal. Dashed purple edges are same-polarity (5&prime;-5&prime; or 3&prime;-3&prime;) chain-end stacks. Hover or tap an edge or node for details; drag to pan, scroll to zoom.</p>
+<p>Nodes are the {unit} of the <b>original asymmetric unit</b>. Every edge is one symmetry orbit of covalent bonds or stitched joins: X &rarr; Y labelled g means X of the original ASU is joined to the copy of Y made by <b>symmetry code</b> g written op_(k,l,m): the operation number, then a signed whole-cell shift along a, b and c, so 2_(0,+1,0) is operation 2 followed by +1 cell along b and (0,0,0) is no shift; unlabelled = inside the ASU. The details panel also gives the PDB form, op_klm with each shift + 5. Self-loops join a node to another copy of itself. Composing the codes around any cycle gives the operation the real lattice path ends on; a non-identity result means the graph continues through the crystal. Dashed purple edges are same-polarity (5&prime;-5&prime; or 3&prime;-3&prime;) chain-end stacks. Hover or tap an edge or node for details; drag to pan, scroll to zoom.</p>
 <p><b>Periodicity</b> (all edges):</p><ul>{summary}</ul></header>
 <div class="controls">{toggles}<label><input type="checkbox" id="symonly"> only symmetry joins</label><label><input type="checkbox" id="labels" checked> labels</label><button id="reset" type="button">Reset view</button></div>
 <div class="wrap"><svg id="graph" viewBox="{view}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(title)}">

@@ -54,14 +54,19 @@ whose bases stack (unless those ends are already backbone joined; 5′-5′ and
 become explicit periodic CGD edges (see [nick](docs/cgd.md#backbone-nick-stitching)
 and [chain-end stack](docs/cgd.md#chain-end-stack-stitching) stitching). The
 [ASU graphs](docs/cgd.md#asu-quotient-graphs) fold every covalent bond and
-stitched join back onto one asymmetric unit, labelled with PDB symmetry codes,
-and report each part's periodicity:
+stitched join back onto one asymmetric unit, labelled with symmetry codes
+such as `7_(-1,-1,0)` (operation 7, then −1 cell along a and b), and report
+each part's periodicity:
 
 ```sh
 topostich-cgd 7SE0.cif --stitch-nicks --stitch-terminal-stacks --out 7SE0_stitched.cgd \
   --cmm 7SE0_stitched.cmm --receipt 7SE0_stitched.json \
   --asu-graphs 7SE0_asu.json --asu-chain-html 7SE0_chains.html --asu-residue-html 7SE0_residues.html
 ```
+
+`--asu-chain-png` and `--asu-residue-png` save the same two graphs as PNG
+images. They need matplotlib, an optional extra:
+`python3 -m pip install ".[png]"`.
 
 `tools/check_stitched_cgd.py` audits a stitched file against its receipt with
 Systre's own parser ([native audit](docs/cgd.md#native-systre-audit)). The

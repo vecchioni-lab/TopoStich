@@ -257,12 +257,15 @@
       "requested": "2026-11-13",
       "modules": [
         "src/topostich/asu_graphs.py",
-        "src/topostich/asu_view.py"
+        "src/topostich/asu_view.py",
+        "src/topostich/asu_png.py"
       ],
       "cli": [
         "--asu-graphs FILE.json",
         "--asu-chain-html FILE.html",
-        "--asu-residue-html FILE.html"
+        "--asu-residue-html FILE.html",
+        "--asu-chain-png FILE.png",
+        "--asu-residue-png FILE.png"
       ],
       "schema": "schemas/asu-graphs.schema.json",
       "rule_source": "NAtopo asu_quotient.py + residue_quotient.py (main_NAtopo.ipynb folded ASU views)",
@@ -274,7 +277,8 @@
       ],
       "edges": "one per symmetry orbit and type, labelled with the partner copy's PDB op_klm code; operator numbers from the input file",
       "periodicity": "voltage-graph cycle translations: rank, Hermite basis, interpenetrating copies",
-      "natopo_cross_validation": "identical covalent/backbone-join orbits, symmetry codes and periodicity (NAtopo's own periodicity()) on 17 local crystals (2026-11-13)"
+      "natopo_cross_validation": "identical covalent/backbone-join orbits, symmetry codes and periodicity (NAtopo's own periodicity()) on 17 local crystals (2026-11-13)",
+      "png": "optional extra topostich[png] (matplotlib); export fails before writing if it is missing"
     },
     "native_audit": "tools/check_stitched_cgd.py (+ tools/CheckCgd.java --stitched); CheckCgd default mode is the unstitched baseline"
   },

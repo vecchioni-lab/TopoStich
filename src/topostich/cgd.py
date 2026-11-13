@@ -138,7 +138,8 @@ def _write_new_files(payloads):
 def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
                name=None, model=1, altloc=None, input_format='auto',
                stitch_nicks=False, join_cutoff=3.5, o5_cutoff=6.0, include_o5_fallback=False,
-               stitch_terminal_stacks=False, asu_graphs=None, asu_chain_html=None, asu_residue_html=None):
+               stitch_terminal_stacks=False, asu_graphs=None, asu_chain_html=None, asu_residue_html=None,
+               asu_chain_png=None, asu_residue_png=None):
     """Write a new CGD and optional ChimeraX views/JSON receipt; return receipt.
 
     Every output is self-contained and refused if it exists. cmm contains the
@@ -153,12 +154,15 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
     silently used.
 
     asu_graphs (JSON), asu_chain_html and asu_residue_html write the ASU
-    quotient graphs of the covalent bonds and stitched joins.
+    quotient graphs of the covalent bonds and stitched joins; asu_chain_png and
+    asu_residue_png write PNG images of them (needs matplotlib).
     """
     stitching = bool(stitch_nicks or stitch_terminal_stacks)
-    asu_requested = any(p is not None for p in (asu_graphs, asu_chain_html, asu_residue_html))
+    asu_requested = any(p is not None for p in (asu_graphs, asu_chain_html, asu_residue_html,
+                                                 asu_chain_png, asu_residue_png))
     source, output = Path(source), Path(output)
-    targets = [Path(p) for p in (output,cmm,crystal_cmm,receipt,asu_graphs,asu_chain_html,asu_residue_html)
+    targets = [Path(p) for p in (output,cmm,crystal_cmm,receipt,asu_graphs,asu_chain_html,asu_residue_html,
+                                 asu_chain_png,asu_residue_png)
                if p is not None]
     # Check before dict construction so identical companion paths cannot collapse.
     if len({p.resolve() for p in targets}) != len(targets):
@@ -273,6 +277,11 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
             payloads[Path(asu_chain_html)] = render_html(quotients['chain']).encode()
         if asu_residue_html is not None:
             payloads[Path(asu_residue_html)] = render_html(quotients['residue']).encode()
+        if asu_chain_png is not None or asu_residue_png is not None:
+            from .asu_png import render_png
+            for path, resolution in ((asu_chain_png, 'chain'), (asu_residue_png, 'residue')):
+                if path is not None:
+                    payloads[Path(path)] = render_png(quotients[resolution])
         graph['asu_graphs'] = {resolution: dict(nodes=len(q['nodes']), edges=len(q['edges']),
                                                 edge_type_counts=q['edge_type_counts'],
                                                 periodicity=q['summary'])
@@ -311,6 +320,8 @@ def main(argv=None):
     parser.add_argument('--asu-graphs',type=Path,help='save the ASU quotient graphs (chain and residue resolution) as JSON')
     parser.add_argument('--asu-chain-html',type=Path,help='interactive HTML view of the chain-resolution ASU graph')
     parser.add_argument('--asu-residue-html',type=Path,help='interactive HTML view of the residue-resolution ASU graph')
+    parser.add_argument('--asu-chain-png',type=Path,help='PNG image of the chain-resolution ASU graph (needs matplotlib)')
+    parser.add_argument('--asu-residue-png',type=Path,help='PNG image of the residue-resolution ASU graph (needs matplotlib)')
     parser.add_argument('--json',action='store_true',help='print the receipt as JSON')
     parser.add_argument('--version',action='version',version=f'TopoStich {__version__}')
     args=parser.parse_args(argv)
@@ -321,7 +332,8 @@ def main(argv=None):
                           stitch_nicks=args.stitch_nicks,join_cutoff=args.join_cutoff,
                           o5_cutoff=args.o5_cutoff,include_o5_fallback=args.include_o5_fallback,
                           stitch_terminal_stacks=args.stitch_terminal_stacks,asu_graphs=args.asu_graphs,
-                          asu_chain_html=args.asu_chain_html,asu_residue_html=args.asu_residue_html)
+                          asu_chain_html=args.asu_chain_html,asu_residue_html=args.asu_residue_html,
+                          asu_chain_png=args.asu_chain_png,asu_residue_png=args.asu_residue_png)
     except (ConversionError,OSError,UnicodeError) as error:
         parser.exit(2,f'topostich-cgd: {error}\n')
     if args.json:

@@ -53,13 +53,17 @@ endpoint) and the `StitchContext.stitched_links` recorded by `add_edge` (the
 actual 3′/5′ residues, not their O3′ nodes). Each join is oriented as
 `min((s, t, g), (t, s, g⁻¹))` by node order and operation key and merged per
 `(source, target, g, type)`; chain-resolution edges skip same-segment identity
-joins (counted as `internal_covalent_edges`). Symmetry codes use the input's
+joins (counted as `internal_covalent_edges`). Symmetry codes are written
+`op_(k,l,m)` with signed cell shifts (the PDB `op_klm` form is kept as
+`pdb_symmetry_code`) and use the input's
 operator numbering (`_space_group_symop`/REMARK 290) or Gemmi's order. The
 periodicity is NAtopo's voltage-graph method: BFS spanning-tree potentials,
 cycle elements, Schreier generation of the translation subgroup, its Hermite
 basis, and the index for interpenetrating copies. `asu_view.py` renders
 NAtopo's two layouts as inline SVG with a small script for filters, details and
-pan/zoom; it uses no external resources.
+pan/zoom; it uses no external resources. `asu_png.py` reuses those layouts and
+edge geometry to draw PNG images with matplotlib (optional `png` extra, imported
+only when a PNG is requested; `ARROW_SIZE` is shared by both renderers).
 
 `src/topostich/converter.py` owns fixed-column PDB parsing, input dispatch, atom selection,
 coordinate transforms, graph construction and the three output writers.

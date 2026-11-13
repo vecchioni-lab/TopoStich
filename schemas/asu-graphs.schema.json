@@ -182,6 +182,7 @@
               "target",
               "type",
               "symmetry_code",
+              "pdb_symmetry_code",
               "operator",
               "lattice_translation",
               "operation",
@@ -208,7 +209,11 @@
               },
               "symmetry_code": {
                 "type": "string",
-                "description": "PDB-style op_klm of the target copy relative to the source"
+                "description": "Target copy relative to the source: operation number, then signed whole-cell shifts along a, b, c, e.g. 2_(0,+1,0); 1_(0,0,0) inside the ASU"
+              },
+              "pdb_symmetry_code": {
+                "type": "string",
+                "description": "The same code in PDB op_klm form (each shift + 5, e.g. 2_565)"
               },
               "operator": {
                 "type": "string"
@@ -450,6 +455,7 @@
               "target",
               "type",
               "symmetry_code",
+              "pdb_symmetry_code",
               "operator",
               "lattice_translation",
               "operation",
@@ -476,7 +482,11 @@
               },
               "symmetry_code": {
                 "type": "string",
-                "description": "PDB-style op_klm of the target copy relative to the source"
+                "description": "Target copy relative to the source: operation number, then signed whole-cell shifts along a, b, c, e.g. 2_(0,+1,0); 1_(0,0,0) inside the ASU"
+              },
+              "pdb_symmetry_code": {
+                "type": "string",
+                "description": "The same code in PDB op_klm form (each shift + 5, e.g. 2_565)"
               },
               "operator": {
                 "type": "string"

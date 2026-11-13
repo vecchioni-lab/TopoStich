@@ -13,6 +13,7 @@ dependencies = ["gemmi>=0.7.5,<0.8"]
 
 [project.optional-dependencies]
 catalog = ["openpyxl>=3.1,<4"]
+png = ["matplotlib>=3.5"]
 
 [project.scripts]
 topostich = "topostich.cli:main"

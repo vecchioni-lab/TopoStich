@@ -72,6 +72,26 @@ degree 3 where Systre saw 2. Rows are now de-duplicated per node. (2) mmCIF
 were read as covalent links because the reader dropped `conn_type_id`. It is
 now kept; only covalent types count.
 
+**PNG images and arrowheads (2026-11-13, later request).** `--asu-chain-png`
+and `--asu-residue-png` (`asu_png.py`, optional `png` extra with matplotlib)
+draw the ASU graphs as PNG images. Arrowheads are larger in TopoStich
+(`asu_view.ARROW_SIZE`: chain 16, residue 11) and in NAtopo's
+`asu_quotient.py`/`residue_quotient.py` (Bokeh size 16 and 14; that NAtopo
+change is not committed). The 8D93 examples were regenerated with PNGs; their
+CGD/CMM files are unchanged. 85 tests pass; `tools/check_install.py` passes
+(the clean venv has no matplotlib, so the PNG image test is skipped there and
+the missing-matplotlib test runs). PNG rendering was checked visually for
+7SE0, 9Y3B and 8D93.
+
+**Signed symmetry-code labels (2026-11-13, later request).** Edge labels in
+both repos are now `op_(k,l,m)` with signed cell shifts (`7_(-1,-1,0)`,
+`1_(0,0,0)`) instead of PDB `op_klm` (`7_445`, `1_555`). TopoStich keeps the
+PDB form in the ASU JSON as `pdb_symmetry_code`; NAtopo's `symmetry_code()`,
+view hints, notebook text and `tests/test_asu_quotient.py` were updated (not
+committed there; its 4 quotient tests pass). For 7SE0 and 8D93 both repos
+print identical labels. NAtopo still parses PDB-style `_struct_conn` symmetry
+codes on input, which is unchanged.
+
 **Not run.** ToposPro import; opening the CMM models in ChimeraX; the HTML
 views in a browser other than headless Chrome.
 

@@ -10,12 +10,14 @@ topostich-cgd 8d93.cif --stitch-nicks --stitch-terminal-stacks --name 8D93_stich
   --out 8D93_stiched.cgd --receipt 8D93_stiched.json \
   --cmm 8D93_stiched.cmm --crystal-cmm 8D93_stiched_symmetry.cmm \
   --asu-graphs 8D93_stiched_asu.json \
-  --asu-chain-html 8D93_stiched_chains.html --asu-residue-html 8D93_stiched_residues.html
+  --asu-chain-html 8D93_stiched_chains.html --asu-residue-html 8D93_stiched_residues.html \
+  --asu-chain-png 8D93_stiched_chains.png --asu-residue-png 8D93_stiched_residues.png
 topostich-cgd 8d93.cif --name 8D93_unstiched \
   --out 8D93_unstiched.cgd --receipt 8D93_unstiched.json \
   --cmm 8D93_unstiched.cmm --crystal-cmm 8D93_unstiched_symmetry.cmm \
   --asu-graphs 8D93_unstiched_asu.json \
-  --asu-chain-html 8D93_unstiched_chains.html --asu-residue-html 8D93_unstiched_residues.html
+  --asu-chain-html 8D93_unstiched_chains.html --asu-residue-html 8D93_unstiched_residues.html \
+  --asu-chain-png 8D93_unstiched_chains.png --asu-residue-png 8D93_unstiched_residues.png
 ```
 
 | File | Content |
@@ -25,15 +27,16 @@ topostich-cgd 8d93.cif --name 8D93_unstiched \
 | `*.cmm`, `*_symmetry.cmm` | ChimeraX marker views: asymmetric unit and intact symmetry copies |
 | `*_asu.json` | ASU quotient graphs at chain and residue resolution, with periodicity |
 | `*_chains.html`, `*_residues.html` | Interactive views of those graphs, open in a browser |
+| `*_chains.png`, `*_residues.png` | The same graphs as images (needs `topostich[png]`) |
 
 **Unstitched:** 42 nodes and 38 edges in four separate finite strands (A=12,
 B=7, C=14, D=9).
 
 **Stitched:** 42 nodes and 42 edges. The four added edges are:
 
-- two backbone nick joins, both with code `3_555`: A:DA112 O3′ to D:DC113 P at
+- two backbone nick joins, both with code `3_(0,0,0)`: A:DA112 O3′ to D:DC113 P at
   2.93 Å, and B:DT114 to B:DA105 at 3.12 Å, which joins B to its 3-fold copies in a closed finite ring;
-- two 5′-3′ chain-end stacks, both with code `9_555`: C:DC114 on C:DT101 at
+- two 5′-3′ chain-end stacks, both with code `9_(0,0,0)`: C:DC114 on C:DT101 at
   3.38 Å, and D:DA121 on A:DG101 at 3.91 Å.
 
 Two further end stacks were not stitched because those ends are already
