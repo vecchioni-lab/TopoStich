@@ -1,6 +1,6 @@
-# TopoStich contributor contract
+# TopoTrace contributor contract
 
-Simon requested on 2026-11-08: **TopoStich must remain installable after every
+Simon requested on 2026-11-08: **TopoTrace must remain installable after every
 substantial patch.** This is a continuing requirement, not a release-only task.
 
 Before edits, inspect `git status --short`, `README.md`, `docs/intent.json`,
@@ -12,7 +12,7 @@ Read `docs/agent-handoff.json` for the component map and next task. Simon clarif
 on 2026-11-11 that the collaborator already has the connection-finding logic
 engine. The next integration should consume its symmetry-aware backbone links
 and write them in the existing CGD dialect; do not invent a replacement engine.
-Current 0.3.0 behavior remains unstitched until that integration is implemented.
+Current 0.3.1 behavior remains unstitched until that integration is implemented.
 
 ## Scope and scientific behavior
 

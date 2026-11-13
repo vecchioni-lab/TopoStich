@@ -3,8 +3,8 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "TopoStich"
-version = "0.3.0"
+name = "TopoTrace"
+version = "0.3.1"
 description = "Convert PDB/mmCIF coordinates to core CIF with nucleotide atom recognition"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -15,15 +15,18 @@ dependencies = ["gemmi>=0.7.5,<0.8"]
 catalog = ["openpyxl>=3.1,<4"]
 
 [project.scripts]
-topostich = "topostich.cli:main"
-topostich-cgd = "topostich.cgd:main"
+topotrace = "topotrace.cli:main"
+topotrace-cgd = "topotrace.cgd:main"
+# Compatibility command aliases for existing scripts.
+topostich = "topotrace.cli:main"
+topostich-cgd = "topotrace.cgd:main"
 
 [project.urls]
-Repository = "https://github.com/vecchioni-lab/TopoStich"
-Issues = "https://github.com/vecchioni-lab/TopoStich/issues"
+Repository = "https://github.com/vecchioni-lab/TopoTrace"
+Issues = "https://github.com/vecchioni-lab/TopoTrace/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-topostich = ["data/*.json"]
+topotrace = ["data/*.json"]

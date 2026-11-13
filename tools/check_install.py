@@ -29,7 +29,7 @@ def main():
     env.pop("PYTHONPATH", None)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     env["PIP_DISABLE_PIP_VERSION_CHECK"] = "1"
-    with tempfile.TemporaryDirectory(prefix="topostich-install-") as directory:
+    with tempfile.TemporaryDirectory(prefix="topotrace-install-") as directory:
         work = Path(directory)
         staging = work / "source"
         staging.mkdir()
@@ -60,7 +60,7 @@ def main():
         venv.EnvBuilder(with_pip=True, symlinks=os.name != "nt").create(installed)
         bindir = installed / ("Scripts" if os.name == "nt" else "bin")
         python = bindir / ("python.exe" if os.name == "nt" else "python")
-        command = bindir / ("topostich.exe" if os.name == "nt" else "topostich")
+        command = bindir / ("topotrace.exe" if os.name == "nt" else "topotrace")
         install_args = [python, "-m", "pip", "install"]
         if args.wheelhouse:
             install_args.extend(['--no-index', '--find-links', args.wheelhouse.resolve()])
@@ -68,6 +68,12 @@ def main():
         run([python, '-m', 'pip', 'check'], work, env)
         run([command, "--version"], work, env)
         run([command, "--help"], work, env)
+        for alias in ('topostich', 'topostich-cgd'):
+            executable = bindir / (alias + '.exe' if os.name == 'nt' else alias)
+            result = subprocess.run([str(executable), '--version'], cwd=work, env=env,
+                                    text=True, capture_output=True, check=True)
+            if result.stdout.strip() != 'TopoTrace 0.3.1':
+                raise RuntimeError('Legacy command does not resolve to TopoTrace')
         smoke_input = work / "smoke.pdb"
         smoke_input.write_text(
             "CRYST1   20.000   30.000   40.000  90.00  90.00  90.00 P 1           1\n"
@@ -83,7 +89,7 @@ def main():
         run([command, smoke_input, '-out', smoke_mmcif, '-mmCif'], work, env)
         run([command, smoke_mmcif, '-atom', "O5'", '-atom', "O3'", '-out', work/'native.cif'], work, env)
         run([command, smoke_mmcif, '-atom', '-all', '-out', work/'all.cif'], work, env)
-        cgd_command = bindir / ('topostich-cgd.exe' if os.name == 'nt' else 'topostich-cgd')
+        cgd_command = bindir / ('topotrace-cgd.exe' if os.name == 'nt' else 'topotrace-cgd')
         run([cgd_command, '--version'], work, env)
         run([cgd_command, smoke_mmcif, '--out', work/'graph.cgd',
              '--cmm', work/'graph.cmm', '--crystal-cmm', work/'copies.cmm',
@@ -91,7 +97,7 @@ def main():
         run([python, '-c', "import json,xml.etree.ElementTree as E; "
              "r=json.load(open('graph.json')); assert r['node_count']==1 and r['edge_count']==0; "
              "assert len(E.parse('graph.cmm').getroot().findall('.//marker'))==1"], work, env)
-        run([python, '-c', "from topostich.nucleotides import classify_atom; assert classify_atom('DZ', 'C1').role == 'base'"], work, env)
+        run([python, '-c', "from topotrace.nucleotides import classify_atom; assert classify_atom('DZ', 'C1').role == 'base'"], work, env)
         run([python, "-m", "unittest", "discover", "-s", extracted / "tests", "-v"], work, env)
         print("PASS: sdist, relocated wheel build, clean install, installed CLI and complete installed suite")
 

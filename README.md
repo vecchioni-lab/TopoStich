@@ -1,4 +1,4 @@
-# TopoStich
+# TopoTrace
 
 Convert a DNA/RNA **PDB or PDBx/mmCIF** into a **core CIF** for topology software.
 Optionally select backbone atoms and connect them in strand order. Python
@@ -10,7 +10,7 @@ stitch chains, close loops, infer sticky ends or add symmetry-related links.
 
 For agents and incoming collaborators, start with [the component map and next
 symmetry-connection task](docs/agent-handoff.json). The collaborator supplies
-the connection-finding logic; TopoStich will integrate and export its image-aware
+the connection-finding logic; TopoTrace will integrate and export its image-aware
 links. That integration is planned, not yet implemented.
 
 ## Install
@@ -19,19 +19,39 @@ From a checkout:
 
 ```sh
 python3 -m pip install .
-topostich --version
+topotrace --version
 ```
 
-Once this local version is published, it can also be installed from GitHub:
+Install the current version from GitHub:
 
 ```sh
-python3 -m pip install git+https://github.com/vecchioni-lab/TopoStich.git
+python3 -m pip install --upgrade git+https://github.com/vecchioni-lab/TopoTrace.git
 ```
 
 For development use `python3 -m pip install -e .`. Prefer a virtual environment.
-`python3 -m topostich` is equivalent to the installed `topostich` command.
-GitHub publication is distinct from a PyPI release; `pip install TopoStich`
+`python3 -m topotrace` is equivalent to the installed `topotrace` command.
+GitHub publication is distinct from a PyPI release; `pip install TopoTrace`
 from PyPI is not promised.
+
+## Renamed from TopoStich
+
+TopoTrace 0.3.1 is the same converter under its new name. Use `topotrace`,
+`topotrace-cgd`, and `import topotrace` for new work. The old `topostich` and
+`topostich-cgd` commands, `python -m topostich[.cgd]`, and public Python module
+imports remain compatibility aliases. Conversion flags, coordinates, graph rules
+and receipt schemas are unchanged. Branding comments/data-block names and the
+reported software version change, so new output file hashes may differ.
+
+If you installed the old **TopoStich** distribution, remove it **before**
+installing TopoTrace to avoid two distributions owning the legacy aliases:
+
+```sh
+python3 -m pip uninstall TopoStich
+python3 -m pip install --upgrade git+https://github.com/vecchioni-lab/TopoTrace.git
+```
+
+Uninstalling a Python package does not delete your input structures or outputs.
+No PyPI publication is claimed.
 
 ## Convert
 
@@ -39,7 +59,7 @@ For the separate **one O3′ node per nucleotide** Systre CGD exporter and
 interactive ChimeraX graph views, see [CGD usage](docs/cgd.md):
 
 ```sh
-topostich-cgd 8D93.pdb --out 8D93_O3.cgd --cmm 8D93_chains.cmm \
+topotrace-cgd 8D93.pdb --out 8D93_O3.cgd --cmm 8D93_chains.cmm \
   --crystal-cmm 8D93_symmetry.cmm --receipt 8D93_graph.json
 ```
 
@@ -49,8 +69,8 @@ The following existing conversion commands continue to work unchanged.
 Keep every atom in the first model, with its original position:
 
 ```sh
-topostich 8D93.pdb -atom -all -out 8D93.cif -cif
-topostich input.mmcif -atom -all -out all_atoms.cif
+topotrace 8D93.pdb -atom -all -out 8D93.cif -cif
+topotrace input.mmcif -atom -all -out all_atoms.cif
 ```
 
 `-atom -all` performs ordinary file conversion. It includes sugar, base,
@@ -64,13 +84,13 @@ model is written (the first by default); `--model` and `--altloc` remain availab
 Make a reduced backbone trace:
 
 ```sh
-topostich 8D93.pdb -atom "O3'" -atom "O5'" -atom "C4'" -out 8D93_backbone.cif -cif
+topotrace 8D93.pdb -atom "O3'" -atom "O5'" -atom "C4'" -out 8D93_backbone.cif -cif
 ```
 
 The same command accepts native mmCIF, retaining its coordinate precision:
 
 ```sh
-topostich input.mmcif -atom "O5'" -atom "C4'" -atom "O3'" -out trace.cif
+topotrace input.mmcif -atom "O5'" -atom "C4'" -atom "O3'" -out trace.cif
 ```
 
 Input syntax is detected from content, including `.cif` files. Use
@@ -99,11 +119,11 @@ cannot be counted from coordinates alone. Chain changes, `TER`, and model
 boundaries are never bridged. Link lengths are the actual endpoint distances;
 no chemical distance cutoff, minimization, or ideal geometry is applied.
 
-Without an atom filter, TopoStich preserves explicit input `CONECT` edges and
+Without an atom filter, TopoTrace preserves explicit input `CONECT` edges and
 unambiguous same-image mmCIF `_struct_conn` edges. Unsupported symmetry-image
 or unresolved mmCIF links are omitted with receipt warnings. No additional
 bonds are guessed. Preserved edges can include cross-chain connections
-already declared in the input; TopoStich does not create new ones.
+already declared in the input; TopoTrace does not create new ones.
 
 Use `--model 2` for the second model in file order. Ordinary conversion retains
 alternate locations. A trace containing selected alternate atoms requires an
@@ -119,14 +139,14 @@ overflowing values. It rounds coordinates to 0.001 Å and occupancy/B values to
 
 ## Nucleotide recognition underneath the trace
 
-`topostich.nucleotides` recognizes conventional sugar and phosphate heavy-atom
+`topotrace.nucleotides` recognizes conventional sugar and phosphate heavy-atom
 names and looks up base atoms by **residue code → canonical role → actual atom
 name present in the structure**. Its packaged snapshot comes from the
 NARestraints workbook: 600 residue codes and 619 source rows. No live Excel
 or NARestraints installation is needed.
 
 ```python
-from topostich.nucleotides import recognize_residue
+from topotrace.nucleotides import recognize_residue
 
 info = recognize_residue("DZ", ["C1'", "C4'", "C1", "N3"])
 print(info.present_sugar_atoms)  # ("C1'", "C4'")
@@ -155,7 +175,7 @@ connections are added. See [recognition and provenance](docs/nucleotide-recognit
 
 Core output requires real cell dimensions and a space-group symbol in PDB
 `CRYST1` or the corresponding mmCIF categories.
-Missing cell information or the PDB's unit-cell placeholder is an error; TopoStich
+Missing cell information or the PDB's unit-cell placeholder is an error; TopoTrace
 does not invent a P1 box. Coordinates are fractionalized without wrapping into
 the unit cell. Conventional, rounded `SCALE` records use the more precise
 cell-derived transform; nonstandard rotations/translations use the supplied
@@ -174,7 +194,7 @@ displacement tensors, assembly/MTRIX expansion, and original atom serials are
 not carried through; isotropic B values, occupancies and atom identities are.
 
 ToposPro 5.5.2.0 release notes describe CIF connectivity import. **A live
-TopoStich → ToposPro import has not yet been validated.** Inspect the imported
+TopoTrace → ToposPro import has not yet been validated.** Inspect the imported
 adjacency before running automatic bond detection, which may replace the
 deliberately long links. Core-CIF readability and graph retention are separate
 checks. Keep your full model when studying spatial entanglement: a reduced
@@ -183,7 +203,7 @@ straight-line trace need not preserve every geometric feature.
 ## Machine-readable output and project intent
 
 ```sh
-topostich input.pdb -atom "O3'" -atom "O5'" -out trace.cif --json > receipt.json
+topotrace input.pdb -atom "O3'" -atom "O5'" -out trace.cif --json > receipt.json
 ```
 
 The schema-1 receipt contains version, selected model, canonical atom selection,

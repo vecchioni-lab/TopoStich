@@ -1,6 +1,6 @@
 import unittest
 
-from topostich.nucleotides import classify_atom, recognize_residue, lookup_residue
+from topotrace.nucleotides import classify_atom, recognize_residue, lookup_residue
 
 
 class NucleotideRecognitionTests(unittest.TestCase):

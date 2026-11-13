@@ -4,4 +4,4 @@ recursive-include schemas *.json
 recursive-include tests *.py
 recursive-include tools *.py
 recursive-include tools *.java
-recursive-include src/topostich/data *.json
+recursive-include src/topotrace/data *.json

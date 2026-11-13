@@ -8,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-from topostich.converter import ConversionError, convert_file
+from topotrace.converter import ConversionError, convert_file
 
 
 def atom(serial, name, residue=1, chain="A", xyz=(1., 2., 3.), *,
@@ -195,7 +195,7 @@ class ConversionTests(unittest.TestCase):
 
     def test_cli_quoted_primes_format_aliases_and_json_receipt(self):
         self.source.write_text(crystal() + atom(1, "O5'") + atom(2, "O3'"))
-        command = [sys.executable, "-m", "topostich", str(self.source), "-atom", "O3'",
+        command = [sys.executable, "-m", "topotrace", str(self.source), "-atom", "O3'",
                    "-atom", "O5'", "-out", str(self.output), "-cif", "--json"]
         completed = subprocess.run(command, text=True, capture_output=True)
         self.assertEqual(completed.returncode, 0, completed.stderr)

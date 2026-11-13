@@ -1,6 +1,6 @@
 # Architecture
 
-`cgd.py` provides the separate `topostich-cgd` CLI and `export_cgd` API. It reuses
+`cgd.py` provides the separate `topotrace-cgd` CLI and `export_cgd` API. It reuses
 the established readers, O3′ selection and fractional transform without altering
 the original converter. Gemmi validates the named space-group setting and cell;
 a conservative symmetry-position guard rejects ambiguous overlaps and special
@@ -12,9 +12,9 @@ rolled back on I/O failure. A separate schema-1 CGD receipt maps node identities
 coordinates, edges, cell, operations and artifact hashes. Existing conversion
 receipt and nucleotide catalog schemas are unchanged. See `cgd.md` for limits.
 
-`src/topostich/converter.py` owns fixed-column PDB parsing, input dispatch, atom selection,
+`src/topotrace/converter.py` owns fixed-column PDB parsing, input dispatch, atom selection,
 coordinate transforms, graph construction and the three output writers.
-`src/topostich/cli.py` maps CLI arguments to `convert_file` and serializes the
+`src/topotrace/cli.py` maps CLI arguments to `convert_file` and serializes the
 schema-1 receipt. `mmcif_input.py` uses Gemmi for CIF syntax and normalizes native
 mmCIF into the shared atom/model container without a PDB intermediate. Conversion
 does not invoke external scientific programs or the network.
@@ -99,3 +99,10 @@ builds an sdist, deletes that staging tree, builds a wheel from extracted source
 and tests the installed wheel and its dependencies in a clean virtual environment.
 An optional wheelhouse enables a fully offline dependency installation. Tests and build
 products stay outside scientific working directories.
+
+## Naming compatibility
+
+The implementation lives in `src/topotrace`. `src/topostich` contains thin
+public API/module-entry compatibility wrappers; both CLI spellings dispatch to
+the same canonical functions. The distribution is TopoTrace 0.3.1. Remove an
+old installed TopoStich distribution before upgrading; no data migration is needed.

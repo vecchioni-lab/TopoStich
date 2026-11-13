@@ -12,10 +12,10 @@ code, resolve canonical-role columns to the actual names in that residue's row,
 and include only names present in the coordinates. `dna_geometry.py` likewise
 distinguishes a mapped heterocycle from a possible sugar attachment. NASolve
 `docs/architecture.md` separates atom-role mappings from component bond and
-stereochemical dictionaries. TopoStich follows that distinction and does not
+stereochemical dictionaries. TopoTrace follows that distinction and does not
 construct chemical bonds or sugar stereochemistry from this spreadsheet.
 
-The packaged `src/topostich/data/nucleotide_atoms.json` is a snapshot of
+The packaged `src/topotrace/data/nucleotide_atoms.json` is a snapshot of
 `NARestraints/restraints/data/Ligands.xlsx`, SHA-256
 `57a566c710f45df06dc8b5174f135dfea6f75db781755905a8570523fb57d6e5`.
 It was read from the user-local working workbook, not asserted to equal any

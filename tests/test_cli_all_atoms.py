@@ -20,7 +20,7 @@ class AllAtomCliTests(unittest.TestCase):
 
     def run_cli(self, output, *options):
         return subprocess.run(
-            [sys.executable, "-m", "topostich", str(self.source),
+            [sys.executable, "-m", "topotrace", str(self.source),
              *options, "-out", str(output), "--json"],
             text=True, capture_output=True,
         )

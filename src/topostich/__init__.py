@@ -1,3 +1,2 @@
-"""TopoStich: coordinate conversion and explicit backbone traces."""
-
-__version__ = "0.3.0"
+"""Compatibility namespace; use topotrace for new code."""
+from topotrace import __version__

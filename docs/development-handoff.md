@@ -1,5 +1,54 @@
 # Development handoff
 
+## TopoTrace rename — 2026-11-13
+
+TopoStich 0.3.0 is renamed to **TopoTrace 0.3.1**. Canonical package/commands are
+`topotrace` and `topotrace-cgd`; old `topostich` commands, executable modules and
+public imports remain aliases of the same implementation. Scientific behavior,
+CLI options and conversion/CGD/catalog schema 1 remain unchanged. Branding and
+version strings in newly written outputs change their bytes/hashes.
+
+Changed files: package moved to `src/topotrace`, compatibility wrappers retained
+in `src/topostich`; pyproject/MANIFEST, install checker, tests, README, AGENTS,
+architecture/CGD/recognition docs, JSON intent/component map, schema titles and
+changelog updated. Agent handoff document is version 2 because product-specific
+responsibility keys changed. The atom catalog bytes are unchanged.
+
+Migration: uninstall the old TopoStich distribution before installing TopoTrace
+so two distributions do not own the same compatibility command/module files.
+Existing structures and receipts need no migration. GitHub target:
+https://github.com/vecchioni-lab/TopoTrace. PyPI publication is not claimed.
+
+Validation: Python 3.12.14, Gemmi 0.7.5, setuptools 84.2.1, wheel 0.48.0,
+macOS arm64. `PYTHON` below was the temporary isolated interpreter and
+`WHEELHOUSE` the temporary downloaded dependency directory (not project inputs).
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src "$PYTHON" -m unittest discover -s tests -p test_rename.py -v
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src "$PYTHON" -m unittest discover -s tests -v
+"$PYTHON" tools/check_install.py --wheelhouse "$WHEELHOUSE"
+git diff --check
+```
+
+- The new two-test rename regression failed before implementation: topotrace
+  was absent and legacy commands still reported TopoStich 0.3.0.
+- Focused: **2 passed**; complete source suite: **50 passed**.
+- Install: sdist built, original staging removed, wheel built from relocated
+  extracted source and installed in a fresh environment offline. Both old/new
+  command names, module aliases, public API identity, packaged catalog and
+  format/CGD/CMM smoke checks passed; **50 installed tests passed**.
+- JSON parses, component paths and whitespace validated. No live ToposPro,
+  Systre or ChimeraX run was needed or claimed for this naming-only patch.
+
+Scientific inputs, previous generated outputs, environments and local bundles
+are excluded from the commit. Symmetry stitching remains the collaborator-engine
+integration task; the rename adds no connectivity or scientific inference.
+
+## Historical 0.3.0 implementation handoff
+
+The following is prior evidence under the original TopoStich name. Its
+publication-pending wording describes that earlier point in time.
+
 Updated 2026-11-11. Local package **0.3.0**, implemented on
 `codex/linden-cgd-export`; documentation handoff on `codex/linden-agent-handoff`.
 GitHub publication is pending. No remote CI, release, ToposPro import or net

@@ -5,7 +5,7 @@ import sys
 import tempfile
 import unittest
 
-from topostich.converter import ConversionError, convert_file, read_pdb
+from topotrace.converter import ConversionError, convert_file, read_pdb
 from test_converter import atom, crystal, loop_rows
 
 
@@ -118,11 +118,11 @@ class MmcifInputTests(unittest.TestCase):
 
     def test_explicit_input_format_and_cli_base_rejection(self):
         self.input.write_text(HEADER+TAGS+site(1,"C4'")+site(2,'N9'))
-        r=subprocess.run([sys.executable,'-m','topostich',str(self.input),'--input-format','mmcif',
+        r=subprocess.run([sys.executable,'-m','topotrace',str(self.input),'--input-format','mmcif',
             '-atom',"C4'",'-out',str(self.output),'--json'],capture_output=True,text=True)
         self.assertEqual(r.returncode,0,r.stderr)
         self.assertEqual(json.loads(r.stdout)['atom_count'],1)
-        rejected=subprocess.run([sys.executable,'-m','topostich',str(self.input),'-atom','N9',
+        rejected=subprocess.run([sys.executable,'-m','topotrace',str(self.input),'-atom','N9',
             '-out',str(self.root/'reject.cif')],capture_output=True,text=True)
         self.assertEqual(rejected.returncode,2)
         self.assertIn('nucleobase',rejected.stderr.lower())

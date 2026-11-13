@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TopoStich conversion receipt",
+  "title": "TopoTrace conversion receipt",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "version", "source_name", "source_sha256", "output_name", "output_sha256", "output_format", "model", "atom_selection", "atom_count", "bond_count", "segment_count", "missing_count", "missing", "warnings"],

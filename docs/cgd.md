@@ -1,18 +1,18 @@
 # Chain-aware O3′ graphs for Systre and ToposPro
 
-TopoStich 0.3.0 adds a separate `topostich-cgd` command. Each observed O3′
+TopoTrace provides a separate `topotrace-cgd` command. Each observed O3′
 becomes one nucleotide node; consecutive retained nodes link within their
 original chain/TER segment. This is a topological trace, not a chemical model.
-Existing `topostich` conversions remain unchanged.
+Existing `topotrace` conversions remain unchanged.
 
 ```sh
-topostich-cgd 8D93.pdb --out 8D93_O3.cgd \
+topotrace-cgd 8D93.pdb --out 8D93_O3.cgd \
   --cmm 8D93_chains.cmm --crystal-cmm 8D93_symmetry.cmm \
   --receipt 8D93_graph.json
 ```
 
 Native PDBx/mmCIF input works through the same command. `--model`, `--altloc`,
-and `--input-format` retain the converter's meanings. `python -m topostich.cgd`
+and `--input-format` retain the converter's meanings. `python -m topotrace.cgd`
 is equivalent to the installed command. All output paths must be new and have
 existing parents. The command does not overwrite inputs or earlier outputs.
 

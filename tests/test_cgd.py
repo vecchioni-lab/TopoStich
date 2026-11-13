@@ -8,8 +8,8 @@ import unittest
 import xml.etree.ElementTree as ET
 
 from test_converter import atom, crystal
-from topostich.converter import ConversionError, convert_file
-from topostich.cgd import export_cgd
+from topotrace.converter import ConversionError, convert_file
+from topotrace.cgd import export_cgd
 
 
 class CgdTests(unittest.TestCase):
@@ -110,7 +110,7 @@ class CgdTests(unittest.TestCase):
 
     def test_installed_compatible_cli_and_receipt(self):
         self.source.write_text(crystal()+atom(1,"O3'",xyz=(1,2,3)))
-        p=subprocess.run([sys.executable,'-m','topostich.cgd',str(self.source),'--out',str(self.out),
+        p=subprocess.run([sys.executable,'-m','topotrace.cgd',str(self.source),'--out',str(self.out),
                           '--cmm',str(self.root/'graph.cmm'),'--receipt',str(self.root/'receipt.json'),'--json'],
                          text=True,capture_output=True)
         self.assertEqual(p.returncode,0,p.stderr)

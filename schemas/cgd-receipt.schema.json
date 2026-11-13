@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TopoStich CGD graph receipt",
+  "title": "TopoTrace CGD graph receipt",
   "description": "Self-contained graph and identities; source name and hash are provenance, not operational paths.",
   "type": "object",
   "additionalProperties": false,

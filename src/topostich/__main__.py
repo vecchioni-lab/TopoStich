@@ -1,3 +1,3 @@
-from .cli import main
+from topotrace.cli import main
 
 raise SystemExit(main())

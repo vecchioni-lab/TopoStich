@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+- Version 0.3.1: rename the project, distribution, canonical Python package and
+  commands to TopoTrace / topotrace / topotrace-cgd. Keep topostich commands and
+  public module imports as compatibility aliases. Update GitHub links, build
+  tooling, component map and user/machine-readable intent. Remove an installed
+  TopoStich distribution before installing TopoTrace to avoid shared-file ownership.
+- Conversion/CGD/catalog schemas and scientific behavior are unchanged. New
+  output branding and version change output bytes/hashes, not coordinates or links.
+- Verify both names and packaged catalog, then build/install from a relocated
+  source distribution and exercise both old/new installed entry points.
+
 - Add `docs/agent-handoff.json` with a component map, project intent and the
   next collaborator-engine integration task for symmetry-related backbone links.
   Distinguish implemented behavior from proposed image/identity interfaces;

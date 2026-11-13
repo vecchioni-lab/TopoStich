@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TopoStich residue atom lookup snapshot",
+  "title": "TopoTrace residue atom lookup snapshot",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "source", "semantics", "normalization", "header_base_atoms", "record_count", "residue_count", "duplicate_codes", "excluded_non_atom_cells", "records"],

@@ -1,9 +1,9 @@
 {
-  "document_type": "TopoStich agent and collaborator handoff",
-  "document_version": 1,
-  "updated": "2026-11-11",
-  "implementation_version": "0.3.0",
-  "status": "DOCUMENTATION_ONLY; EXISTING_CHAIN_AWARE_EXPORT_IMPLEMENTED; SYMMETRY_CONNECTION_INTEGRATION_NEXT",
+  "document_type": "TopoTrace agent and collaborator handoff",
+  "document_version": 2,
+  "updated": "2026-11-13",
+  "implementation_version": "0.3.1",
+  "status": "RENAMED_WITH_COMPATIBILITY; SYMMETRY_CONNECTION_INTEGRATION_NEXT",
   "authority": "Current user instructions govern scope. This file distinguishes implemented behavior from proposed integration details; it does not claim that an external interface has been agreed or implemented.",
   "read_first": [
     "AGENTS.md",
@@ -19,45 +19,45 @@
     "current_model": "Represent each nucleotide by one node at its observed O3-prime atom and retain ordered backbone connectivity within each original strand segment.",
     "next_problem": "Find the symmetry-related backbone connections across nicks and junctions, then encode those connections with the correct images in the existing Systre CGD dialect.",
     "scientific_owner": "Lab member/collaborator supplies the existing logic engine that determines which sites connect and to which crystal images. Its location, invocation and input/output contract have not been supplied here.",
-    "topostich_responsibility": "Map engine results onto explicit nucleotide/node identities, validate image references, preserve graph connectivity and provenance, and write auditable Systre and viewing artifacts.",
+    "topotrace_responsibility": "Map engine results onto explicit nucleotide/node identities, validate image references, preserve graph connectivity and provenance, and write auditable Systre and viewing artifacts.",
     "downstream": "ToposPro/Systre topological analysis; ChimeraX for graph inspection. Links represent the chosen topological model and do not assert chemical bonds or ideal bond lengths.",
     "longer_term": "Sugar recognition supports possible future ribbons; ribbon construction is not part of the next symmetry-link integration."
   },
   "component_map": [
     {
-      "path": "src/topostich/cli.py",
-      "purpose": "Existing topostich command: all-atom or selected linear-backbone conversion to core CIF, PDB or PDBx/mmCIF. Preserve its flags and behavior."
+      "path": "src/topotrace/cli.py",
+      "purpose": "Existing topotrace command: all-atom or selected linear-backbone conversion to core CIF, PDB or PDBx/mmCIF. Preserve its flags and behavior."
     },
     {
-      "path": "src/topostich/__main__.py",
-      "purpose": "Enables python -m topostich."
+      "path": "src/topotrace/__main__.py",
+      "purpose": "Enables python -m topotrace."
     },
     {
-      "path": "src/topostich/__init__.py",
-      "purpose": "Package version, currently 0.3.0."
+      "path": "src/topotrace/__init__.py",
+      "purpose": "Package version, currently 0.3.1."
     },
     {
-      "path": "src/topostich/converter.py",
+      "path": "src/topotrace/converter.py",
       "purpose": "Shared Atom/Pdb containers; PDB reader, format dispatch, model/alternate selection, chain/TER segments, backbone order, fractional transforms, existing output writers and receipts. Private underscore helpers are implementation details, not an external engine API."
     },
     {
-      "path": "src/topostich/mmcif_input.py",
+      "path": "src/topotrace/mmcif_input.py",
       "purpose": "Gemmi-backed native mmCIF reader; retains precision and author/label identities. Unsupported symmetry-image struct_conn links are currently omitted with warnings; it is not the future stitching engine."
     },
     {
-      "path": "src/topostich/nucleotides.py",
+      "path": "src/topotrace/nucleotides.py",
       "purpose": "Residue-aware lookup of sugar, phosphate, base, unknown and ambiguous atom roles from observed atom names. Provides classify_atom and recognize_residue; does not infer bonds."
     },
     {
-      "path": "src/topostich/data/nucleotide_atoms.json",
+      "path": "src/topotrace/data/nucleotide_atoms.json",
       "purpose": "Packaged NARestraints-derived atom-name catalog. Runtime has no workbook or NASolve dependency; provenance is recorded in the catalog."
     },
     {
-      "path": "src/topostich/cgd.py",
-      "purpose": "Separate topostich-cgd command and export_cgd API. Selects observed O3-prime nodes, validates cell/group and positional ambiguity, builds unstitched strand edges, serializes exact CGD dialect, optional CMM views and graph receipt. No external-link argument or engine adapter exists yet."
+      "path": "src/topotrace/cgd.py",
+      "purpose": "Separate topotrace-cgd command and export_cgd API. Selects observed O3-prime nodes, validates cell/group and positional ambiguity, builds unstitched strand edges, serializes exact CGD dialect, optional CMM views and graph receipt. No external-link argument or engine adapter exists yet."
     },
     {
-      "path": "src/topostich/graph_viewer.py",
+      "path": "src/topotrace/graph_viewer.py",
       "purpose": "Writes native ChimeraX marker/link CMM from the graph, with chain colors and endpoint markers; optional intact conventional-cell symmetry copies. Current implementation draws edges only when both endpoints are in one segment/model."
     },
     {
@@ -151,6 +151,10 @@
     {
       "path": "CHANGELOG.md",
       "purpose": "User-visible change history and Unreleased notes."
+    },
+    {
+      "path": "src/topostich",
+      "purpose": "Legacy public import and executable-module aliases; implementation lives in src/topotrace."
     }
   ],
   "implemented_data_flow": [
@@ -181,7 +185,7 @@
     "status": "PLANNED; engine adapter and link schema not implemented",
     "ownership": {
       "connection_decisions": "Collaborator existing logic engine",
-      "identity_image_validation_and_export": "TopoStich integration",
+      "identity_image_validation_and_export": "TopoTrace integration",
       "scientific_acceptance": "Lab member/collaborator checks intended joins and downstream adjacency"
     },
     "first_step": "Obtain the engine entry point, required inputs, coordinate/space-group conventions, and a minimal known-correct output including a symmetry-related connection. Agree the adapter contract before coding against it.",
@@ -191,7 +195,7 @@
       "Relative target symmetry operator in the same fractional frame, preferably its explicit triplet/matrix rather than an unqualified operation number.",
       "Integer lattice translation applied after that operator; fractional centering/screw translations belong to the operator.",
       "Connection kind such as nick or junction, decision status, and engine/rule provenance; preserve ambiguity rather than choosing silently.",
-      "Any confidence, evidence and direction/routing information the engine already supplies; its score semantics are not invented by TopoStich."
+      "Any confidence, evidence and direction/routing information the engine already supplies; its score semantics are not invented by TopoTrace."
     ],
     "proposed_image_convention": {
       "status": "PROPOSAL_TO_AGREE_WITH_ENGINE_OWNER; not a shipped input format",
@@ -294,12 +298,12 @@
     "Keep generated structures, graphs, scientific runs and local environments out of commits.",
     "Use repository-relative references and explicit dataset paths/checksums.",
     "No NASolve/Phenix/Coot dependency is required.",
-    "GitHub publishing is a separate stepwise task; this documentation change does not publish anything."
+    "Repository rename and software publication are authorized by the 2026-11-13 user request; scientific artifacts remain excluded."
   ],
   "this_update": {
-    "behavior_before_after": "Documentation adds component responsibilities and the collaborator-engine integration plan; executable behavior remains 0.3.0.",
-    "schema_impact": "This handoff has document_version 1. Runtime graph/conversion/catalog schemas are unchanged. Proposed periodic-link fields are not implemented.",
-    "validation": "Parse JSON, verify repository paths/entry-point descriptions and cross-document links, check diff whitespace. No runtime test or install rebuild required for this documentation-only change.",
-    "generated_artifacts": "None; prior scientific outputs unchanged."
+    "behavior_before_after": "TopoStich 0.3.0 becomes TopoTrace 0.3.1 with legacy CLI and public Python import aliases. Scientific algorithms unchanged.",
+    "schema_impact": "Handoff document version 2 updates product responsibility key names; conversion/CGD/catalog schemas remain 1.",
+    "validation": "See docs/development-handoff.md for rename validation.",
+    "generated_artifacts": "None distributed; prior local scientific outputs unchanged."
   }
 }

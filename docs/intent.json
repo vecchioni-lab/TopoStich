@@ -1,23 +1,27 @@
 {
   "schema_version": 1,
-  "project": "TopoStich",
-  "updated": "2026-11-11",
-  "status": "0.3.0-local-implementation",
+  "project": "TopoTrace",
+  "updated": "2026-11-13",
+  "status": "0.3.1-renamed",
   "owner": "vecchioni-lab",
   "purpose": "Convert DNA/RNA PDB or PDBx/mmCIF coordinates to core CIF with residue-aware nucleotide atom recognition and optional linear backbone traces. Export chain-aware O3-prime graphs as Systre CRYSTAL CGD and native ChimeraX marker/link views.",
   "standing_user_requirements": [
     "Installable after every substantial patch, not only at formal releases.",
     "Maintain clear human-readable and machine-readable intent in the repository.",
     "CGD export keeps chains separate; explicit nick/junction and symmetry-image joins await defined rules.",
-    "Publish as an independent vecchioni-lab Git repository named TopoStich."
+    "Publish as an independent vecchioni-lab Git repository named TopoTrace."
   ],
   "runtime": {
     "python": ">=3.10",
     "dependencies": [
       "gemmi>=0.7.5,<0.8"
     ],
-    "entry_point": "topostich",
+    "entry_point": "topotrace",
     "entry_points": [
+      "topotrace",
+      "topotrace-cgd"
+    ],
+    "legacy_entry_points": [
       "topostich",
       "topostich-cgd"
     ]
@@ -111,7 +115,7 @@
     "native mmCIF installed CLI smoke test",
     "explicit -atom -all installed CLI smoke test",
     "CGD regressions",
-    "installed topostich-cgd smoke check"
+    "installed topotrace-cgd smoke check"
   ],
   "external_validation": {
     "ToposPro": "not yet executed",
@@ -121,12 +125,12 @@
     "ChimeraX": "1.12 (2026-06-12): native CMM import passed for both 8D93 views, including all nodes, links and notes."
   },
   "distribution": {
-    "github": "https://github.com/vecchioni-lab/TopoStich",
+    "github": "https://github.com/vecchioni-lab/TopoTrace",
     "pypi": "not published",
     "license": "owner decision pending"
   },
   "recognition": {
-    "api": "topostich.nucleotides",
+    "api": "topotrace.nucleotides",
     "roles": [
       "sugar",
       "phosphate",
@@ -135,7 +139,7 @@
       "ambiguous"
     ],
     "lookup": "residue code -> canonical role -> actual observed atom name",
-    "catalog": "src/topostich/data/nucleotide_atoms.json",
+    "catalog": "src/topotrace/data/nucleotide_atoms.json",
     "schema": "schemas/nucleotide-atom-catalog.schema.json",
     "source": "NARestraints/restraints/data/Ligands.xlsx working snapshot; SHA-256 recorded in catalog",
     "source_mutation": false,
@@ -184,8 +188,8 @@
       "https://topospro.com/software/topospro/manual/creating-a-new-database-from-cif-shelx-or-systre-formats/",
       "https://raw.githubusercontent.com/odf/gavrog/master/src/org/gavrog/joss/pgraphs/io/NetParser.java"
     ],
-    "command": "topostich-cgd",
-    "api": "topostich.cgd.export_cgd",
+    "command": "topotrace-cgd",
+    "api": "topotrace.cgd.export_cgd",
     "position_guard": "Reject special positions and symmetry overlaps within a conservative 0.003 per conventional fractional coordinate, modulo translations.",
     "views": {
       "asymmetric_unit": "--cmm, original Cartesian coordinates",
@@ -198,8 +202,15 @@
     "status": "PLANNED_NOT_IMPLEMENTED",
     "task": "Integrate collaborator logic engine to identify and serialize symmetry-related backbone connections at nicks and junctions.",
     "scientific_logic_owner": "Lab member/collaborator; existing engine reported by user, interface/location not yet supplied.",
-    "topostich_role": "Resolve identities and relative crystal images; validate and export explicit periodic links in the exact CGD dialect, with matching viewer/provenance.",
+    "topotrace_role": "Resolve identities and relative crystal images; validate and export explicit periodic links in the exact CGD dialect, with matching viewer/provenance.",
     "handoff": "docs/agent-handoff.json",
     "current_default": "Unstitched chain-aware graph; unchanged."
+  },
+  "rename": {
+    "from": "TopoStich",
+    "to": "TopoTrace",
+    "version": "0.3.1",
+    "legacy_python_namespace": "topostich",
+    "migration": "Uninstall the old TopoStich distribution before installing TopoTrace; scientific data and receipt schemas unchanged."
   }
 }
