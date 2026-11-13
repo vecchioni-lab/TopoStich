@@ -72,6 +72,19 @@ class Pdb:
     source_format: str = "pdb"
     connection_warnings: list[str] = field(default_factory=list)
     scale_is_pdb_rounded: bool = True
+    # mmCIF _struct_conn.conn_type_id per conect entry; empty for untyped PDB CONECT.
+    conect_types: list[str] = field(default_factory=list)
+
+
+COVALENT_CONNECTION_TYPES = ('covale', 'covale_base', 'covale_phosphate', 'covale_sugar', 'disulf')
+
+
+def covalent_connections(pdb: Pdb) -> list[tuple[str, str]]:
+    """Explicit links that may be covalent: typed covalent mmCIF links, or untyped CONECT."""
+    if not pdb.conect_types:
+        return list(pdb.conect)
+    return [pair for pair, kind in zip(pdb.conect, pdb.conect_types)
+            if kind.lower() in COVALENT_CONNECTION_TYPES + ('', '?', '.')]
 
 
 @dataclass(frozen=True)

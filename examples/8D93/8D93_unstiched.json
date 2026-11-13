@@ -1,0 +1,1338 @@
+{
+  "schema_version": 1,
+  "format": "Systre CGD CRYSTAL",
+  "tool_version": "0.4.0",
+  "name": "8D93_unstiched",
+  "source_name": "8d93.cif",
+  "source_sha256": "9f67eb6a7193d1ff06b68105e4ba8a066f4b02bef55787fc096404a99fa1d7bb",
+  "source_format": "mmcif",
+  "model": 1,
+  "altloc": null,
+  "representative_atom": "O3'",
+  "cell": [
+    105.547,
+    105.547,
+    96.268,
+    90.0,
+    90.0,
+    120.0
+  ],
+  "space_group": "R3:H",
+  "symmetry_operations": [
+    "x,y,z",
+    "-y,x-y,z",
+    "-x+y,-x,z",
+    "x+2/3,y+1/3,z+1/3",
+    "-y+2/3,x-y+1/3,z+1/3",
+    "-x+y+2/3,-x+1/3,z+1/3",
+    "x+1/3,y+2/3,z+2/3",
+    "-y+1/3,x-y+2/3,z+2/3",
+    "-x+y+1/3,-x+2/3,z+2/3"
+  ],
+  "node_count": 42,
+  "edge_count": 38,
+  "directed_edge_rows": 76,
+  "segment_count": 4,
+  "nodes": [
+    {
+      "label": "S1_N1",
+      "degree": 1,
+      "segment": 1,
+      "chain": "A",
+      "seq": "101",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "1",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        31.67943,
+        8.3723,
+        1.34405
+      ],
+      "fractional": [
+        0.34594237314879916,
+        0.09159425959499187,
+        0.01396154485394939
+      ],
+      "description": "segment=1 chain=A residue=DG:101 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N2",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "102",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "2",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        32.59129,
+        4.76937,
+        -4.40769
+      ],
+      "fractional": [
+        0.33487344077391995,
+        0.052177646988828215,
+        -0.04578561931275189
+      ],
+      "description": "segment=1 chain=A residue=DA:102 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N3",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "103",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "3",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        32.86162,
+        -0.83937,
+        -7.09925
+      ],
+      "fractional": [
+        0.30675442698087396,
+        -0.009182837891170676,
+        -0.07374465035110316
+      ],
+      "description": "segment=1 chain=A residue=DG:103 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N4",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "104",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "4",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        32.51673,
+        -7.08655,
+        -6.15193
+      ],
+      "fractional": [
+        0.26931422446752884,
+        -0.07752795532086637,
+        -0.06390420492790957
+      ],
+      "description": "segment=1 chain=A residue=DC:104 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N5",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "105",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "5",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        30.98354,
+        -12.95351,
+        -2.95705
+      ],
+      "fractional": [
+        0.22269536334097123,
+        -0.14171340702152613,
+        -0.030716852952175175
+      ],
+      "description": "segment=1 chain=A residue=DA:105 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N6",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "106",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "6",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        25.88821,
+        -15.41076,
+        -0.04684
+      ],
+      "fractional": [
+        0.16097855519894727,
+        -0.16859610286254875,
+        -0.0004865583579174803
+      ],
+      "description": "segment=1 chain=A residue=DG:106 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N7",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "107",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "7",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        20.0029,
+        -13.35295,
+        3.08569
+      ],
+      "fractional": [
+        0.11647484744260272,
+        -0.1460833425294061,
+        0.032053122532928906
+      ],
+      "description": "segment=1 chain=A residue=DC:107 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N8",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "108",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "8",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        14.56811,
+        -9.74769,
+        4.40266
+      ],
+      "fractional": [
+        0.08470424128135315,
+        -0.10664123936212348,
+        0.0457333693439149
+      ],
+      "description": "segment=1 chain=A residue=DC:108 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N9",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "109",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "9",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        9.55747,
+        -5.91829,
+        2.32943
+      ],
+      "fractional": [
+        0.05817828716455921,
+        -0.0647470098561261,
+        0.024197344912120326
+      ],
+      "description": "segment=1 chain=A residue=DT:109 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N10",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "110",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "10",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        5.60642,
+        -4.11352,
+        -1.17608
+      ],
+      "fractional": [
+        0.030616484795239,
+        -0.04500254634081328,
+        -0.012216728300162046
+      ],
+      "description": "segment=1 chain=A residue=DG:110 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N11",
+      "degree": 2,
+      "segment": 1,
+      "chain": "A",
+      "seq": "111",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "11",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        2.2525,
+        -3.40113,
+        -5.95804
+      ],
+      "fractional": [
+        0.002736758779985117,
+        -0.03720888932985138,
+        -0.0618901400257614
+      ],
+      "description": "segment=1 chain=A residue=DT:111 atom=O3' altloc=."
+    },
+    {
+      "label": "S1_N12",
+      "degree": 1,
+      "segment": 1,
+      "chain": "A",
+      "seq": "112",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "A",
+      "label_seq": "12",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        0.74172,
+        -4.5089,
+        -12.2821
+      ],
+      "fractional": [
+        -0.017636641768587466,
+        -0.04932806481944731,
+        -0.1275823742053434
+      ],
+      "description": "segment=1 chain=A residue=DA:112 atom=O3' altloc=."
+    },
+    {
+      "label": "S2_N1",
+      "degree": 1,
+      "segment": 2,
+      "chain": "B",
+      "seq": "105",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "B",
+      "label_seq": "1",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        12.33427,
+        -8.43497,
+        -14.59056
+      ],
+      "fractional": [
+        0.07072051124042923,
+        -0.09227987910800718,
+        -0.15156188972451903
+      ],
+      "description": "segment=2 chain=B residue=DA:105 atom=O3' altloc=."
+    },
+    {
+      "label": "S2_N2",
+      "degree": 2,
+      "segment": 2,
+      "chain": "B",
+      "seq": "106",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "B",
+      "label_seq": "2",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        12.93038,
+        -2.76434,
+        -12.76829
+      ],
+      "fractional": [
+        0.10738711244155069,
+        -0.030242308035882577,
+        -0.13263275439398345
+      ],
+      "description": "segment=2 chain=B residue=DC:106 atom=O3' altloc=."
+    },
+    {
+      "label": "S2_N3",
+      "degree": 2,
+      "segment": 2,
+      "chain": "B",
+      "seq": "107",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "B",
+      "label_seq": "3",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        14.12571,
+        1.49502,
+        -8.939
+      ],
+      "fractional": [
+        0.14201123858985926,
+        0.016355750508188292,
+        -0.09285536211409813
+      ],
+      "description": "segment=2 chain=B residue=DA:107 atom=O3' altloc=."
+    },
+    {
+      "label": "S2_N4",
+      "degree": 2,
+      "segment": 2,
+      "chain": "B",
+      "seq": "111",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "B",
+      "label_seq": "4",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        17.71558,
+        6.29319,
+        -8.91924
+      ],
+      "fractional": [
+        0.20226965181920337,
+        0.06884847396063293,
+        -0.09265010179914404
+      ],
+      "description": "segment=2 chain=B residue=DC:111 atom=O3' altloc=."
+    },
+    {
+      "label": "S2_N5",
+      "degree": 2,
+      "segment": 2,
+      "chain": "B",
+      "seq": "112",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "B",
+      "label_seq": "5",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        14.62905,
+        12.53904,
+        -8.10439
+      ],
+      "fractional": [
+        0.20719175456791272,
+        0.13717904098419634,
+        -0.08418571072422819
+      ],
+      "description": "segment=2 chain=B residue=DC:112 atom=O3' altloc=."
+    },
+    {
+      "label": "S2_N6",
+      "degree": 2,
+      "segment": 2,
+      "chain": "B",
+      "seq": "113",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "B",
+      "label_seq": "6",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        12.6777,
+        17.79999,
+        -10.306
+      ],
+      "fractional": [
+        0.2174815865734947,
+        0.19473464936137735,
+        -0.10705530394315867
+      ],
+      "description": "segment=2 chain=B residue=DG:113 atom=O3' altloc=."
+    },
+    {
+      "label": "S2_N7",
+      "degree": 1,
+      "segment": 2,
+      "chain": "B",
+      "seq": "114",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "B",
+      "label_seq": "7",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        7.24808,
+        18.75879,
+        -12.47891
+      ],
+      "fractional": [
+        0.17128362204678163,
+        0.2052240699626074,
+        -0.1296267710973532
+      ],
+      "description": "segment=2 chain=B residue=DT:114 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N1",
+      "degree": 1,
+      "segment": 3,
+      "chain": "C",
+      "seq": "101",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "1",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        36.4621,
+        7.63942,
+        -28.71415
+      ],
+      "fractional": [
+        0.38724664077096094,
+        0.08357643880835292,
+        -0.29827305023476125
+      ],
+      "description": "segment=3 chain=C residue=DT:101 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N2",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "102",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "2",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        30.40837,
+        7.16667,
+        -32.20123
+      ],
+      "fractional": [
+        0.3273048864836824,
+        0.07840448053839934,
+        -0.33449567873021147
+      ],
+      "description": "segment=3 chain=C residue=DC:102 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N3",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "103",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "3",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        24.21258,
+        4.3489,
+        -31.64953
+      ],
+      "fractional": [
+        0.2531897504019893,
+        0.04757764002157836,
+        -0.32876480242655914
+      ],
+      "description": "segment=3 chain=C residue=DT:103 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N4",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "104",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "4",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        20.88661,
+        -0.37524,
+        -29.50209
+      ],
+      "fractional": [
+        0.19583659492917171,
+        -0.0041051837572022585,
+        -0.3064579091702331
+      ],
+      "description": "segment=3 chain=C residue=DG:104 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N5",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "105",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "5",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        19.10699,
+        -3.12331,
+        -25.34056
+      ],
+      "fractional": [
+        0.16394351455500727,
+        -0.03416949547145155,
+        -0.26322931815348816
+      ],
+      "description": "segment=3 chain=C residue=DA:105 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N6",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "106",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "6",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        18.6595,
+        -3.76842,
+        -19.87339
+      ],
+      "fractional": [
+        0.15617499027523696,
+        -0.041227098854909536,
+        -0.2064381726014875
+      ],
+      "description": "segment=3 chain=C residue=DT:106 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N7",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "107",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "7",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        20.61181,
+        -2.80661,
+        -14.1924
+      ],
+      "fractional": [
+        0.17993323316616963,
+        -0.030704748387169595,
+        -0.14742593592886521
+      ],
+      "description": "segment=3 chain=C residue=DG:107 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N8",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "108",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "8",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        18.46619,
+        0.32767,
+        -9.95918
+      ],
+      "fractional": [
+        0.17674941365178892,
+        0.0035847605844858744,
+        -0.1034526530103461
+      ],
+      "description": "segment=3 chain=C residue=DT:108 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N9",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "109",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "9",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        17.71996,
+        1.54372,
+        -3.76188
+      ],
+      "fractional": [
+        0.17633118096727915,
+        0.016888536056039665,
+        -0.039077159596127474
+      ],
+      "description": "segment=3 chain=C residue=DG:109 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N10",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "110",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "10",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        17.27193,
+        -0.22395,
+        2.99528
+      ],
+      "fractional": [
+        0.16241705029242884,
+        -0.0024500477092672815,
+        0.03111397349067187
+      ],
+      "description": "segment=3 chain=C residue=DG:110 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N11",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "111",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "11",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        20.20441,
+        -2.36897,
+        7.75765
+      ],
+      "fractional": [
+        0.17846726607859867,
+        -0.025916898958798416,
+        0.0805838908048365
+      ],
+      "description": "segment=3 chain=C residue=DC:111 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N12",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "112",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "12",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        26.26732,
+        -5.07577,
+        10.12995
+      ],
+      "fractional": [
+        0.22110361094256942,
+        -0.055529710476747374,
+        0.10522655503386377
+      ],
+      "description": "segment=3 chain=C residue=DT:112 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N13",
+      "degree": 2,
+      "segment": 3,
+      "chain": "C",
+      "seq": "113",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "13",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        31.65622,
+        -8.78218,
+        9.09964
+      ],
+      "fractional": [
+        0.251886136156672,
+        -0.09607841032093282,
+        0.09452403706319856
+      ],
+      "description": "segment=3 chain=C residue=DG:113 atom=O3' altloc=."
+    },
+    {
+      "label": "S3_N14",
+      "degree": 1,
+      "segment": 3,
+      "chain": "C",
+      "seq": "114",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "C",
+      "label_seq": "14",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        37.21869,
+        -9.07003,
+        6.2812
+      ],
+      "fractional": [
+        0.3030129301443151,
+        -0.09922753393384902,
+        0.06524701873935264
+      ],
+      "description": "segment=3 chain=C residue=DC:114 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N1",
+      "degree": 1,
+      "segment": 4,
+      "chain": "D",
+      "seq": "113",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "1",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        5.52783,
+        5.94052,
+        -17.22859
+      ],
+      "fractional": [
+        0.08486826552271838,
+        0.06499020950148003,
+        -0.17896486890763283
+      ],
+      "description": "segment=4 chain=D residue=DC:113 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N2",
+      "degree": 2,
+      "segment": 4,
+      "chain": "D",
+      "seq": "114",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "2",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        7.9217,
+        9.70429,
+        -21.50228
+      ],
+      "fractional": [
+        0.1281369858337442,
+        0.10616643663570154,
+        -0.22335854074043293
+      ],
+      "description": "segment=4 chain=D residue=DG:114 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N3",
+      "degree": 2,
+      "segment": 4,
+      "chain": "D",
+      "seq": "115",
+      "insertion": "",
+      "residue": "DG",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "3",
+      "label_comp": "DG",
+      "label_atom": "O3'",
+      "cartesian": [
+        13.62476,
+        13.19285,
+        -22.37747
+      ],
+      "fractional": [
+        0.20125304839434904,
+        0.14433182371603845,
+        -0.2324497236880375
+      ],
+      "description": "segment=4 chain=D residue=DG:115 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N4",
+      "degree": 2,
+      "segment": 4,
+      "chain": "D",
+      "seq": "116",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "4",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        18.86135,
+        13.91867,
+        -18.54688
+      ],
+      "fractional": [
+        0.25483716137134704,
+        0.1522724070084715,
+        -0.19265882744006316
+      ],
+      "description": "segment=4 chain=D residue=DA:116 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N5",
+      "degree": 2,
+      "segment": 4,
+      "chain": "D",
+      "seq": "117",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "5",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        23.75541,
+        10.42528,
+        -16.43532
+      ],
+      "fractional": [
+        0.28209658459621995,
+        0.11405417897954888,
+        -0.17072464370299578
+      ],
+      "description": "segment=4 chain=D residue=DC:117 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N6",
+      "degree": 2,
+      "segment": 4,
+      "chain": "D",
+      "seq": "118",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "6",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        26.54689,
+        5.43142,
+        -13.91925
+      ],
+      "fractional": [
+        0.2812275270645487,
+        0.05942057659776058,
+        -0.14458854447999334
+      ],
+      "description": "segment=4 chain=D residue=DA:118 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N7",
+      "degree": 2,
+      "segment": 4,
+      "chain": "D",
+      "seq": "119",
+      "insertion": "",
+      "residue": "DT",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "7",
+      "label_comp": "DT",
+      "label_atom": "O3'",
+      "cartesian": [
+        28.31836,
+        -0.10441,
+        -14.80781
+      ],
+      "fractional": [
+        0.2677298157066891,
+        -0.0011422615821593777,
+        -0.15381861054556029
+      ],
+      "description": "segment=4 chain=D residue=DT:119 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N8",
+      "degree": 2,
+      "segment": 4,
+      "chain": "D",
+      "seq": "120",
+      "insertion": "",
+      "residue": "DC",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "8",
+      "label_comp": "DC",
+      "label_atom": "O3'",
+      "cartesian": [
+        26.92651,
+        -5.27022,
+        -18.86503
+      ],
+      "fractional": [
+        0.22628541848002742,
+        -0.05765702361390752,
+        -0.19596366393817258
+      ],
+      "description": "segment=4 chain=D residue=DC:120 atom=O3' altloc=."
+    },
+    {
+      "label": "S4_N9",
+      "degree": 1,
+      "segment": 4,
+      "chain": "D",
+      "seq": "121",
+      "insertion": "",
+      "residue": "DA",
+      "atom": "O3'",
+      "altloc": "",
+      "label_asym": "D",
+      "label_seq": "9",
+      "label_comp": "DA",
+      "label_atom": "O3'",
+      "cartesian": [
+        27.3056,
+        -8.17757,
+        -25.23311
+      ],
+      "fractional": [
+        0.2139736587414421,
+        -0.0894638832144354,
+        -0.2621131632525865
+      ],
+      "description": "segment=4 chain=D residue=DA:121 atom=O3' altloc=."
+    }
+  ],
+  "edges": [
+    [
+      "S1_N1",
+      "S1_N2"
+    ],
+    [
+      "S1_N2",
+      "S1_N3"
+    ],
+    [
+      "S1_N3",
+      "S1_N4"
+    ],
+    [
+      "S1_N4",
+      "S1_N5"
+    ],
+    [
+      "S1_N5",
+      "S1_N6"
+    ],
+    [
+      "S1_N6",
+      "S1_N7"
+    ],
+    [
+      "S1_N7",
+      "S1_N8"
+    ],
+    [
+      "S1_N8",
+      "S1_N9"
+    ],
+    [
+      "S1_N9",
+      "S1_N10"
+    ],
+    [
+      "S1_N10",
+      "S1_N11"
+    ],
+    [
+      "S1_N11",
+      "S1_N12"
+    ],
+    [
+      "S2_N1",
+      "S2_N2"
+    ],
+    [
+      "S2_N2",
+      "S2_N3"
+    ],
+    [
+      "S2_N3",
+      "S2_N4"
+    ],
+    [
+      "S2_N4",
+      "S2_N5"
+    ],
+    [
+      "S2_N5",
+      "S2_N6"
+    ],
+    [
+      "S2_N6",
+      "S2_N7"
+    ],
+    [
+      "S3_N1",
+      "S3_N2"
+    ],
+    [
+      "S3_N2",
+      "S3_N3"
+    ],
+    [
+      "S3_N3",
+      "S3_N4"
+    ],
+    [
+      "S3_N4",
+      "S3_N5"
+    ],
+    [
+      "S3_N5",
+      "S3_N6"
+    ],
+    [
+      "S3_N6",
+      "S3_N7"
+    ],
+    [
+      "S3_N7",
+      "S3_N8"
+    ],
+    [
+      "S3_N8",
+      "S3_N9"
+    ],
+    [
+      "S3_N9",
+      "S3_N10"
+    ],
+    [
+      "S3_N10",
+      "S3_N11"
+    ],
+    [
+      "S3_N11",
+      "S3_N12"
+    ],
+    [
+      "S3_N12",
+      "S3_N13"
+    ],
+    [
+      "S3_N13",
+      "S3_N14"
+    ],
+    [
+      "S4_N1",
+      "S4_N2"
+    ],
+    [
+      "S4_N2",
+      "S4_N3"
+    ],
+    [
+      "S4_N3",
+      "S4_N4"
+    ],
+    [
+      "S4_N4",
+      "S4_N5"
+    ],
+    [
+      "S4_N5",
+      "S4_N6"
+    ],
+    [
+      "S4_N6",
+      "S4_N7"
+    ],
+    [
+      "S4_N7",
+      "S4_N8"
+    ],
+    [
+      "S4_N8",
+      "S4_N9"
+    ]
+  ],
+  "missing_atoms": [],
+  "stitching": false,
+  "warnings": [
+    "Unstitched finite strand components; no nick, junction, or symmetry-image joins."
+  ],
+  "asu_graphs": {
+    "residue": {
+      "nodes": 42,
+      "edges": 38,
+      "edge_type_counts": {
+        "covalent": 38
+      },
+      "periodicity": [
+        "C (14) residues: finite (0-periodic)",
+        "A (12) residues: finite (0-periodic)",
+        "D (9) residues: finite (0-periodic)",
+        "B (7) residues: finite (0-periodic)"
+      ]
+    },
+    "chain": {
+      "nodes": 4,
+      "edges": 0,
+      "edge_type_counts": {},
+      "periodicity": [
+        "4 single node(s) with no join, finite: A, B, C, D"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "name": "8D93_unstiched.cgd",
+      "sha256": "b32a753468ad85c2a8183b60bc4da544afea9b394294ffbb0654aafdc2d9015c"
+    },
+    {
+      "name": "8D93_unstiched_asu.json",
+      "sha256": "46ab17ffac20d230a6fa514fd651361717ecf4b7b19624b133ef933b6949cf00"
+    },
+    {
+      "name": "8D93_unstiched_chains.html",
+      "sha256": "89a8b42a443ead9c163b084e7fadd8c1637f9e00840121d328efcfefec84c284"
+    },
+    {
+      "name": "8D93_unstiched_residues.html",
+      "sha256": "86c6e001f77d3a306880d152bfa46498770e34370feeaca0ddab0a0de6ceaf51"
+    },
+    {
+      "name": "8D93_unstiched.cmm",
+      "sha256": "77a2c4d5f01395e1fee445f68d0105899be31466e240917d7a8299c8dd2b794a"
+    },
+    {
+      "name": "8D93_unstiched_symmetry.cmm",
+      "sha256": "2f01531c1a4075777d33318649d16bbd7984f39a16fd1f754c2df65215b5c412"
+    }
+  ]
+}

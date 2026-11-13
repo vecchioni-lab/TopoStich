@@ -1,0 +1,621 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TopoStich ASU quotient graphs",
+  "description": "Asymmetric-unit quotient graphs of covalent bonds and stitched joins at chain and residue resolution, ported from NAtopo's asu_quotient/residue_quotient. One edge per symmetry orbit, labelled with the partner copy's symmetry code; periodicity from the cycles' generated translations. Source name and hash are provenance, not operational paths.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "format",
+    "tool_version",
+    "name",
+    "source_name",
+    "source_sha256",
+    "model",
+    "altloc",
+    "cell",
+    "space_group",
+    "symmetry_operations",
+    "stitching",
+    "chain_graph",
+    "residue_graph"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "format": {
+      "const": "TopoStich ASU quotient graphs"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "model": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "altloc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cell": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "space_group": {
+      "type": "string"
+    },
+    "symmetry_operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "operation"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "operation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "stitching": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nicks",
+        "terminal_stacks"
+      ],
+      "properties": {
+        "nicks": {
+          "type": "boolean"
+        },
+        "terminal_stacks": {
+          "type": "boolean"
+        }
+      }
+    },
+    "chain_graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolution",
+        "name",
+        "space_group",
+        "nodes",
+        "edges",
+        "edge_type_counts",
+        "self_loops",
+        "symmetry_edges",
+        "periodicity",
+        "summary"
+      ],
+      "properties": {
+        "resolution": {
+          "const": "chain"
+        },
+        "name": {
+          "type": "string"
+        },
+        "space_group": {
+          "type": "string"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "label",
+              "chain",
+              "label_asym",
+              "segment",
+              "kind",
+              "residue_count",
+              "internal_covalent_edges"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^S[0-9]+$"
+              },
+              "label": {
+                "type": "string"
+              },
+              "chain": {
+                "type": "string"
+              },
+              "label_asym": {
+                "type": "string"
+              },
+              "segment": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "kind": {
+                "enum": [
+                  "polymer",
+                  "other"
+                ]
+              },
+              "residue_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "internal_covalent_edges": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "target",
+              "type",
+              "symmetry_code",
+              "operator",
+              "lattice_translation",
+              "operation",
+              "intra_asu",
+              "distance_min_A",
+              "distance_max_A",
+              "residue_pairs",
+              "residue_edge_count"
+            ],
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "covalent",
+                  "backbone_join",
+                  "backbone_join_o5",
+                  "terminal_stack"
+                ]
+              },
+              "symmetry_code": {
+                "type": "string",
+                "description": "PDB-style op_klm of the target copy relative to the source"
+              },
+              "operator": {
+                "type": "string"
+              },
+              "lattice_translation": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "operation": {
+                "type": "string",
+                "description": "Fractional operation mapping the target's ASU copy"
+              },
+              "intra_asu": {
+                "type": "boolean"
+              },
+              "distance_min_A": {
+                "type": "number"
+              },
+              "distance_max_A": {
+                "type": "number"
+              },
+              "polarities": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "5'-3'",
+                    "5'-5'",
+                    "3'-3'"
+                  ]
+                },
+                "description": "terminal_stack edges only"
+              },
+              "same_polarity": {
+                "type": "boolean",
+                "description": "terminal_stack edges only: any 5'-5' or 3'-3' stack"
+              },
+              "residue_pairs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "residue_edge_count": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "edge_type_counts": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "covalent",
+              "backbone_join",
+              "backbone_join_o5",
+              "terminal_stack"
+            ]
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "self_loops": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "symmetry_edges": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "periodicity": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "nodes",
+              "dimension",
+              "translation_basis",
+              "point_group_order",
+              "space_group_point_order",
+              "interpenetrating_copies",
+              "independent_cycles"
+            ],
+            "properties": {
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "dimension": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "translation_basis": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 3,
+                "description": "Hermite basis of the generated lattice translations, fractional"
+              },
+              "point_group_order": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "space_group_point_order": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "interpenetrating_copies": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1,
+                "description": "3-periodic parts only: index of the generated subgroup"
+              },
+              "independent_cycles": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "residue_graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolution",
+        "name",
+        "space_group",
+        "nodes",
+        "edges",
+        "edge_type_counts",
+        "self_loops",
+        "symmetry_edges",
+        "periodicity",
+        "summary"
+      ],
+      "properties": {
+        "resolution": {
+          "const": "residue"
+        },
+        "name": {
+          "type": "string"
+        },
+        "space_group": {
+          "type": "string"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "label",
+              "residue",
+              "seq",
+              "insertion",
+              "chain",
+              "label_asym",
+              "segment",
+              "chain_node",
+              "chain_label",
+              "kind",
+              "position_in_chain"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "residue": {
+                "type": "string"
+              },
+              "seq": {
+                "type": "string"
+              },
+              "insertion": {
+                "type": "string"
+              },
+              "chain": {
+                "type": "string"
+              },
+              "label_asym": {
+                "type": "string"
+              },
+              "segment": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "chain_node": {
+                "type": "string",
+                "pattern": "^S[0-9]+$"
+              },
+              "chain_label": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "polymer",
+                  "other"
+                ]
+              },
+              "position_in_chain": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "target",
+              "type",
+              "symmetry_code",
+              "operator",
+              "lattice_translation",
+              "operation",
+              "intra_asu",
+              "distance_min_A",
+              "distance_max_A",
+              "intra_chain",
+              "contacts"
+            ],
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "covalent",
+                  "backbone_join",
+                  "backbone_join_o5",
+                  "terminal_stack"
+                ]
+              },
+              "symmetry_code": {
+                "type": "string",
+                "description": "PDB-style op_klm of the target copy relative to the source"
+              },
+              "operator": {
+                "type": "string"
+              },
+              "lattice_translation": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "operation": {
+                "type": "string",
+                "description": "Fractional operation mapping the target's ASU copy"
+              },
+              "intra_asu": {
+                "type": "boolean"
+              },
+              "distance_min_A": {
+                "type": "number"
+              },
+              "distance_max_A": {
+                "type": "number"
+              },
+              "polarities": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "5'-3'",
+                    "5'-5'",
+                    "3'-3'"
+                  ]
+                },
+                "description": "terminal_stack edges only"
+              },
+              "same_polarity": {
+                "type": "boolean",
+                "description": "terminal_stack edges only: any 5'-5' or 3'-3' stack"
+              },
+              "intra_chain": {
+                "type": "boolean"
+              },
+              "contacts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "edge_type_counts": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "covalent",
+              "backbone_join",
+              "backbone_join_o5",
+              "terminal_stack"
+            ]
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "self_loops": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "symmetry_edges": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "periodicity": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "nodes",
+              "dimension",
+              "translation_basis",
+              "point_group_order",
+              "space_group_point_order",
+              "interpenetrating_copies",
+              "independent_cycles"
+            ],
+            "properties": {
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "dimension": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "translation_basis": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 3,
+                "description": "Hermite basis of the generated lattice translations, fractional"
+              },
+              "point_group_order": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "space_group_point_order": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "interpenetrating_copies": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1,
+                "description": "3-periodic parts only: index of the generated subgroup"
+              },
+              "independent_cycles": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

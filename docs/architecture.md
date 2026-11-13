@@ -15,10 +15,11 @@ receipt and nucleotide catalog schemas are unchanged. See `cgd.md` for limits.
 `stitching.py` holds the opt-in backbone nick rule ported from NAtopo
 (`nucleotide_interactions.find_backbone_join_candidates`, with the loose-end
 rules of `prepare_nucleotides` and the polymer links of `build_atom_graph`).
-It is called only by `export_cgd` with `stitch_nicks` or `stitch_junctions`. Per residue it finds
+It is called only by `export_cgd` with `stitch_nicks` or `stitch_terminal_stacks`. Per residue it finds
 loose P (with own O5′), loose O3′ (with own C3′) and phosphate-less O5′ ends; a
 consecutive O3′–P pair at 0.8–2.2 Å or an explicit input link at 0.8–2.3 Å
-makes an end non-loose. Every space-group operation and every lattice
+makes an end non-loose (mmCIF `_struct_conn` links count only with a covalent
+`conn_type_id`; untyped PDB CONECT counts). Every space-group operation and every lattice
 translation that can bring a loose O3′ within the cutoff of a 5′ end is
 enumerated exactly (no finite cell window). Candidates on the same chain copy
 are excluded. Joins are stitched only when one-to-one and between segment
@@ -27,19 +28,38 @@ termini; the source is the 3′ end in its stored position and the target is the
 uses `g⁻¹`, and degrees count distinct neighbor images. Stitched receipts use
 schema 2; unstitched output is byte-identical to 0.3.0.
 
-Junction stitching (`stitch_junctions=True`) uses the same `StitchContext`, so
-nicks are registered first and junction duplicates of existing edges are
-detected. Base planes are SVD fits (a dependency-free Jacobi eigen-solve) of
-complete ring heavy atoms, with ring names from the packaged NARestraints
-catalog. Stacks are enumerated as symmetry orbits: residue pairs `a ≤ b`, every
-operation and lattice translation within the 5.5 Å centroid cutoff, and one of
-`g`/`g⁻¹` for a residue against itself. NAtopo's angle, separation and shift
-limits apply. Verified O3′–P neighbors are excluded, and the face reason comes
-from signed projections onto each endpoint's plane. CGD rows are de-duplicated
-per node, so a join to the node's own image under an involution is one
-neighbor. The viewer draws nick joins and junction stacks in separate models
-with explicit endpoint markers. `tools/CheckCgd.java --stitched` plus
+Chain-end stack stitching (`stitch_terminal_stacks=True`) uses the same
+`StitchContext`, so nicks are registered first: a stack between two ends that
+a stitched nick (or a verified same-image O3′–P link) already joins is
+`backbone_joined`, and duplicates of existing edges are detected. Chain ends are
+the first (5′) and last (3′) backbone-bearing residues of segments with at
+least two of them. Base planes are SVD fits (a dependency-free Jacobi
+eigen-solve) of complete ring heavy atoms, with ring names from the packaged
+NARestraints catalog. Stacks are enumerated as symmetry orbits: end pairs
+`a ≤ b`, every operation and lattice translation within the 5.5 Å centroid
+cutoff, and one of `g`/`g⁻¹` for an end against itself. NAtopo's angle,
+separation and shift limits apply. A 5′-3′ stack is oriented 3′ → 5′; each end
+maps to its segment's outermost O3′ node. CGD rows are de-duplicated per node,
+so a join to the node's own image under an involution is one neighbor. The
+viewer draws nick joins and chain-end stacks in separate models with explicit
+endpoint markers. `tools/CheckCgd.java --stitched` plus
 `tools/check_stitched_cgd.py` compare Systre's parsed adjacency with the receipt.
+
+`asu_graphs.py` ports NAtopo's `asu_quotient.py` and `residue_quotient.py`
+without NetworkX/NumPy. Operations are exact integer pairs `(R, t·24)`. Raw
+residue joins are the segment-internal O3′–P polymer links, deposited covalent
+links (0.8–2.3 Å, covalent `conn_type_id` or untyped CONECT, no metal/H/water
+endpoint) and the `StitchContext.stitched_links` recorded by `add_edge` (the
+actual 3′/5′ residues, not their O3′ nodes). Each join is oriented as
+`min((s, t, g), (t, s, g⁻¹))` by node order and operation key and merged per
+`(source, target, g, type)`; chain-resolution edges skip same-segment identity
+joins (counted as `internal_covalent_edges`). Symmetry codes use the input's
+operator numbering (`_space_group_symop`/REMARK 290) or Gemmi's order. The
+periodicity is NAtopo's voltage-graph method: BFS spanning-tree potentials,
+cycle elements, Schreier generation of the translation subgroup, its Hermite
+basis, and the index for interpenetrating copies. `asu_view.py` renders
+NAtopo's two layouts as inline SVG with a small script for filters, details and
+pan/zoom; it uses no external resources.
 
 `src/topostich/converter.py` owns fixed-column PDB parsing, input dispatch, atom selection,
 coordinate transforms, graph construction and the three output writers.

@@ -1,0 +1,906 @@
+<marker_sets>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 1: x,y,z">
+    <marker id="1" x="31.67943" y="8.3723" z="1.34405" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="32.59129" y="4.76937" z="-4.40769" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="32.86162" y="-0.83937" z="-7.09925" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="32.51673" y="-7.08655" z="-6.15193" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="30.98354" y="-12.95351" z="-2.95705" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="25.88821" y="-15.41076" z="-0.04684" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="20.0029" y="-13.35295" z="3.08569" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="14.56811" y="-9.74769" z="4.40266" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="9.55747" y="-5.91829" z="2.32943" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="5.60642" y="-4.11352" z="-1.17608" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="2.2525" y="-3.40113" z="-5.95804" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="0.74172" y="-4.5089" z="-12.2821" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 1: x,y,z">
+    <marker id="1" x="12.33427" y="-8.43497" z="-14.59056" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="12.93038" y="-2.76434" z="-12.76829" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="14.12571" y="1.49502" z="-8.939" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="17.71558" y="6.29319" z="-8.91924" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="14.62905" y="12.53904" z="-8.10439" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="12.6777" y="17.79999" z="-10.306" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="7.24808" y="18.75879" z="-12.47891" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 1: x,y,z">
+    <marker id="1" x="36.4621" y="7.63942" z="-28.71415" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="30.40837" y="7.16667" z="-32.20123" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="24.21258" y="4.3489" z="-31.64953" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="20.88661" y="-0.37524" z="-29.50209" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="19.10699" y="-3.12331" z="-25.34056" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="18.6595" y="-3.76842" z="-19.87339" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="20.61181" y="-2.80661" z="-14.1924" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="18.46619" y="0.32767" z="-9.95918" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="17.71996" y="1.54372" z="-3.76188" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="17.27193" y="-0.22395" z="2.99528" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="20.20441" y="-2.36897" z="7.75765" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="26.26732" y="-5.07577" z="10.12995" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="31.65622" y="-8.78218" z="9.09964" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="37.21869" y="-9.07003" z="6.2812" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 1: x,y,z">
+    <marker id="1" x="5.52783" y="5.94052" z="-17.22859" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="7.9217" y="9.70429" z="-21.50228" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="13.62476" y="13.19285" z="-22.37747" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="18.86135" y="13.91867" z="-18.54688" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="23.75541" y="10.42528" z="-16.43532" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="26.54689" y="5.43142" z="-13.91925" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="28.31836" y="-0.10441" z="-14.80781" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="26.92651" y="-5.27022" z="-18.86503" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="27.3056" y="-8.17757" z="-25.23311" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 2: -y,x-y,z">
+    <marker id="1" x="-23.0903394881" y="23.2490411574" z="1.34405" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-20.42604058" y="25.8402000821" z="-4.40769" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-15.7038942568" y="28.8786827295" z="-7.09925" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-10.1212326748" y="31.703589228" z="-6.15193" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-4.27370127182" y="33.3092877392" z="-2.95705" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="0.402004651625" y="30.1252275185" z="-0.04684" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="1.56254391546" y="23.9994945494" z="3.08569" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="1.15769216822" y="17.4901983451" z="4.40266" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="0.346654486963" y="11.2361568159" z="2.32943" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="0.759202818975" y="6.91206214429" z="-1.17608" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="1.81921498157" y="3.65128722202" z="-5.95804" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="3.53396194312" y="2.89679836249" z="-12.2821" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 2: -y,x-y,z">
+    <marker id="1" x="1.13776330016" y="14.8992761571" z="-14.59056" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-4.0712013353" y="12.5802075606" z="-12.76829" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-8.35758029917" y="11.4857137065" z="-8.939" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-14.3078524108" y="12.1955473228" z="-8.91924" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-18.1736521791" y="6.39960893323" z="-8.10439" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-21.7540935271" y="2.07921526156" z="-10.306" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-19.8696286843" y="-3.10237359134" z="-12.47891" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 2: -y,x-y,z">
+    <marker id="1" x="-24.8469817902" y="27.7573948753" z="-28.71415" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-21.4107032805" y="22.7510859077" z="-32.20123" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-15.8725478785" y="18.7942593712" z="-31.64953" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-10.1183376275" y="18.2759548589" z="-29.50209" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-6.84862919611" y="18.1087937299" z="-25.34056" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-6.06620254787" y="18.0438110219" z="-19.87339" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-7.87530944148" y="19.253656078" z="-14.1924" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-9.51686554406" y="15.8283546511" z="-9.95918" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-10.1968807363" y="14.574075514" z="-3.76188" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="-8.44201861082" y="15.0699051524" z="2.99528" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="-8.0506167992" y="18.6820173285" z="7.75765" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="-8.73791423623" y="25.2860514093" z="10.12995" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="-8.22251901939" y="31.8061807078" z="9.09964" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="-10.7544686069" y="36.7673460356" z="6.2812" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 2: -y,x-y,z">
+    <marker id="1" x="-7.90855623169" y="1.8169812078" z="-17.22859" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-12.3650116657" y="2.00824844116" z="-21.50228" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-18.2377232483" y="5.20296328047" z="-22.37747" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-21.4845968069" y="9.37507324967" z="-18.54688" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-20.9062623216" y="15.3601485373" z="-16.43532" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-17.9771926986" y="20.2745711315" z="-13.91925" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-14.0687582876" y="24.5766241535" z="-14.80781" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-8.89911059647" y="25.9541516953" z="-18.86503" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-6.57081663877" y="27.7361282656" z="-25.23311" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 3: -x+y,-x,z">
+    <marker id="1" x="-8.5890905119" y="-31.6213411574" z="1.34405" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-12.16524942" y="-30.6095700821" z="-4.40769" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-17.1577257432" y="-28.0393127295" z="-7.09925" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-22.3954973252" y="-24.617039228" z="-6.15193" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-26.7098387282" y="-20.3557777392" z="-2.95705" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-26.2902146516" y="-14.7144675185" z="-0.04684" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-21.5654439155" y="-10.6465445494" z="3.08569" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-15.7258021682" y="-7.74250834513" z="4.40266" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-9.90412448696" y="-5.31786681591" z="2.32943" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="-6.36562281898" y="-2.79854214429" z="-1.17608" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="-4.07171498157" y="-0.250157222024" z="-5.95804" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="-4.27568194312" y="1.61210163751" z="-12.2821" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 3: -x+y,-x,z">
+    <marker id="1" x="-13.4720333002" y="-6.46430615714" z="-14.59056" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-8.8591786647" y="-9.81586756059" z="-12.76829" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-5.76812970083" y="-12.9807337065" z="-8.939" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-3.40772758916" y="-18.4887373228" z="-8.91924" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="3.54460217907" y="-18.9386489332" z="-8.10439" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="9.07639352711" y="-19.8792052616" z="-10.306" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="12.6215486843" y="-15.6564164087" z="-12.47891" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 3: -x+y,-x,z">
+    <marker id="1" x="-11.6151182098" y="-35.3968148753" z="-28.71415" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-8.99766671946" y="-29.9177559077" z="-32.20123" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-8.34003212148" y="-23.1431593712" z="-31.64953" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-10.7682723725" y="-17.9007148589" z="-29.50209" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-12.2583608039" y="-14.9854837299" z="-25.34056" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-12.5932974521" y="-14.2753910219" z="-19.87339" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-12.7365005585" y="-16.447046078" z="-14.1924" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-8.94932445594" y="-16.1560246511" z="-9.95918" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-7.52307926367" y="-16.117795514" z="-3.76188" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="-8.82991138918" y="-14.8459551524" z="2.99528" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="-12.1537932008" y="-16.3130473285" z="7.75765" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="-17.5294057638" y="-20.2102814093" z="10.12995" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="-23.4337009806" y="-23.0240007078" z="9.09964" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="-26.4642213931" y="-27.6973160356" z="6.2812" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 3: -x+y,-x,z">
+    <marker id="1" x="2.38072623169" y="-7.7575012078" z="-17.22859" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="4.44331166569" y="-11.7125384412" z="-21.50228" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="4.61296324832" y="-18.3958132805" z="-22.37747" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="2.62324680689" y="-23.2937432497" z="-18.54688" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-2.84914767843" y="-25.7854285373" z="-16.43532" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-8.56969730138" y="-25.7059911315" z="-13.91925" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-14.2496017124" y="-24.4722141535" z="-14.80781" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-18.0273994035" y="-20.6839316953" z="-18.86503" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-20.7347833612" y="-19.5585582656" z="-25.23311" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 4: x+2/3,y+1/3,z+1/3">
+    <marker id="1" x="84.45293" y="38.8410944311" z="33.4333833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="85.36479" y="35.2381644311" z="27.6816433333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="85.63512" y="29.6294244311" z="24.9900833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="85.29023" y="23.3822444311" z="25.9374033333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="83.75704" y="17.5152844311" z="29.1322833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="78.66171" y="15.0580344311" z="32.0424933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="72.7764" y="17.1158444311" z="35.1750233333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="67.34161" y="20.7211044311" z="36.4919933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="62.33097" y="24.5505044311" z="34.4187633333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="58.37992" y="26.3552744311" z="30.9132533333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="55.026" y="27.0676644311" z="26.1312933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="53.51522" y="25.9598944311" z="19.8072333333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 4: x+2/3,y+1/3,z+1/3">
+    <marker id="1" x="65.10777" y="22.0338244311" z="17.4987733333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="65.70388" y="27.7044544311" z="19.3210433333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="66.89921" y="31.9638144311" z="23.1503333333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="70.48908" y="36.7619844311" z="23.1700933333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="67.40255" y="43.0078344311" z="23.9849433333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="65.4512" y="48.2687844311" z="21.7833333333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="60.02158" y="49.2275844311" z="19.6104233333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 4: x+2/3,y+1/3,z+1/3">
+    <marker id="1" x="89.2356" y="38.1082144311" z="3.37518333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="83.18187" y="37.6354644311" z="-0.111896666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="76.98608" y="34.8176944311" z="0.439803333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="73.66011" y="30.0935544311" z="2.58724333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="71.88049" y="27.3454844311" z="6.74877333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="71.433" y="26.7003744311" z="12.2159433333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="73.38531" y="27.6621844311" z="17.8969333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="71.23969" y="30.7964644311" z="22.1301533333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="70.49346" y="32.0125144311" z="28.3274533333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="70.04543" y="30.2448444311" z="35.0846133333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="72.97791" y="28.0998244311" z="39.8469833333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="79.04082" y="25.3930244311" z="42.2192833333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="84.42972" y="21.6866144311" z="41.1889733333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="89.99219" y="21.3987644311" z="38.3705333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 4: x+2/3,y+1/3,z+1/3">
+    <marker id="1" x="58.30133" y="36.4093144311" z="14.8607433333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="60.6952" y="40.1730844311" z="10.5870533333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="66.39826" y="43.6616444311" z="9.71186333333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="71.63485" y="44.3874644311" z="13.5424533333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="76.52891" y="40.8940744311" z="15.6540133333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="79.32039" y="35.9002144311" z="18.1700833333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="81.09186" y="30.3643844311" z="17.2815233333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="79.70001" y="25.1985744311" z="13.2243033333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="80.0791" y="22.2912244311" z="6.85622333333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 5: -y+2/3,x-y+1/3,z+1/3">
+    <marker id="1" x="29.6831605119" y="53.7178355885" z="33.4333833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="32.34745942" y="56.3089945132" z="27.6816433333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="37.0696057432" y="59.3474771606" z="24.9900833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="42.6522673252" y="62.1723836591" z="25.9374033333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="48.4997987282" y="63.7780821703" z="29.1322833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="53.1755046516" y="60.5940219496" z="32.0424933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="54.3360439155" y="54.4682889804" z="35.1750233333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="53.9311921682" y="47.9589927762" z="36.4919933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="53.120154487" y="41.704951247" z="34.4187633333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="53.532702819" y="37.3808565754" z="30.9132533333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="54.5927149816" y="34.1200816531" z="26.1312933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="56.3074619431" y="33.3655927936" z="19.8072333333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 5: -y+2/3,x-y+1/3,z+1/3">
+    <marker id="1" x="53.9112633002" y="45.3680705882" z="17.4987733333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="48.7022986647" y="43.0490019917" z="19.3210433333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="44.4159197008" y="41.9545081376" z="23.1503333333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="38.4656475892" y="42.6643417539" z="23.1700933333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="34.5998478209" y="36.8684033643" z="23.9849433333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="31.0194064729" y="32.5480096926" z="21.7833333333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="32.9038713157" y="27.3664208397" z="19.6104233333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 5: -y+2/3,x-y+1/3,z+1/3">
+    <marker id="1" x="27.9265182098" y="58.2261893064" z="3.37518333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="31.3627967195" y="53.2198803388" z="-0.111896666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="36.9009521215" y="49.2630538022" z="0.439803333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="42.6551623725" y="48.74474929" z="2.58724333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="45.9248708039" y="48.5775881609" z="6.74877333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="46.7072974521" y="48.512605453" z="12.2159433333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="44.8981905585" y="49.7224505091" z="17.8969333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="43.2566344559" y="46.2971490822" z="22.1301533333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="42.5766192637" y="45.0428699451" z="28.3274533333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="44.3314813892" y="45.5386995835" z="35.0846133333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="44.7228832008" y="49.1508117596" z="39.8469833333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="44.0355857638" y="55.7548458404" z="42.2192833333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="44.5509809806" y="62.2749751389" z="41.1889733333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="42.0190313931" y="67.2361404667" z="38.3705333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 5: -y+2/3,x-y+1/3,z+1/3">
+    <marker id="1" x="44.8649437683" y="32.2857756389" z="14.8607433333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="40.4084883343" y="32.4770428722" z="10.5870533333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="34.5357767517" y="35.6717577115" z="9.71186333333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="31.2889031931" y="39.8438676807" z="13.5424533333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="31.8672376784" y="45.8289429684" z="15.6540133333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="34.7963073014" y="50.7433655625" z="18.1700833333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="38.7047417124" y="55.0454185846" z="17.2815233333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="43.8743894035" y="56.4229461263" z="13.2243033333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="46.2026833612" y="58.2049226967" z="6.85622333333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 6: -x+y+2/3,-x+1/3,z+1/3">
+    <marker id="1" x="44.1844094881" y="-1.15254672633" z="33.4333833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="40.60825058" y="-0.140775651027" z="27.6816433333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="35.6157742568" y="2.42948170157" z="24.9900833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="30.3780026748" y="5.85175520308" z="25.9374033333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="26.0636612718" y="10.1130166919" z="29.1322833333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="26.4832853484" y="15.7543269126" z="32.0424933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="31.2080560845" y="19.8222498817" z="35.1750233333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="37.0476978318" y="22.726286086" z="36.4919933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="42.869375513" y="25.1509276152" z="34.4187633333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="46.407877181" y="27.6702522868" z="30.9132533333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="48.7017850184" y="30.2186372091" z="26.1312933333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="48.4978180569" y="32.0808960686" z="19.8072333333" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 6: -x+y+2/3,-x+1/3,z+1/3">
+    <marker id="1" x="39.3014666998" y="24.0044882739" z="17.4987733333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="43.9143213353" y="20.6529268705" z="19.3210433333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="47.0053702992" y="17.4880607246" z="23.1503333333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="49.3657724108" y="11.9800571083" z="23.1700933333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="56.3181021791" y="11.5301454978" z="23.9849433333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="61.8498935271" y="10.5895891695" z="21.7833333333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="65.3950486843" y="14.8123780224" z="19.6104233333" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 6: -x+y+2/3,-x+1/3,z+1/3">
+    <marker id="1" x="41.1583817902" y="-4.92802044425" z="3.37518333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="43.7758332805" y="0.551038523402" z="-0.111896666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="44.4334678785" y="7.32563505992" z="0.439803333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="42.0052276275" y="12.5680795721" z="2.58724333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="40.5151391961" y="15.4833107012" z="6.74877333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="40.1802025479" y="16.1934034092" z="12.2159433333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="40.0369994415" y="14.0217483531" z="17.8969333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="43.8241755441" y="14.31276978" z="22.1301533333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="45.2504207363" y="14.350998917" z="28.3274533333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="43.9435886108" y="15.6228392787" z="35.0846133333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="40.6197067992" y="14.1557471026" z="39.8469833333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="35.2440942362" y="10.2585130217" z="42.2192833333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="29.3397990194" y="7.44479372329" z="41.1889733333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="26.3092786069" y="2.7714783955" z="38.3705333333" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 6: -x+y+2/3,-x+1/3,z+1/3">
+    <marker id="1" x="55.1542262317" y="22.7112932233" z="14.8607433333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="57.2168116657" y="18.7562559899" z="10.5870533333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="57.3864632483" y="12.0729811506" z="9.71186333333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="55.3967468069" y="7.17505118141" z="13.5424533333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="49.9243523216" y="4.68336589376" z="15.6540133333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="44.2038026986" y="4.76280329961" z="18.1700833333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="38.5238982876" y="5.99658027757" z="17.2815233333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="34.7461005965" y="9.78486273582" z="13.2243033333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="32.0387166388" y="10.9102361655" z="6.85622333333" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 7: x+1/3,y+2/3,z+2/3">
+    <marker id="1" x="31.67943" y="69.3098888622" z="65.5227166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="32.59129" y="65.7069588622" z="59.7709766667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="32.86162" y="60.0982188622" z="57.0794166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="32.51673" y="53.8510388622" z="58.0267366667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="30.98354" y="47.9840788622" z="61.2216166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="25.88821" y="45.5268288622" z="64.1318266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="20.0029" y="47.5846388622" z="67.2643566667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="14.56811" y="51.1898988622" z="68.5813266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="9.55747" y="55.0192988622" z="66.5080966667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="5.60642" y="56.8240688622" z="63.0025866667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="2.2525" y="57.5364588622" z="58.2206266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="0.74172" y="56.4286888622" z="51.8965666667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 7: x+1/3,y+2/3,z+2/3">
+    <marker id="1" x="12.33427" y="52.5026188622" z="49.5881066667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="12.93038" y="58.1732488622" z="51.4103766667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="14.12571" y="62.4326088622" z="55.2396666667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="17.71558" y="67.2307788622" z="55.2594266667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="14.62905" y="73.4766288622" z="56.0742766667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="12.6777" y="78.7375788622" z="53.8726666667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="7.24808" y="79.6963788622" z="51.6997566667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 7: x+1/3,y+2/3,z+2/3">
+    <marker id="1" x="36.4621" y="68.5770088622" z="35.4645166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="30.40837" y="68.1042588622" z="31.9774366667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="24.21258" y="65.2864888622" z="32.5291366667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="20.88661" y="60.5623488622" z="34.6765766667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="19.10699" y="57.8142788622" z="38.8381066667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="18.6595" y="57.1691688622" z="44.3052766667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="20.61181" y="58.1309788622" z="49.9862666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="18.46619" y="61.2652588622" z="54.2194866667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="17.71996" y="62.4813088622" z="60.4167866667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="17.27193" y="60.7136388622" z="67.1739466667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="20.20441" y="58.5686188622" z="71.9363166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="26.26732" y="55.8618188622" z="74.3086166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="31.65622" y="52.1554088622" z="73.2783066667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="37.21869" y="51.8675588622" z="70.4598666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 7: x+1/3,y+2/3,z+2/3">
+    <marker id="1" x="5.52783" y="66.8781088622" z="46.9500766667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="7.9217" y="70.6418788622" z="42.6763866667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="13.62476" y="74.1304388622" z="41.8011966667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="18.86135" y="74.8562588622" z="45.6317866667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="23.75541" y="71.3628688622" z="47.7433466667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="26.54689" y="66.3690088622" z="50.2594166667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="28.31836" y="60.8331788622" z="49.3708566667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="26.92651" y="55.6673688622" z="45.3136366667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="27.3056" y="52.7600188622" z="38.9455566667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 8: -y+1/3,x-y+2/3,z+2/3">
+    <marker id="1" x="-23.0903394881" y="84.1866300196" z="65.5227166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-20.42604058" y="86.7777889443" z="59.7709766667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-15.7038942568" y="89.8162715917" z="57.0794166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-10.1212326748" y="92.6411780902" z="58.0267366667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-4.27370127182" y="94.2468766013" z="61.2216166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="0.402004651625" y="91.0628163807" z="64.1318266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="1.56254391546" y="84.9370834115" z="67.2643566667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="1.15769216822" y="78.4277872073" z="68.5813266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="0.346654486963" y="72.1737456781" z="66.5080966667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="0.759202818975" y="67.8496510064" z="63.0025866667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="1.81921498157" y="64.5888760842" z="58.2206266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="3.53396194312" y="63.8343872247" z="51.8965666667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 8: -y+1/3,x-y+2/3,z+2/3">
+    <marker id="1" x="1.13776330016" y="75.8368650193" z="49.5881066667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-4.0712013353" y="73.5177964227" z="51.4103766667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-8.35758029917" y="72.4233025686" z="55.2396666667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-14.3078524108" y="73.1331361849" z="55.2594266667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-18.1736521791" y="67.3371977954" z="56.0742766667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-21.7540935271" y="63.0168041237" z="53.8726666667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-19.8696286843" y="57.8352152708" z="51.6997566667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 8: -y+1/3,x-y+2/3,z+2/3">
+    <marker id="1" x="-24.8469817902" y="88.6949837375" z="35.4645166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-21.4107032805" y="83.6886747698" z="31.9774366667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-15.8725478785" y="79.7318482333" z="32.5291366667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-10.1183376275" y="79.2135437211" z="34.6765766667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-6.84862919611" y="79.046382592" z="38.8381066667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-6.06620254787" y="78.9813998841" z="44.3052766667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-7.87530944148" y="80.1912449401" z="49.9862666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-9.51686554406" y="76.7659435133" z="54.2194866667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-10.1968807363" y="75.5116643762" z="60.4167866667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="-8.44201861082" y="76.0074940145" z="67.1739466667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="-8.0506167992" y="79.6196061906" z="71.9363166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="-8.73791423623" y="86.2236402715" z="74.3086166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="-8.22251901939" y="92.7437695699" z="73.2783066667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="-10.7544686069" y="97.7049348977" z="70.4598666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 8: -y+1/3,x-y+2/3,z+2/3">
+    <marker id="1" x="-7.90855623169" y="62.75457007" z="46.9500766667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-12.3650116657" y="62.9458373033" z="42.6763866667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-18.2377232483" y="66.1405521426" z="41.8011966667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-21.4845968069" y="70.3126621118" z="45.6317866667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-20.9062623216" y="76.2977373995" z="47.7433466667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-17.9771926986" y="81.2121599936" z="50.2594166667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-14.0687582876" y="85.5142130157" z="49.3708566667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-8.89911059647" y="86.8917405574" z="45.3136366667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-6.57081663877" y="88.6737171277" z="38.9455566667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain A segment 1 symmetry 9: -x+y+1/3,-x+2/3,z+2/3">
+    <marker id="1" x="-8.5890905119" y="29.3162477047" z="65.5227166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N1 segment=1 chain=A residue=DG:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-12.16524942" y="30.3280187801" z="59.7709766667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N2 segment=1 chain=A residue=DA:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-17.1577257432" y="32.8982761326" z="57.0794166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N3 segment=1 chain=A residue=DG:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-22.3954973252" y="36.3205496342" z="58.0267366667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N4 segment=1 chain=A residue=DC:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-26.7098387282" y="40.581811123" z="61.2216166667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N5 segment=1 chain=A residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-26.2902146516" y="46.2231213437" z="64.1318266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N6 segment=1 chain=A residue=DG:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-21.5654439155" y="50.2910443128" z="67.2643566667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N7 segment=1 chain=A residue=DC:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-15.7258021682" y="53.195080517" z="68.5813266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N8 segment=1 chain=A residue=DC:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-9.90412448696" y="55.6197220462" z="66.5080966667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N9 segment=1 chain=A residue=DT:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="-6.36562281898" y="58.1390467179" z="63.0025866667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N10 segment=1 chain=A residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="-4.07171498157" y="60.6874316401" z="58.2206266667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N11 segment=1 chain=A residue=DT:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="-4.27568194312" y="62.5496904997" z="51.8965666667" r="0.16" g="0.65" b="0.85" radius="0.5" note="S1_N12 segment=1 chain=A residue=DA:112 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="9" id2="10" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="10" id2="11" r="0.16" g="0.65" b="0.85" radius="0.22" />
+    <link id1="11" id2="12" r="0.16" g="0.65" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain B segment 2 symmetry 9: -x+y+1/3,-x+2/3,z+2/3">
+    <marker id="1" x="-13.4720333002" y="54.473282705" z="49.5881066667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N1 segment=2 chain=B residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-8.8591786647" y="51.1217213016" z="51.4103766667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N2 segment=2 chain=B residue=DC:106 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-5.76812970083" y="47.9568551557" z="55.2396666667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N3 segment=2 chain=B residue=DA:107 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-3.40772758916" y="42.4488515394" z="55.2594266667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N4 segment=2 chain=B residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="3.54460217907" y="41.9989399289" z="56.0742766667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N5 segment=2 chain=B residue=DC:112 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="9.07639352711" y="41.0583836006" z="53.8726666667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N6 segment=2 chain=B residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="12.6215486843" y="45.2811724535" z="51.6997566667" r="0.95" g="0.55" b="0.18" radius="0.5" note="S2_N7 segment=2 chain=B residue=DT:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="2" id2="3" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="3" id2="4" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="4" id2="5" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="5" id2="6" r="0.95" g="0.55" b="0.18" radius="0.22" />
+    <link id1="6" id2="7" r="0.95" g="0.55" b="0.18" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain C segment 3 symmetry 9: -x+y+1/3,-x+2/3,z+2/3">
+    <marker id="1" x="-11.6151182098" y="25.5407739868" z="35.4645166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N1 segment=3 chain=C residue=DT:101 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="-8.99766671946" y="31.0198329545" z="31.9774366667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N2 segment=3 chain=C residue=DC:102 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="-8.34003212148" y="37.794429491" z="32.5291366667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N3 segment=3 chain=C residue=DT:103 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="-10.7682723725" y="43.0368740032" z="34.6765766667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N4 segment=3 chain=C residue=DG:104 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-12.2583608039" y="45.9521051323" z="38.8381066667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N5 segment=3 chain=C residue=DA:105 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-12.5932974521" y="46.6621978402" z="44.3052766667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N6 segment=3 chain=C residue=DT:106 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-12.7365005585" y="44.4905427842" z="49.9862666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N7 segment=3 chain=C residue=DG:107 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-8.94932445594" y="44.781564211" z="54.2194866667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N8 segment=3 chain=C residue=DT:108 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-7.52307926367" y="44.8197933481" z="60.4167866667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N9 segment=3 chain=C residue=DG:109 atom=O3' altloc=. degree=2" />
+    <marker id="10" x="-8.82991138918" y="46.0916337098" z="67.1739466667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N10 segment=3 chain=C residue=DG:110 atom=O3' altloc=. degree=2" />
+    <marker id="11" x="-12.1537932008" y="44.6245415337" z="71.9363166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N11 segment=3 chain=C residue=DC:111 atom=O3' altloc=. degree=2" />
+    <marker id="12" x="-17.5294057638" y="40.7273074528" z="74.3086166667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N12 segment=3 chain=C residue=DT:112 atom=O3' altloc=. degree=2" />
+    <marker id="13" x="-23.4337009806" y="37.9135881544" z="73.2783066667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N13 segment=3 chain=C residue=DG:113 atom=O3' altloc=. degree=2" />
+    <marker id="14" x="-26.4642213931" y="33.2402728266" z="70.4598666667" r="0.5" g="0.78" b="0.35" radius="0.5" note="S3_N14 segment=3 chain=C residue=DC:114 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="2" id2="3" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="3" id2="4" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="4" id2="5" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="5" id2="6" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="6" id2="7" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="7" id2="8" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="8" id2="9" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="9" id2="10" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="10" id2="11" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="11" id2="12" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="12" id2="13" r="0.5" g="0.78" b="0.35" radius="0.22" />
+    <link id1="13" id2="14" r="0.5" g="0.78" b="0.35" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched chain D segment 4 symmetry 9: -x+y+1/3,-x+2/3,z+2/3">
+    <marker id="1" x="2.38072623169" y="53.1800876544" z="46.9500766667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N1 segment=4 chain=D residue=DC:113 atom=O3' altloc=. degree=2" />
+    <marker id="2" x="4.44331166569" y="49.225050421" z="42.6763866667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N2 segment=4 chain=D residue=DG:114 atom=O3' altloc=. degree=2" />
+    <marker id="3" x="4.61296324832" y="42.5417755817" z="41.8011966667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N3 segment=4 chain=D residue=DG:115 atom=O3' altloc=. degree=2" />
+    <marker id="4" x="2.62324680689" y="37.6438456125" z="45.6317866667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N4 segment=4 chain=D residue=DA:116 atom=O3' altloc=. degree=2" />
+    <marker id="5" x="-2.84914767843" y="35.1521603248" z="47.7433466667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N5 segment=4 chain=D residue=DC:117 atom=O3' altloc=. degree=2" />
+    <marker id="6" x="-8.56969730138" y="35.2315977307" z="50.2594166667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N6 segment=4 chain=D residue=DA:118 atom=O3' altloc=. degree=2" />
+    <marker id="7" x="-14.2496017124" y="36.4653747086" z="49.3708566667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N7 segment=4 chain=D residue=DT:119 atom=O3' altloc=. degree=2" />
+    <marker id="8" x="-18.0273994035" y="40.2536571669" z="45.3136366667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N8 segment=4 chain=D residue=DC:120 atom=O3' altloc=. degree=2" />
+    <marker id="9" x="-20.7347833612" y="41.3790305966" z="38.9455566667" r="0.72" g="0.46" b="0.85" radius="0.5" note="S4_N9 segment=4 chain=D residue=DA:121 atom=O3' altloc=. degree=2" />
+    <link id1="1" id2="2" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="2" id2="3" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="3" id2="4" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="4" id2="5" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="5" id2="6" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="6" id2="7" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="7" id2="8" r="0.72" g="0.46" b="0.85" radius="0.22" />
+    <link id1="8" id2="9" r="0.72" g="0.46" b="0.85" radius="0.22" />
+  </marker_set>
+  <marker_set name="8D93_stiched nick joins (all symmetry copies)">
+    <marker id="1" x="0.74172" y="-4.5089" z="-12.2821" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 1: x,y,z" />
+    <marker id="2" x="2.38072623169" y="-7.7575012078" z="-17.22859" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 1: x,y,z" />
+    <link id1="1" id2="2" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="3" x="7.24808" y="18.75879" z="-12.47891" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 1: x,y,z" />
+    <marker id="4" x="1.13776330016" y="14.8992761571" z="-14.59056" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 1: x,y,z" />
+    <link id1="3" id2="4" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="5" x="3.53396194312" y="2.89679836249" z="-12.2821" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 2: -y,x-y,z" />
+    <marker id="6" x="5.52783" y="5.94052" z="-17.22859" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 2: -y,x-y,z" />
+    <link id1="5" id2="6" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="7" x="-19.8696286843" y="-3.10237359134" z="-12.47891" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 2: -y,x-y,z" />
+    <marker id="8" x="-13.4720333002" y="-6.46430615714" z="-14.59056" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 2: -y,x-y,z" />
+    <link id1="7" id2="8" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="9" x="-4.27568194312" y="1.61210163751" z="-12.2821" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 3: -x+y,-x,z" />
+    <marker id="10" x="-7.90855623169" y="1.8169812078" z="-17.22859" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 3: -x+y,-x,z" />
+    <link id1="9" id2="10" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="11" x="12.6215486843" y="-15.6564164087" z="-12.47891" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 3: -x+y,-x,z" />
+    <marker id="12" x="12.33427" y="-8.43497" z="-14.59056" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 3: -x+y,-x,z" />
+    <link id1="11" id2="12" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="13" x="53.51522" y="25.9598944311" z="19.8072333333" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <marker id="14" x="55.1542262317" y="22.7112932233" z="14.8607433333" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <link id1="13" id2="14" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="15" x="60.02158" y="49.2275844311" z="19.6104233333" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <marker id="16" x="53.9112633002" y="45.3680705882" z="17.4987733333" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <link id1="15" id2="16" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="17" x="56.3074619431" y="33.3655927936" z="19.8072333333" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <marker id="18" x="58.30133" y="36.4093144311" z="14.8607433333" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <link id1="17" id2="18" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="19" x="32.9038713157" y="27.3664208397" z="19.6104233333" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <marker id="20" x="39.3014666998" y="24.0044882739" z="17.4987733333" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <link id1="19" id2="20" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="21" x="48.4978180569" y="32.0808960686" z="19.8072333333" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <marker id="22" x="44.8649437683" y="32.2857756389" z="14.8607433333" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <link id1="21" id2="22" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="23" x="65.3950486843" y="14.8123780224" z="19.6104233333" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <marker id="24" x="65.10777" y="22.0338244311" z="17.4987733333" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <link id1="23" id2="24" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="25" x="0.74172" y="56.4286888622" z="51.8965666667" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <marker id="26" x="2.38072623169" y="53.1800876544" z="46.9500766667" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <link id1="25" id2="26" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="27" x="7.24808" y="79.6963788622" z="51.6997566667" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <marker id="28" x="1.13776330016" y="75.8368650193" z="49.5881066667" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <link id1="27" id2="28" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="29" x="3.53396194312" y="63.8343872247" z="51.8965666667" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <marker id="30" x="5.52783" y="66.8781088622" z="46.9500766667" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <link id1="29" id2="30" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="31" x="-19.8696286843" y="57.8352152708" z="51.6997566667" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <marker id="32" x="-13.4720333002" y="54.473282705" z="49.5881066667" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <link id1="31" id2="32" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+    <marker id="33" x="-4.27568194312" y="62.5496904997" z="51.8965666667" r="1" g="0.84" b="0" radius="0.6" note="S1_N12 backbone_join segment=1 chain=A residue=DA:112 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <marker id="34" x="-7.90855623169" y="62.75457007" z="46.9500766667" r="1" g="0.84" b="0" radius="0.6" note="S4_N1 image -x+y,-x,z segment=4 chain=D residue=DC:113 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <link id1="33" id2="34" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 2.931 A" />
+    <marker id="35" x="12.6215486843" y="45.2811724535" z="51.6997566667" r="1" g="0.84" b="0" radius="0.6" note="S2_N7 backbone_join segment=2 chain=B residue=DT:114 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <marker id="36" x="12.33427" y="52.5026188622" z="49.5881066667" r="1" g="0.84" b="0" radius="0.6" note="S2_N1 image -y,x-y,z segment=2 chain=B residue=DA:105 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <link id1="35" id2="36" r="1" g="0.84" b="0" radius="0.3" note="backbone_join 3.117 A" />
+  </marker_set>
+  <marker_set name="8D93_stiched terminal stacks (all symmetry copies)">
+    <marker id="1" x="37.21869" y="-9.07003" z="6.2812" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 1: x,y,z" />
+    <marker id="2" x="41.1583817902" y="-4.92802044425" z="3.37518333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 1: x,y,z" />
+    <link id1="1" id2="2" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="3" x="27.3056" y="-8.17757" z="-25.23311" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 1: x,y,z" />
+    <marker id="4" x="29.6831605119" y="-7.21975327367" z="-30.7452833333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 1: x,y,z" />
+    <link id1="3" id2="4" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="5" x="-10.7544686069" y="36.7673460356" z="6.2812" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 2: -y,x-y,z" />
+    <marker id="6" x="-16.3114" y="38.1082144311" z="3.37518333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 2: -y,x-y,z" />
+    <link id1="5" id2="6" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="7" x="-6.57081663877" y="27.7361282656" z="-25.23311" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 2: -y,x-y,z" />
+    <marker id="8" x="-8.5890905119" y="29.3162477047" z="-30.7452833333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 2: -y,x-y,z" />
+    <link id1="7" id2="8" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="9" x="-26.4642213931" y="-27.6973160356" z="6.2812" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 3: -x+y,-x,z" />
+    <marker id="10" x="-24.8469817902" y="-33.1801939868" z="3.37518333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 3: -x+y,-x,z" />
+    <link id1="9" id2="10" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="11" x="-20.7347833612" y="-19.5585582656" z="-25.23311" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 3: -x+y,-x,z" />
+    <marker id="12" x="-21.09407" y="-22.0964944311" z="-30.7452833333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 3: -x+y,-x,z" />
+    <link id1="11" id2="12" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="13" x="89.99219" y="21.3987644311" z="38.3705333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <marker id="14" x="93.9318817902" y="25.5407739868" z="35.4645166667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <link id1="13" id2="14" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="15" x="80.0791" y="22.2912244311" z="6.85622333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <marker id="16" x="82.4566605119" y="23.2490411574" z="1.34405" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 4: x+2/3,y+1/3,z+1/3" />
+    <link id1="15" id2="16" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="17" x="42.0190313931" y="67.2361404667" z="38.3705333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <marker id="18" x="36.4621" y="68.5770088622" z="35.4645166667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <link id1="17" id2="18" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="19" x="46.2026833612" y="58.2049226967" z="6.85622333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <marker id="20" x="44.1844094881" y="59.7850421358" z="1.34405" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 5: -y+2/3,x-y+1/3,z+1/3" />
+    <link id1="19" id2="20" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="21" x="26.3092786069" y="2.7714783955" z="38.3705333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <marker id="22" x="27.9265182098" y="-2.71139955575" z="35.4645166667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <link id1="21" id2="22" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="23" x="32.0387166388" y="10.9102361655" z="6.85622333333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <marker id="24" x="31.67943" y="8.3723" z="1.34405" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 6: -x+y+2/3,-x+1/3,z+1/3" />
+    <link id1="23" id2="24" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="25" x="37.21869" y="51.8675588622" z="70.4598666667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <marker id="26" x="41.1583817902" y="56.0095684179" z="67.55385" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <link id1="25" id2="26" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="27" x="27.3056" y="52.7600188622" z="38.9455566667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <marker id="28" x="29.6831605119" y="53.7178355885" z="33.4333833333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 7: x+1/3,y+2/3,z+2/3" />
+    <link id1="27" id2="28" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="29" x="-10.7544686069" y="97.7049348977" z="70.4598666667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <marker id="30" x="-16.3114" y="99.0458032932" z="67.55385" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <link id1="29" id2="30" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="31" x="-6.57081663877" y="88.6737171277" z="38.9455566667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <marker id="32" x="-8.5890905119" y="90.2538365669" z="33.4333833333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 8: -y+1/3,x-y+2/3,z+2/3" />
+    <link id1="31" id2="32" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+    <marker id="33" x="-26.4642213931" y="33.2402728266" z="70.4598666667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N14 terminal_stack segment=3 chain=C residue=DC:114 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <marker id="34" x="-24.8469817902" y="27.7573948753" z="67.55385" r="0.9" g="0.2" b="0.75" radius="0.6" note="S3_N1 image -x+y+2/3,-x+1/3,z+1/3 segment=3 chain=C residue=DT:101 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <link id1="33" id2="34" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.375 A" />
+    <marker id="35" x="-20.7347833612" y="41.3790305966" z="38.9455566667" r="0.9" g="0.2" b="0.75" radius="0.6" note="S4_N9 terminal_stack segment=4 chain=D residue=DA:121 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <marker id="36" x="-21.09407" y="38.8410944311" z="33.4333833333" r="0.9" g="0.2" b="0.75" radius="0.6" note="S1_N1 image -y+1/3,x-y-1/3,z-1/3 segment=1 chain=A residue=DG:101 symmetry 9: -x+y+1/3,-x+2/3,z+2/3" />
+    <link id1="35" id2="36" r="0.9" g="0.2" b="0.75" radius="0.3" note="terminal_stack 3.910 A" />
+  </marker_set>
+</marker_sets>

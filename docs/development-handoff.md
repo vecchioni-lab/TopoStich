@@ -1,68 +1,84 @@
 # Development handoff
 
-## 0.4.0 nick and junction stitching — 2026-11-11
+## 0.4.0 nick and chain-end stack stitching, ASU graphs — 2026-11-13
 
-Branch `codex/rowan-nick-stitching`. The user asked for backbone nick stitching,
-then junction stitching, using the tools already built in the NAtopo project,
-plus a Systre audit that works on stitched output.
+Branch `codex/rowan-nick-stitching` (PR #1). The user asked for backbone nick
+stitching using the tools already built in the NAtopo project, plus a Systre
+audit that works on stitched output. On 2026-11-13 they asked to **remove
+junction stitching completely**, to stitch instead **any chain ends whose bases
+pi-stack** (unless already backbone joined), for every polarity (5′-3′, 5′-5′,
+3′-3′) with same-polarity stacks noted, and to generate NAtopo's **ASU graphs at
+chain and residue resolution** (code from `main_NAtopo.ipynb`) for covalent
+bonds and stitching only.
 
 **Before/after.** 0.3.0 wrote unstitched strands only. 0.4.0 adds opt-in
-`topostich-cgd --stitch-nicks` and `--stitch-junctions [--junction-scope face|all]`.
-`src/topostich/stitching.py` ports NAtopo's backbone-join screen and its
-pi-stack/`nonbackbone_pi_stack_v2` junction rule without NAtopo, NetworkX,
-NumPy or SciPy imports. Gemmi remains the only dependency. It searches every
-operation and lattice translation exactly. Nicks are stitched only when
-one-to-one between segment termini; junctions are stitched when they are face
-junctions (default) or any non-backbone stack (`all`). Defaults and all
-existing commands are unchanged.
+`topostich-cgd --stitch-nicks`, `--stitch-terminal-stacks`, and
+`--asu-graphs/--asu-chain-html/--asu-residue-html`. The junction rule and its
+flags (`--stitch-junctions`, `--junction-scope`) were drafted earlier on this
+branch and removed before release. `stitching.py` ports NAtopo's backbone-join
+screen and its pi-stack geometry; `asu_graphs.py` ports `asu_quotient.py` /
+`residue_quotient.py`; `asu_view.py` renders their layouts as self-contained
+SVG/HTML. No NAtopo, NetworkX, NumPy, SciPy or Bokeh imports; Gemmi remains
+the only dependency. Defaults and all existing commands are unchanged.
 
-**Files.** New: `stitching.py`, `tests/test_stitching.py` (12),
-`tests/test_junctions.py` (8), `schemas/cgd-receipt-2.schema.json`,
-`tools/check_stitched_cgd.py`. Changed: `cgd.py` (API/CLI, de-duplicated
-neighbor rows/degrees, schema-2 fields), `graph_viewer.py` (nick-join and
-junction-stack models), `tools/CheckCgd.java` (`--stitched` mode; default mode
-unchanged), `tools/check_install.py` (installed stitched smoke checks), version
-files, README, AGENTS, architecture, `cgd.md`, intent, agent handoff, changelog.
-Schema 1 is unchanged and still used for unstitched receipts.
+**Files.** New: `stitching.py`, `asu_graphs.py`, `asu_view.py`,
+`tests/test_stitching.py` (12), `tests/test_terminal_stacks.py` (10),
+`tests/test_asu_graphs.py` (12), `schemas/cgd-receipt-2.schema.json`,
+`schemas/asu-graphs.schema.json`, `tools/check_stitched_cgd.py`. Changed:
+`cgd.py` (API/CLI, de-duplicated neighbor rows/degrees, schema-2 fields, ASU
+outputs), `converter.py`/`mmcif_input.py` (`Pdb.conect_types`,
+`covalent_connections`), `graph_viewer.py` (nick-join and terminal-stack
+models), `tools/CheckCgd.java` (`--stitched` mode), `tools/check_install.py`,
+schema 1 (optional `asu_graphs` summary only), version files and docs.
 
 **Validation** (Python 3.11.2, Gemmi 0.7.5, macOS arm64, scratch venv):
 
-- Fail-before: the stitching and junction modules failed before their
-  implementation. The 2-fold self-junction regression fails with the
-  pre-fix row logic (declared degree 3) and passes after the fix.
 - `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m unittest discover -s tests -v`:
-  **68 passed** (48 previous + 20 new).
-- `python tools/check_install.py`: PASS, including installed nick and junction
-  smoke runs. The installed suite skips one jsonschema assertion because the
-  clean venv has no jsonschema; all real receipts were validated separately.
-- NAtopo cross-validation (NAtopo venv, Python 3.14, radius-2 window,
-  `bases.xlsx`) on 17 nucleic-acid crystals: 1BNA, 1UHX, 1V3P, 5KEK, 5KEO,
-  6YL5, 6YLB, 7SE0, 7U3R, 8EPG, 9Q5J, 9Y3B, 9ZXK and 9OSM, plus three local
-  refinement PDBs. The results were **identical** to NAtopo:
-  - **Nicks:** the same candidate orbits, relative images and distances (≤10⁻⁴ Å)
-    as `find_backbone_join_candidates`.
-  - **Junctions:** the same candidate orbits, images, face/non-face reasons and
-    centroid distances as `build_interaction_templates` → `find_junction_candidates`.
-  - **Excluded stacks:** the same count of backbone-adjacent stacks excluded.
+  **82 passed** (48 from 0.3.0 + 34 new).
+- Fail-before: the new modules did not exist before; the 2-fold self-stack
+  regression fails with the pre-fix row logic (declared degree 3); the
+  `hydrog` regression fails when every `_struct_conn` counts as covalent.
+- `python tools/check_install.py`: PASS (installed nick, terminal-stack and
+  ASU-graph smoke runs; the installed suite skips one jsonschema assertion
+  because the clean venv has no jsonschema).
+- NAtopo cross-validation on 17 crystals (1BNA, 1UHX, 1V3P, 5KEK, 5KEO, 6YL5,
+  6YLB, 7SE0, 7U3R, 8EPG, 9Q5J, 9Y3B, 9ZXK, 9OSM and three local refinement
+  PDBs), NAtopo venv running the notebook pipeline through
+  `build_residue_quotient`:
+  - **Nicks:** identical candidate orbits, relative images and distances
+    (≤10⁻⁴ Å) to `find_backbone_join_candidates`.
+  - **ASU graphs:** identical covalent orbits, backbone-join orbits (against
+    every TopoStich join candidate), symmetry codes and operator numbering to
+    NAtopo's `G_residue_quotient`; NAtopo's `periodicity()` on TopoStich's
+    edges gives the same parts, ranks, bases and interpenetration counts at
+    chain and residue resolution. This found the `hydrog` bug below.
 - Native Systre 19.6.0 (jar SHA-256
   `0d272e98a1a21669bc67a809b95c014ba2a2fb39a6fd2147039201216ab0d48d`, size
   matches the GitHub release asset, which publishes no digest; system JDK 26.0.1).
   `tools/check_stitched_cgd.py` passed on all **85 exports** (17 crystals ×
-  unstitched, nicks, junctions, both, all+O5′ fallback). Systre edge counts
-  matched the receipts exactly. All receipts validated against schema 1/2.
-  Baseline `CheckCgd` still reproduces 0.3.0's 7SE0 result (126 nodes, 114 edges).
+  unstitched, nicks, stacks, both, all+O5′ fallback) with exact edge counts.
+  Chain-graph dimensions agree with Systre's components in every export. All
+  receipts and ASU JSON validated against their schemas.
 - Default (unstitched) CGD, both CMM views and receipts are byte-identical to
-  0.3.0 for 7SE0, 5KEK, 9Y3B and the 8A PDB.
+  0.3.0 (except `tool_version`) for 1BNA, 5KEK, 6YL5, 7SE0, 9Y3B, 9ZXK and the
+  82B and arch-solids PDBs.
+- Both HTML views opened in headless Chrome for 7SE0 and 9Y3B and rendered
+  as intended; their scripts pass `node --check`.
 
-**Found by the audit.** A base stacked on its own 2-fold mate (9Y3B, 6YL5,
-6YLB) produced identical forward and reciprocal rows. TopoStich declared
-degree 3 where Systre saw 2. Rows are now de-duplicated per node.
+**Found by the checks.** (1) A base stacked on its own 2-fold mate (9Y3B,
+6YL5, 6YLB) produced identical forward and reciprocal rows; TopoStich declared
+degree 3 where Systre saw 2. Rows are now de-duplicated per node. (2) mmCIF
+`hydrog` `_struct_conn` records at 2.26–2.27 Å (5KEK A8–D11, 9ZXK D8–E26)
+were read as covalent links because the reader dropped `conn_type_id`. It is
+now kept; only covalent types count.
 
-**Not run.** ToposPro import; opening the new CMM models in ChimeraX.
+**Not run.** ToposPro import; opening the CMM models in ChimeraX; the HTML
+views in a browser other than headless Chrome.
 
-**Remaining.** Reviewed confirm/remove decisions for ambiguous nicks and for
-junctions (NAtopo's decision log could feed this); special positions; live
-ToposPro; scientific review of which junction scope fits each crystal.
+**Remaining.** Reviewed confirm/remove decisions for ambiguous nicks (NAtopo's
+decision log could feed this); special positions; live ToposPro; scientific
+review of whether every chain-end stack should be stitched (stacks are not
+exclusive, so an end may stack on two others).
 
 ## Agent onboarding and next task — 2026-11-11
 

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8D93_stiched ASU chain graph</title>
+<style>
+:root { --bg:#ffffff; --fg:#1d2730; --muted:#5b6670; --panel:#f3f5f7; --line:#d5dbe0; --covalent:#555555; --node-stroke:#25313b; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14181c; --fg:#e4e9ee; --muted:#9aa5ae; --panel:#1e2429; --line:#323a42; --covalent:#b4bcc4; --node-stroke:#e4e9ee; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { padding:14px 16px 6px; }
+h1 { font-size:17px; margin:0 0 6px; }
+p, ul { margin:4px 0; color:var(--muted); max-width:1100px; }
+ul { padding-left:20px; color:var(--fg); }
+.controls { display:flex; flex-wrap:wrap; gap:6px 16px; padding:8px 16px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--panel); }
+.controls label { display:inline-flex; align-items:center; gap:5px; cursor:pointer; }
+.swatch { width:14px; height:4px; border-radius:2px; display:inline-block; }
+button { font:inherit; padding:2px 10px; border:1px solid var(--line); border-radius:4px; background:var(--bg); color:var(--fg); cursor:pointer; }
+.wrap { display:grid; grid-template-columns:minmax(0,1fr) 320px; min-height:70vh; }
+@media (max-width: 800px) { .wrap { grid-template-columns:1fr; } }
+svg { width:100%; height:78vh; display:block; cursor:grab; touch-action:none; }
+svg.dragging { cursor:grabbing; }
+#info { border-left:1px solid var(--line); padding:12px 14px; white-space:pre-wrap; font-size:13px; background:var(--panel); overflow:auto; max-height:78vh; }
+.edge { fill:none; stroke-linecap:round; opacity:.88; vector-effect:non-scaling-stroke; }
+.hit { fill:none; stroke:transparent; stroke-width:12; vector-effect:non-scaling-stroke; cursor:pointer; }
+.node { stroke:var(--node-stroke); stroke-width:1; vector-effect:non-scaling-stroke; cursor:pointer; }
+.nodelabel { fill:#fff; font-weight:700; font-size:12px; text-anchor:middle; dominant-baseline:central; pointer-events:none; }
+.reslabel { fill:var(--muted); font-size:8px; dominant-baseline:central; pointer-events:none; }
+.chainname { font-weight:700; font-size:15px; text-anchor:middle; dominant-baseline:central; pointer-events:none; }
+.code { font-size:10px; paint-order:stroke; stroke:var(--bg); stroke-width:3px; pointer-events:none; }
+.hidden { display:none; }
+.nolabels .reslabel, .nolabels .code { display:none; }
+</style></head><body>
+<header><h1>8D93_stiched: one ASU at chain resolution (R3:H)</h1>
+<p>Nodes are the chains/TER segments of the <b>original asymmetric unit</b>. Every edge is one symmetry orbit of covalent bonds or stitched joins: X &rarr; Y labelled g means X of the original ASU is joined to the copy of Y made by <b>symmetry code</b> g (op_klm; 555 = no cell shift; unlabelled = inside the ASU). Self-loops join a node to another copy of itself. Composing the codes around any cycle gives the operation the real lattice path ends on; a non-identity result means the graph continues through the crystal. Dashed purple edges are same-polarity (5&prime;-5&prime; or 3&prime;-3&prime;) chain-end stacks. Hover or tap an edge or node for details; drag to pan, scroll to zoom.</p>
+<p><b>Periodicity</b> (all edges):</p><ul><li>A, D: 1-periodic rod/chain along [2/3, 1/3, 1/3]</li><li>C: 1-periodic rod/chain along [0, 0, 1]</li><li>1 single node(s) with no join, finite: B</li></ul></header>
+<div class="controls"><label><input type="checkbox" data-kind="backbone_join" checked> <span class="swatch" style="background:#FF7A00"></span>Stitched backbone join (P...O3&#x27;) (2)</label><label><input type="checkbox" data-kind="terminal_stack" checked> <span class="swatch" style="background:#BD45E8"></span>Stitched chain-end pi stack (2)</label><label><input type="checkbox" id="symonly"> only symmetry joins</label><label><input type="checkbox" id="labels" checked> labels</label><button id="reset" type="button">Reset view</button></div>
+<div class="wrap"><svg id="graph" viewBox="-459.7 -459.7 802.9 802.9" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="8D93_stiched: one ASU at chain resolution (R3:H)">
+<g id="edges"><path class="edge" d="M260.00,-0.00 Q106.60,106.60 -0.00,260.00" stroke="#FF7A00" stroke-width="3.0" data-type="backbone_join" data-sym="1" data-info="Stitched backbone join (P...O3&#x27;)
+From (original ASU): A
+To (copy): D 3_555
+Operation: -x+y,-x,z   cell translation [0, 0, 0]
+Distance: 2.93 A
+Residue pairs (1): A:DA112 &lt;-&gt; D:DC113"/><path class="hit" d="M260.00,-0.00 Q106.60,106.60 -0.00,260.00" data-type="backbone_join" data-sym="1" data-info="Stitched backbone join (P...O3&#x27;)
+From (original ASU): A
+To (copy): D 3_555
+Operation: -x+y,-x,z   cell translation [0, 0, 0]
+Distance: 2.93 A
+Residue pairs (1): A:DA112 &lt;-&gt; D:DC113"/><path class="edge" d="M260.00,-0.00 Q153.40,153.40 -0.00,260.00" stroke="#BD45E8" stroke-width="3.0" data-type="terminal_stack" data-sym="1" data-info="Stitched chain-end pi stack
+From (original ASU): A
+To (copy): D 9_555
+Operation: -x+y+2/3,-x+1/3,z+1/3   cell translation [0, 0, 0]
+End polarity: 5&#x27;-3&#x27;
+Distance: 3.91 A
+Residue pairs (1): A:DG101 &lt;-&gt; D:DA121 (5&#x27;-3&#x27;)"/><path class="hit" d="M260.00,-0.00 Q153.40,153.40 -0.00,260.00" data-type="terminal_stack" data-sym="1" data-info="Stitched chain-end pi stack
+From (original ASU): A
+To (copy): D 9_555
+Operation: -x+y+2/3,-x+1/3,z+1/3   cell translation [0, 0, 0]
+End polarity: 5&#x27;-3&#x27;
+Distance: 3.91 A
+Residue pairs (1): A:DG101 &lt;-&gt; D:DA121 (5&#x27;-3&#x27;)"/><path class="edge" d="M0.00,-260.00 C-65.52,-376.48 65.52,-376.48 0.00,-260.00" stroke="#FF7A00" stroke-width="3.0" data-type="backbone_join" data-sym="1" data-info="Stitched backbone join (P...O3&#x27;)
+From (original ASU): B
+To (copy): B 3_555
+Operation: -x+y,-x,z   cell translation [0, 0, 0]
+Distance: 3.12 A
+Residue pairs (1): B:DA105 &lt;-&gt; B:DT114"/><path class="hit" d="M0.00,-260.00 C-65.52,-376.48 65.52,-376.48 0.00,-260.00" data-type="backbone_join" data-sym="1" data-info="Stitched backbone join (P...O3&#x27;)
+From (original ASU): B
+To (copy): B 3_555
+Operation: -x+y,-x,z   cell translation [0, 0, 0]
+Distance: 3.12 A
+Residue pairs (1): B:DA105 &lt;-&gt; B:DT114"/><path class="edge" d="M-260.00,-0.00 C-376.48,65.52 -376.48,-65.52 -260.00,-0.00" stroke="#BD45E8" stroke-width="3.0" data-type="terminal_stack" data-sym="1" data-info="Stitched chain-end pi stack
+From (original ASU): C
+To (copy): C 9_555
+Operation: -x+y+2/3,-x+1/3,z+1/3   cell translation [0, 0, 0]
+End polarity: 5&#x27;-3&#x27;
+Distance: 3.38 A
+Residue pairs (1): C:DC114 &lt;-&gt; C:DT101 (5&#x27;-3&#x27;)"/><path class="hit" d="M-260.00,-0.00 C-376.48,65.52 -376.48,-65.52 -260.00,-0.00" data-type="terminal_stack" data-sym="1" data-info="Stitched chain-end pi stack
+From (original ASU): C
+To (copy): C 9_555
+Operation: -x+y+2/3,-x+1/3,z+1/3   cell translation [0, 0, 0]
+End polarity: 5&#x27;-3&#x27;
+Distance: 3.38 A
+Residue pairs (1): C:DC114 &lt;-&gt; C:DT101 (5&#x27;-3&#x27;)"/></g><g id="arrows"><path class="arrow" data-type="backbone_join" data-sym="1" fill="#FF7A00" d="M9,0 L-6.3,5.4 L-6.3,-5.4 Z" transform="translate(118.30,118.30) rotate(135.0)"/><path class="arrow" data-type="terminal_stack" data-sym="1" fill="#BD45E8" d="M9,0 L-6.3,5.4 L-6.3,-5.4 Z" transform="translate(141.70,141.70) rotate(135.0)"/><path class="arrow" data-type="backbone_join" data-sym="1" fill="#FF7A00" d="M9,0 L-6.3,5.4 L-6.3,-5.4 Z" transform="translate(0.00,-347.36) rotate(-0.0)"/><path class="arrow" data-type="terminal_stack" data-sym="1" fill="#BD45E8" d="M9,0 L-6.3,5.4 L-6.3,-5.4 Z" transform="translate(-347.36,-0.00) rotate(-90.0)"/></g><g id="nodes"><circle class="node" cx="260.00" cy="-0.00" r="17" fill="#2E86C1" data-info="Chain node A (segment 1)
+Residues: 12
+Covalent links inside this chain copy: 11
+Self-loops (joins with own copies): 0"/><circle class="node" cx="0.00" cy="-260.00" r="17" fill="#E67E22" data-info="Chain node B (segment 2)
+Residues: 7
+Covalent links inside this chain copy: 6
+Self-loops (joins with own copies): 1"/><circle class="node" cx="-260.00" cy="-0.00" r="17" fill="#27AE60" data-info="Chain node C (segment 3)
+Residues: 14
+Covalent links inside this chain copy: 13
+Self-loops (joins with own copies): 1"/><circle class="node" cx="-0.00" cy="260.00" r="17" fill="#8E44AD" data-info="Chain node D (segment 4)
+Residues: 9
+Covalent links inside this chain copy: 8
+Self-loops (joins with own copies): 0"/></g><g id="labels-g"><text class="nodelabel" x="260.00" y="-0.00">A</text><text class="nodelabel" x="0.00" y="-260.00">B</text><text class="nodelabel" x="-260.00" y="-0.00">C</text><text class="nodelabel" x="-0.00" y="260.00">D</text><text class="code" data-type="backbone_join" data-sym="1" x="124.3" y="114.3" fill="#FF7A00">3_555</text><text class="code" data-type="terminal_stack" data-sym="1" x="147.7" y="137.7" fill="#BD45E8">9_555</text><text class="code" data-type="backbone_join" data-sym="1" x="6.0" y="-351.4" fill="#FF7A00">3_555</text><text class="code" data-type="terminal_stack" data-sym="1" x="-341.4" y="-4.0" fill="#BD45E8">9_555</text></g>
+</svg><div id="info">Hover or tap an edge or node.</div></div>
+<script>
+(function () {
+  const cfg = {"view": "-459.7 -459.7 802.9 802.9"};
+  const svg = document.getElementById('graph'), info = document.getElementById('info');
+  const initial = cfg.view.split(' ').map(Number);
+  let box = initial.slice();
+  const apply = () => svg.setAttribute('viewBox', box.join(' '));
+  function filter() {
+    const on = new Set([...document.querySelectorAll('input[data-kind]')].filter(i => i.checked).map(i => i.dataset.kind));
+    const symOnly = document.getElementById('symonly').checked;
+    svg.querySelectorAll('[data-type]').forEach(el => {
+      el.classList.toggle('hidden', !on.has(el.dataset.type) || (symOnly && el.dataset.sym === '0'));
+    });
+    svg.classList.toggle('nolabels', !document.getElementById('labels').checked);
+  }
+  document.querySelectorAll('.controls input').forEach(i => i.addEventListener('change', filter));
+  document.getElementById('reset').addEventListener('click', () => { box = initial.slice(); apply(); });
+  svg.querySelectorAll('[data-info]').forEach(el => {
+    const show = () => { info.textContent = el.dataset.info; };
+    el.addEventListener('mouseenter', show); el.addEventListener('click', show);
+  });
+  svg.addEventListener('wheel', ev => {
+    ev.preventDefault();
+    const r = svg.getBoundingClientRect(), f = ev.deltaY > 0 ? 1.15 : 1 / 1.15;
+    const s = Math.max(box[2] / r.width, box[3] / r.height);
+    const cx = box[0] + (ev.clientX - r.left - (r.width - box[2] / s) / 2) * s;
+    const cy = box[1] + (ev.clientY - r.top - (r.height - box[3] / s) / 2) * s;
+    box = [cx - (cx - box[0]) * f, cy - (cy - box[1]) * f, box[2] * f, box[3] * f]; apply();
+  }, { passive: false });
+  let drag = null;
+  svg.addEventListener('pointerdown', ev => { drag = [ev.clientX, ev.clientY, box[0], box[1]]; svg.classList.add('dragging'); });
+  window.addEventListener('pointerup', () => { drag = null; svg.classList.remove('dragging'); });
+  window.addEventListener('pointermove', ev => {
+    if (!drag) return;
+    const r = svg.getBoundingClientRect(), s = Math.max(box[2] / r.width, box[3] / r.height);
+    box[0] = drag[2] - (ev.clientX - drag[0]) * s; box[1] = drag[3] - (ev.clientY - drag[1]) * s; apply();
+  });
+})();
+</script></body></html>

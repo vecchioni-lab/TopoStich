@@ -7,10 +7,12 @@ not required.
 
 Conversion and within-strand tracing never stitch chains. The separate
 `topostich-cgd` graph exporter can optionally stitch **backbone nicks**
-(`--stitch-nicks`) and **stacking junctions** (`--stitch-junctions`) across
-chains and symmetry images, using the P…O3′ join and non-backbone pi-stack
-rules from the lab's NAtopo project. Hydrogen bonds and other contacts are
-not stitched.
+(`--stitch-nicks`, NAtopo's P…O3′ join rule) and **chain ends whose bases
+pi-stack** (`--stitch-terminal-stacks`, any polarity: 5′-3′, 5′-5′ or 3′-3′)
+across chains and symmetry images. It can also write NAtopo's **ASU quotient
+graphs** at chain and residue resolution for the covalent bonds and stitched
+joins (`--asu-graphs`, `--asu-chain-html`, `--asu-residue-html`). Hydrogen
+bonds and other contacts are not stitched.
 
 For agents and incoming collaborators, start with [the component map and next
 symmetry-connection task](docs/agent-handoff.json).
@@ -46,14 +48,19 @@ topostich-cgd 8D93.pdb --out 8D93_O3.cgd --cmm 8D93_chains.cmm \
 ```
 
 This keeps chain/TER segments separate. Add `--stitch-nicks` to join
-unambiguous backbone nicks and `--stitch-junctions` to join base stacks that
-continue a helix past a strand end. Joins to symmetry-related or translated
-copies become explicit periodic CGD edges (see [nick](docs/cgd.md#backbone-nick-stitching)
-and [junction](docs/cgd.md#junction-stitching) stitching):
+unambiguous backbone nicks and `--stitch-terminal-stacks` to join chain ends
+whose bases stack (unless those ends are already backbone joined; 5′-5′ and
+3′-3′ stacks are flagged). Joins to symmetry-related or translated copies
+become explicit periodic CGD edges (see [nick](docs/cgd.md#backbone-nick-stitching)
+and [chain-end stack](docs/cgd.md#chain-end-stack-stitching) stitching). The
+[ASU graphs](docs/cgd.md#asu-quotient-graphs) fold every covalent bond and
+stitched join back onto one asymmetric unit, labelled with PDB symmetry codes,
+and report each part's periodicity:
 
 ```sh
-topostich-cgd 7SE0.cif --stitch-nicks --stitch-junctions --out 7SE0_stitched.cgd \
-  --cmm 7SE0_stitched.cmm --receipt 7SE0_stitched.json
+topostich-cgd 7SE0.cif --stitch-nicks --stitch-terminal-stacks --out 7SE0_stitched.cgd \
+  --cmm 7SE0_stitched.cmm --receipt 7SE0_stitched.json \
+  --asu-graphs 7SE0_asu.json --asu-chain-html 7SE0_chains.html --asu-residue-html 7SE0_residues.html
 ```
 
 `tools/check_stitched_cgd.py` audits a stitched file against its receipt with

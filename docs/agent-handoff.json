@@ -1,9 +1,9 @@
 {
   "document_type": "TopoStich agent and collaborator handoff",
   "document_version": 1,
-  "updated": "2026-11-11",
+  "updated": "2026-11-13",
   "implementation_version": "0.4.0",
-  "status": "NICK_AND_JUNCTION_STITCHING_IMPLEMENTED_OPT_IN; SYSTRE_STITCHED_AUDIT_AVAILABLE",
+  "status": "NICK_AND_CHAIN_END_STACK_STITCHING_AND_ASU_GRAPHS_IMPLEMENTED_OPT_IN; SYSTRE_STITCHED_AUDIT_AVAILABLE",
   "authority": "Current user instructions govern scope. This file distinguishes implemented behavior from proposed integration details; it does not claim that an external interface has been agreed or implemented.",
   "read_first": [
     "AGENTS.md",
@@ -17,8 +17,8 @@
   "mission": {
     "product": "An independently installable toolkit for converting nucleic-acid coordinates into explicit topological graphs and files that collaborators can inspect and analyze.",
     "current_model": "Represent each nucleotide by one node at its observed O3-prime atom and retain ordered backbone connectivity within each original strand segment.",
-    "next_problem": "Find the symmetry-related backbone connections across nicks and junctions, then encode those connections with the correct images in the existing Systre CGD dialect.",
-    "scientific_owner": "The lab's NAtopo project holds the connection logic. Its backbone-join and junction (non-backbone pi-stack) rules are ported into src/topostich/stitching.py.",
+    "next_problem": "Find the symmetry-related backbone connections across nicks and chain-end stacks, then encode those connections with the correct images in the existing Systre CGD dialect.",
+    "scientific_owner": "The lab's NAtopo project holds the connection logic. Its backbone-join rule, its pi-stack geometry and its folded ASU quotient graphs are ported into src/topostich/stitching.py and src/topostich/asu_graphs.py.",
     "topostich_responsibility": "Map engine results onto explicit nucleotide/node identities, validate image references, preserve graph connectivity and provenance, and write auditable Systre and viewing artifacts.",
     "downstream": "ToposPro/Systre topological analysis; ChimeraX for graph inspection. Links represent the chosen topological model and do not assert chemical bonds or ideal bond lengths.",
     "longer_term": "Sugar recognition supports possible future ribbons; ribbon construction is not part of the next symmetry-link integration."
@@ -58,19 +58,31 @@
     },
     {
       "path": "src/topostich/graph_viewer.py",
-      "purpose": "Writes native ChimeraX marker/link CMM from the graph, with chain colors and endpoint markers; optional symmetry copies; nick joins and junction stacks drawn in separate models with explicit image markers."
+      "purpose": "Writes native ChimeraX marker/link CMM from the graph, with chain colors and endpoint markers; optional symmetry copies; nick joins and chain-end stacks drawn in separate models with explicit image markers."
     },
     {
       "path": "src/topostich/stitching.py",
-      "purpose": "NAtopo-derived nick and junction rules: shared StitchContext (residues, verified O3'-P links, existing edges), exact symmetry/lattice image search, nick one-to-one acceptance, base-plane pi-stack screen with face/non-face junction reasons, candidate statuses, inverse-affine reciprocal images."
+      "purpose": "Nick rule (NAtopo) and chain-end stack rule: shared StitchContext (residues, verified O3'-P links, existing edges, stitched residue links), exact symmetry/lattice image search, nick one-to-one acceptance, base-plane pi-stack screen between chain ends with polarity, candidate statuses, inverse-affine reciprocal images."
+    },
+    {
+      "path": "src/topostich/asu_graphs.py",
+      "purpose": "Port of NAtopo asu_quotient/residue_quotient for covalent bonds and stitched joins: exact integer symmetry algebra, op_klm codes, orbit folding at chain and residue resolution, voltage-graph periodicity and interpenetration."
+    },
+    {
+      "path": "src/topostich/asu_view.py",
+      "purpose": "Self-contained SVG/HTML views of the two ASU quotient graphs with NAtopo's layouts, type filters, details and pan/zoom."
+    },
+    {
+      "path": "schemas/asu-graphs.schema.json",
+      "purpose": "ASU quotient graph JSON schema 1 (both resolutions)."
     },
     {
       "path": "schemas/cgd-receipt-2.schema.json",
-      "purpose": "Stitched graph receipt schema 2: stitched_edges with operation, lattice translation, forward/reverse images and endpoint identities; join_candidates with status; stitch_parameters."
+      "purpose": "Stitched graph receipt schema 2: stitched_edges with operation, lattice translation, forward/reverse images, endpoint identities and evidence; join_candidates and terminal_stack_candidates with status; stitch_parameters; optional asu_graphs summary."
     },
     {
       "path": "tests/test_stitching.py",
-      "purpose": "Synthetic stitching regressions: translations, screw/inverse, R centering, ambiguity, same-copy exclusion, internal breaks, O5-prime fallback, deposited links, cutoffs, CMM, CLI/schema. tests/test_junctions.py covers face/all scope, stack geometry limits, nick/junction duplicates, unmapped residues, 2-fold self-stacks, CMM and the audit comparison."
+      "purpose": "Synthetic stitching regressions: translations, screw/inverse, R centering, ambiguity, same-copy exclusion, internal breaks, O5-prime fallback, deposited links, cutoffs, CMM, CLI/schema. tests/test_terminal_stacks.py covers polarity (5'-3', 5'-5', 3'-3'), internal and single-residue exclusion, nick-joined ends, geometry limits, unmapped residues, 2-fold self-stacks, CMM and the audit comparison. tests/test_asu_graphs.py covers the symmetry algebra, codes, periodicity, interpenetration, deposited link types and HTML/JSON outputs."
     },
     {
       "path": "schemas/conversion-receipt.schema.json",
@@ -194,7 +206,7 @@
     "format_distinction": "CGD is a graph format, not core CIF or PDBx/mmCIF. Preserve the separate existing coordinate-conversion commands."
   },
   "next_integration": {
-    "status": "Nick and junction stitching implemented (0.4.0, opt-in). Reviewed decisions pending.",
+    "status": "Nick and chain-end stack stitching and ASU graphs implemented (0.4.0, opt-in). Reviewed decisions pending.",
     "ownership": {
       "connection_decisions": "Collaborator existing logic engine",
       "identity_image_validation_and_export": "TopoStich integration",
@@ -206,7 +218,7 @@
       "Identity of each source and target nucleotide: node label bound to this source/model/selection, or a complete unambiguous chain+segment+residue+insertion+alternate+label identity.",
       "Relative target symmetry operator in the same fractional frame, preferably its explicit triplet/matrix rather than an unqualified operation number.",
       "Integer lattice translation applied after that operator; fractional centering/screw translations belong to the operator.",
-      "Connection kind such as nick or junction, decision status, and engine/rule provenance; preserve ambiguity rather than choosing silently.",
+      "Connection kind such as nick or chain-end stack, decision status, and engine/rule provenance; preserve ambiguity rather than choosing silently.",
       "Any confidence, evidence and direction/routing information the engine already supplies; its score semantics are not invented by TopoStich."
     ],
     "proposed_image_convention": {
@@ -244,12 +256,12 @@
       "Ambiguous matches, loops and special-position/stabilizer handling",
       "Expected connected components and periodic rank of the scientifically correct stitched 8D93 graph",
       "Whether ambiguous nick candidates should use NAtopo review decisions (bond_decisions.txt) as input",
-      "Which junction scope (face or all) is scientifically appropriate per crystal"
+      "Whether every chain-end stack should be stitched when an end stacks on more than one other end"
     ],
     "do_not_assume": [
       "Nearest endpoints necessarily connect",
       "All chain boundaries are nicks",
-      "Every junction has degree four",
+      "Every chain-end stack is exclusive or has a fixed degree",
       "Every input must become a single connected three-periodic net",
       "Operation numbers are interchangeable across sources/settings",
       "A successfully parsed file proves ToposPro retained its graph"
@@ -262,10 +274,13 @@
         "ChimeraX opening of the stitched-join models"
       ]
     },
-    "implemented_junction_stitching": {
-      "rule": "NAtopo nonbackbone_pi_stack_v2; default face scope stitches stacks continuing a helix past a strand end",
-      "natopo_agreement": "Identical junction orbits, images, reasons, centroid distances and excluded backbone-stack counts on 17 local crystals.",
+    "implemented_terminal_stack_stitching": {
+      "rule": "every pi stack (NAtopo geometry) between two chain ends, any polarity, unless already backbone joined; same-polarity flagged",
       "systre": "All 85 exports (17 crystals x 5 configurations) pass tools/check_stitched_cgd.py with Systre 19.6.0."
+    },
+    "implemented_asu_graphs": {
+      "rule": "NAtopo folded ASU chain/residue quotient graphs of covalent bonds and stitched joins",
+      "natopo_agreement": "Identical covalent and backbone-join orbits, symmetry codes, operator numbering and periodicity on 17 local crystals."
     }
   },
   "baseline_8d93": {
@@ -306,7 +321,7 @@
   },
   "acceptance_for_next_patch": [
     "Keep current unstitched output available and all existing CIF/PDB/mmCIF behavior compatible.",
-    "Add fail-before regressions using small synthetic graphs, including identity and nonidentity symmetry, nonzero and negative cell translations, inverses, deduplication, junction degree, unresolved identities and ambiguous matches.",
+    "Add fail-before regressions using small synthetic graphs, including identity and nonidentity symmetry, nonzero and negative cell translations, inverses, deduplication, stack degree, unresolved identities and ambiguous matches.",
     "Prove declared degrees and periodic adjacency survive native parsing; retain source coordinates and selected image translations.",
     "Ensure every accepted edge, including a cross-segment/image edge, is drawn in the matching viewer or explicitly reported outside its finite display window.",
     "Record accepted/rejected/ambiguous engine decisions and engine version/configuration in provenance; do not silently omit links.",
@@ -327,9 +342,9 @@
     "GitHub publishing is a separate stepwise task; this documentation change does not publish anything."
   ],
   "this_update": {
-    "behavior_before_after": "0.3.0 unstitched only; 0.4.0 adds opt-in --stitch-nicks and --stitch-junctions. Default output byte-identical.",
-    "schema_impact": "New cgd-receipt-2 schema for stitched exports; schema 1 unchanged.",
-    "validation": "68 source tests; clean installed wheel check PASS; NAtopo cross-validation (nicks and junctions) on 17 crystals; Systre stitched audit of 85 exports.",
+    "behavior_before_after": "0.3.0 unstitched only; 0.4.0 adds opt-in --stitch-nicks, --stitch-terminal-stacks and ASU graph outputs (--asu-graphs, --asu-chain-html, --asu-residue-html). The draft junction rule was removed before release. Default output byte-identical.",
+    "schema_impact": "New cgd-receipt-2 schema for stitched exports; new asu-graphs schema; schema 1 gains only an optional asu_graphs summary.",
+    "validation": "82 source tests; clean installed wheel check PASS; NAtopo cross-validation (nicks, ASU graph orbits, codes and periodicity) on 17 crystals; Systre stitched audit of 85 exports.",
     "generated_artifacts": "None committed; validation outputs kept in scratch storage."
   }
 }

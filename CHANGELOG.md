@@ -2,8 +2,8 @@
 
 ## [Unreleased]
 
-- Version 0.4.0: opt-in backbone nick and junction stitching for `topostich-cgd`.
-  Nicks
+- Version 0.4.0: opt-in backbone nick and chain-end stack stitching for
+  `topostich-cgd`, plus ASU quotient graphs. Nicks
   (`--stitch-nicks`, `--join-cutoff`, `--o5-cutoff`, `--include-o5-fallback`;
   API `export_cgd(stitch_nicks=True, ...)`). New `stitching.py` ports NAtopo's
   loose P…O3′ backbone-join rule (3.5 Å, different chain copy, O5′ fallback
@@ -15,19 +15,40 @@
   (`schemas/cgd-receipt-2.schema.json`) for stitched exports. CMM views draw
   joins in a separate model. Unstitched output and schema-1 receipts are
   byte-identical to 0.3.0.
-- Opt-in junction stitching (`--stitch-junctions`, `--junction-scope face|all`;
-  API `stitch_junctions=True`). Ports NAtopo's pi-stack screen and
-  `nonbackbone_pi_stack_v2` junction classifier. Ring names come from the
-  packaged residue catalog. The default `face` scope stitches stacks that continue a
-  helix past a strand end. Candidates are reported in `junction_candidates`.
+- Opt-in chain-end stack stitching (`--stitch-terminal-stacks`; API
+  `stitch_terminal_stacks=True`). Every pi stack (NAtopo's
+  `find_pi_interactions` geometry, ring names from the packaged residue
+  catalog) between the first/last nucleotides of two segments is stitched in
+  any symmetry image and for any polarity, unless the ends are already backbone
+  joined (verified O3′–P link or a stitched nick join). 5′-5′ and 3′-3′ stacks
+  are flagged (`polarity`, `same_polarity`). Candidates are reported in
+  `terminal_stack_candidates`. This replaces the NAtopo junction rule
+  (`--stitch-junctions`, `--junction-scope`) drafted earlier in this
+  unreleased version; it was never released.
+- ASU quotient graphs (`--asu-graphs JSON`, `--asu-chain-html`,
+  `--asu-residue-html`; schema `schemas/asu-graphs.schema.json`). New
+  `asu_graphs.py` ports NAtopo's `asu_quotient`/`residue_quotient` (the folded
+  chain and residue views of `main_NAtopo.ipynb`) for covalent bonds and
+  stitched joins only: one edge per symmetry orbit with its PDB `op_klm` code,
+  and per-part periodicity (rank of the cycle-generated translations,
+  interpenetrating copies). `asu_view.py` writes self-contained SVG/HTML views
+  with NAtopo's layouts. The receipt gains an optional `asu_graphs` summary.
+- mmCIF `_struct_conn.conn_type_id` is now kept (`Pdb.conect_types`); only
+  covalent types (or untyped PDB CONECT) count as deposited covalent links for
+  nick endpoints and ASU graphs. Short `hydrog` records in 5KEK/9ZXK had been
+  read as covalent. Conversion and default CGD output are unchanged.
 - CGD rows are de-duplicated per node: a join to a node's own image under an
   involution is one neighbor (found by the new Systre audit).
 - `tools/CheckCgd.java --stitched` and `tools/check_stitched_cgd.py`: native
   Systre audit of stitched output against the receipt. The default Java mode
   remains the strict unstitched baseline.
-- Twenty stitching/junction regressions and installed stitched-CLI smoke checks.
-  Agreement with NAtopo on 17 crystals and the Systre audit of 85 exports are
-  documented in `docs/cgd.md`.
+- `examples/8D93/`: stitched (`_stiched`) and unstitched (`_unstiched`) CGD,
+  receipts, CMM views and ASU graphs for PDB 8D93, added on request as
+  reference outputs (input not included; not packaged).
+- Stitching, chain-end stack and ASU-graph regressions and installed CLI smoke
+  checks. Agreement with NAtopo on 17 crystals (nick candidates, ASU covalent
+  and join orbits, symmetry codes, periodicity) and the Systre audit of 85
+  exports are documented in `docs/cgd.md`.
 
 - Add `docs/agent-handoff.json` with a component map, project intent and the
   next collaborator-engine integration task for symmetry-related backbone links.

@@ -105,11 +105,16 @@ def main():
              "assert r['schema_version']==2 and r['stitched_edge_count']==1, r['stitch_parameters']; "
              "assert r['stitched_edges'][0]['image_operation']=='x+1,y,z'; "
              "assert 'edge S1_N1 -0.1 ' in open('nick.cgd').read()"], work, env)
-        run([cgd_command, nick_input, '--out', work/'both.cgd', '--stitch-nicks', '--stitch-junctions',
-             '--junction-scope', 'all', '--receipt', work/'both.json'], work, env)
+        run([cgd_command, nick_input, '--out', work/'both.cgd', '--stitch-nicks', '--stitch-terminal-stacks',
+             '--receipt', work/'both.json', '--asu-graphs', work/'asu.json', '--asu-chain-html', work/'chain.html',
+             '--asu-residue-html', work/'residue.html'], work, env)
         run([python, '-c', "import json; r=json.load(open('both.json')); "
-             "j=r['stitch_parameters']['junctions']; assert j['scope']=='all' and [d['issue'] for d in j['plane_diagnostics']]==['incomplete_base_ring']*2, j; "
-             "assert r['stitched_edge_counts']=={'backbone_join': 1}, r['stitched_edge_counts']"], work, env)
+             "t=r['stitch_parameters']['terminal_stacks']; assert t['chain_ends']==2 and [d['issue'] for d in t['plane_diagnostics']]==['incomplete_base_ring']*2, t; "
+             "assert r['stitched_edge_counts']=={'backbone_join': 1}, r['stitched_edge_counts']; "
+             "a=json.load(open('asu.json')); c=a['chain_graph']; "
+             "assert [(e['type'], e['symmetry_code']) for e in c['edges']]==[('backbone_join', '1_455')], c['edges']; "
+             "assert c['periodicity'][0]['dimension']==1 and r['asu_graphs']['chain']['periodicity']==c['summary']; "
+             "assert '<svg' in open('chain.html').read() and '<svg' in open('residue.html').read()"], work, env)
         run([python, '-c', "from topostich.nucleotides import classify_atom; assert classify_atom('DZ', 'C1').role == 'base'"], work, env)
         run([python, "-m", "unittest", "discover", "-s", extracted / "tests", "-v"], work, env)
         print("PASS: sdist, relocated wheel build, clean install, installed CLI and complete installed suite")

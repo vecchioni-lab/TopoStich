@@ -237,6 +237,83 @@
           }
         }
       }
+    },
+    "asu_graphs": {
+      "type": "object",
+      "description": "Present only when ASU quotient graphs were requested",
+      "additionalProperties": false,
+      "required": [
+        "chain",
+        "residue"
+      ],
+      "properties": {
+        "chain": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodes",
+            "edges",
+            "edge_type_counts",
+            "periodicity"
+          ],
+          "properties": {
+            "nodes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "edges": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "edge_type_counts": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "periodicity": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "residue": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodes",
+            "edges",
+            "edge_type_counts",
+            "periodicity"
+          ],
+          "properties": {
+            "nodes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "edges": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "edge_type_counts": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "periodicity": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -64,7 +64,7 @@ ported without NAtopo, NetworkX or SciPy dependencies:
 |---|---|
 | Loose P | Residue has P and its own O5′; P has no covalent link to another residue |
 | Loose O3′ | Residue has O3′ and its own C3′; O3′ has no covalent link to another residue |
-| Existing link | Consecutive residues in a segment with O3′–P 0.8–2.2 Å, or an input CONECT/same-image `_struct_conn` at 0.8–2.3 Å |
+| Existing link | Consecutive residues in a segment with O3′–P 0.8–2.2 Å, or an input CONECT or same-image covalent-type `_struct_conn` (`covale*`, `disulf`; not `hydrog`/`metalc`) at 0.8–2.3 Å |
 | Backbone join | Loose P…loose O3′ **< 3.5 Å** (`--join-cutoff`) on a different chain copy: another segment, or any other symmetry/lattice image |
 | O5′ fallback | Phosphate-less residue's O5′ (own C5′) …loose O3′ **< 6.0 Å** (`--o5-cutoff`); reported only unless `--include-o5-fallback` |
 
@@ -105,65 +105,116 @@ byte-identical to 0.3.0.
 Limits: joins are geometric proposals, not chemical bonds. The same chain copy
 cannot join itself in its own image (NAtopo's interchain rule).
 
-## Junction stitching
+## Chain-end stack stitching
 
-`--stitch-junctions` (API: `stitch_junctions=True`) joins strands where base
-stacking continues a helix without a backbone bond, for example across a nick
-whose 5′ phosphate is missing, or where helix ends stack across a crystal
-contact. The rule is NAtopo's `nonbackbone_pi_stack_v2` junction classifier
-over its pi-stack screen (`find_pi_interactions`, `fit_base_planes`,
-`junctions.find_junction_candidates`):
+`--stitch-terminal-stacks` (API: `stitch_terminal_stacks=True`) joins chain
+ends whose bases pi-stack, for example helix ends stacking across a crystal
+contact or a nick whose 5′ phosphate is missing. It applies to every polarity
+and records it:
 
-| Step | Rule (NAtopo defaults) |
+| Step | Rule |
 |---|---|
-| Base plane | SVD plane of the complete ring heavy atoms: 9 for purines, 6 for pyrimidines; centroid = ring-atom mean |
+| Chain ends | The first (5′) and last (3′) backbone-bearing residue of each chain/TER segment with at least two such residues. Internal residues are never candidates. Single-residue segments (free nucleotides, nucleoside ligands) are counted in `single_residue_segments`, not stitched |
+| Base plane | SVD plane of the complete ring heavy atoms: 9 for purines, 6 for pyrimidines; centroid = ring-atom mean (NAtopo `fit_base_planes`) |
 | Ring atom names | TopoStich's NARestraints-derived residue catalog maps canonical ring positions to actual names, including modified residues; unmapped/ambiguous residues are reported in `plane_diagnostics` |
-| Pi stack | Centroids **< 5.5 Å**, normals within **30°**, both normal separations **2.0–4.5 Å**, both lateral shifts **≤ 3.0 Å** |
-| Junction candidate | A stack whose residues are not joined by a verified O3′–P bond (same image) |
-| Face reason | `stack_on_face_without_backbone_continuation` if, for either endpoint, every verified backbone neighbor lies on the opposite face (0.5 Å side tolerance); otherwise `non_backbone_stack` |
+| Pi stack | NAtopo `find_pi_interactions` geometry: centroids **< 5.5 Å**, normals within **30°**, both normal separations **2.0–4.5 Å**, both lateral shifts **≤ 3.0 Å** |
+| Already backbone joined | The two ends share a verified O3′–P link in the same image (deposited or consecutive), or a nick join stitched in this run joins them in the same image: status `backbone_joined`, not stitched |
+| Polarity | `5'-3'`, `5'-5'` or `3'-3'`; `same_polarity` is true for the last two |
 
-`--junction-scope face` (default) stitches only the face reason: the helix
-continues by stacking past a strand end. `--junction-scope all` stitches every
-junction candidate, including stacks on a face that already has backbone.
-Stacks are not one-to-one by nature, so every qualifying stack is stitched.
-A stack between the same two nodes in the same image as an existing trace or nick
-edge is reported as `duplicate_edge`. Each candidate appears in
-`junction_candidates` with `stitched`, `not_face_junction`, `no_graph_node` or
-`duplicate_edge`, its measurements and both endpoints' backbone context. The
-edge joins the two residues' O3′ nodes; `distance_A` is the ring-centroid distance.
+Every other end-to-end stack is stitched, in any symmetry image (stacks are
+not exclusive, so an end may stack on two others). A 5′-3′ stack is oriented
+from the 3′ end (stored position) to the 5′ end (image `g`), like a nick join.
+Each end is represented by its segment's outermost O3′ node, so an end residue
+without O3′ uses the nearest one in its segment. A stack that would repeat an
+existing edge between the same nodes and image is `duplicate_edge`. Each
+candidate appears in `terminal_stack_candidates` with `stitched`,
+`backbone_joined`, `no_graph_node` or `duplicate_edge`, its polarity, both ends
+(`end` = `5'`/`3'`) and measurements. The stitched edge's evidence repeats the
+polarity; `distance_A` is the ring-centroid distance. The CLI notes how many
+stitched stacks are same-polarity.
 
-On the same 17 crystals, TopoStich's junction candidates, relative images,
-face/non-face reasons, centroid distances (to 10⁻⁴ Å) and counts of excluded
-backbone stacks are identical to NAtopo's full `build_interaction_templates`
-pipeline (radius-2 window, `bases.xlsx`).
+Order matters with `--stitch-nicks`: nicks are registered first, so an end
+pair already nick-joined is not stacked again. Without `--stitch-nicks` the
+same pair is stitched as a 5′-3′ stack.
 
 Both CMM views draw stitched joins in separate models: gold **nick joins** and
-magenta **junction stacks**. The ASU view draws each join from its source node
+magenta **terminal stacks**. The ASU view draws each join from its source node
 to an explicit marker at the target image. The symmetry view draws it for every
 operation, so join endpoints can lie in translated copies outside the
 displayed cells.
 
-| Structure | Nick joins | Face junctions | Systre components, nicks + junctions |
+| Structure | Nick joins | Chain-end stacks (polarity) | Systre components, nicks + stacks |
 |---|---|---|---|
 | 1BNA | 0 | 0 | 8 finite |
-| 1UHX | 0 | 1 | 6 × 1-periodic |
-| 1V3P | 0 | 2 | 4 × 1-periodic |
-| 5KEK / 5KEO | 2 | 4 | 6 × 1-periodic, 2 × 3-periodic |
-| 6YL5 / 6YLB | 0 | 5 | 33 finite |
-| 7SE0 | 2 | 4 | 3 × 1-periodic, 1 × 3-periodic |
-| 7U3R | 2 | 4 | 4 finite |
-| 8EPG | 2 | 2 | 2 × 3-periodic |
-| 9Q5J | 2 | 2 | 5 × 1-periodic |
-| 9Y3B | 0 | 8 | 4 finite, 8 × 1-periodic |
-| 9ZXK | 0 | 4 | 4 finite, 1 × 1-periodic |
-| 9OSM | 1 | 3 | 1 finite, 4 × 1-periodic |
-| 82B refinement | 2 | 2 | 4 × 3-periodic |
-| 8A refinement | 3 | 11 | 1 × 1-periodic, 1 × 3-periodic |
-| arch-solids refinement | 4 | 2 | 4 finite |
+| 1UHX | 0 | 1 (5′-3′) | 6 × 1-periodic |
+| 1V3P | 0 | 2 (5′-3′) | 4 × 1-periodic |
+| 5KEK / 5KEO | 2 | 4 (5′-3′) | 6 × 1-periodic, 2 × 3-periodic |
+| 6YL5 / 6YLB | 0 | 3 (5′-5′) | 36 finite |
+| 7SE0 | 2 | 4 (5′-3′) | 3 × 1-periodic, 1 × 3-periodic |
+| 7U3R | 2 | 4 (5′-3′) | 4 finite |
+| 8EPG | 2 | 0 (2 already nick-joined) | 8 finite |
+| 9Q5J | 2 | 2 (5′-3′) | 5 × 1-periodic |
+| 9Y3B | 0 | 6 (4 × 5′-3′, 5′-5′, 3′-3′) | 12 finite, 8 × 1-periodic |
+| 9ZXK | 0 | 3 (5′-3′) | 5 finite, 1 × 1-periodic |
+| 9OSM | 1 | 3 (5′-3′) | 1 finite, 4 × 1-periodic |
+| 82B refinement | 2 | 0 (2 already nick-joined) | 16 finite |
+| 8A refinement | 3 | 3 (5′-3′) | 12 finite, 2 × 1-periodic |
+| arch-solids refinement | 4 | 2 (5′-5′, 3′-3′) | 4 finite |
 
 Counts are per primitive cell from Systre 19.6.0. They describe the stitched
 graph only; they are not a scientific verdict on each crystal's connectivity.
-O5′ fallback joins and `all`-scope junctions change several of these.
+O5′ fallback joins change several of these (an end pair joined by an O5′
+fallback is no longer stacked).
+
+## ASU quotient graphs
+
+`--asu-graphs FILE.json`, `--asu-chain-html FILE.html` and
+`--asu-residue-html FILE.html` (API: `asu_graphs=`, `asu_chain_html=`,
+`asu_residue_html=`) write the two folded views of NAtopo's
+`main_NAtopo.ipynb` ("One asymmetric unit with symmetry contacts folded back"
+and "The same folded ASU at residue resolution"), restricted to covalent bonds
+and stitching. The code is a port of NAtopo's `asu_quotient.py` and
+`residue_quotient.py` without NetworkX, NumPy or Bokeh.
+
+- **Nodes.** Chain resolution: one node per chain/TER segment of the original
+  ASU. Residue resolution: one node per residue. Nucleotide residues (those
+  with backbone atoms) are always included; another non-water residue is
+  included when a deposited covalent link joins it.
+- **Edges.** One per symmetry orbit and type: `covalent` (consecutive O3′–P
+  links at 0.8–2.2 Å and deposited covalent links at 0.8–2.3 Å: covalent
+  `_struct_conn.conn_type_id` or untyped PDB CONECT, never metal, hydrogen or
+  water endpoints), `backbone_join`, `backbone_join_o5` and `terminal_stack`
+  (stitched joins only, as in the CGD). X → Y labelled `2_565` means X of the
+  original ASU is joined to the copy of Y made by operation 2 then +1 cell
+  along b; `1_555` is inside the ASU. A join with another copy of the same
+  node is a self-loop. Operator numbers follow the input file
+  (`_space_group_symop.id` or REMARK 290), otherwise Gemmi's order.
+  Chain-resolution edges list their residue pairs (with stack polarity);
+  covalent links inside one chain copy are counted as `internal_covalent_edges`.
+- **Periodicity.** For each connected part, NAtopo's voltage-graph method
+  composes the operations around every cycle, generates the translation
+  subgroup and reports its rank (0 finite, 1 rod, 2 layer, 3 framework) with a
+  Hermite basis in fractional coordinates; a 3-periodic part also reports the
+  number of interpenetrating copies. A chain broken by a gap without an O3′–P
+  bond is one chain node but separate residue pieces.
+
+The JSON (`schemas/asu-graphs.schema.json`) holds both graphs; the receipt
+gains an `asu_graphs` summary and the CLI prints the periodicity lines. The
+HTML pages are self-contained (inline SVG and script, no network): toggle
+edge types, show only symmetry joins, hide labels, hover or tap for details,
+drag to pan and scroll to zoom. Dashed purple edges are 5′-5′ or 3′-3′
+stacks. The CGD itself is unchanged by these options.
+
+On all 17 crystals, with nicks, O5′ fallback and chain-end stacks enabled, the
+residue graph's covalent orbits and its backbone-join orbits (against every
+TopoStich join candidate) are identical to the `covalent`, `backbone_join`
+and `backbone_join_o5` edges of NAtopo's own `G_residue_quotient`, built with
+the notebook's pipeline. The symmetry codes and operator numbering agree. NAtopo's
+`periodicity()`, applied to TopoStich's edges, gives the same parts,
+dimensions, bases and interpenetration counts at both resolutions. In all
+85 audited exports, the chain graph's dimensions match Systre's components
+(for example 5KEK with nicks and stacks: one 3-periodic part with 2
+interpenetrating copies, and Systre's 2 × 3-periodic components).
 
 ## Native Systre audit
 
@@ -179,11 +230,11 @@ primitive-cell copy (half for a self-reversing join).
 python tools/check_stitched_cgd.py graph.cgd graph.json --systre /path/to/Systre-19.6.0.jar
 ```
 
-All 85 exports (17 crystals × unstitched, nicks, junctions, both, and
-everything including O5′ fallback with `all` junctions) passed. Systre's edge
-counts matched the receipts exactly. The audit found one bug during
-development: duplicate rows for a junction between a base and its own 2-fold
-mate. That bug is fixed and covered by a regression test.
+All 85 exports (17 crystals × unstitched, nicks, chain-end stacks, both, and
+everything including O5′ fallback) passed. Systre's edge counts matched the
+receipts exactly. The audit found one bug during development: duplicate rows
+for a stack between a base and its own 2-fold mate. That bug is fixed and
+covered by a regression test.
 
 ## Explore in ChimeraX
 
@@ -234,7 +285,7 @@ claimed: unstitched finite strands are not yet a connected 3-periodic net.
 
 ChimeraX **1.12 (2026-06-12)** opened both CMM files through its native reader
 with the expected nodes, links and notes. Live **ToposPro import is untested**.
-Nick and junction stitching are available (above). Special-position
+Nick and chain-end stack stitching and ASU graphs are available (above). Special-position
 handling, reviewed decisions for ambiguous joins, live ToposPro import and
 ribbon construction remain future work.
 

@@ -2,9 +2,10 @@
 
 This is a separate exporter: it does not change the existing CIF/PDB/mmCIF
 converter. Explicit edges represent traces, not chemical bond assertions.
-Optional nick (``stitch_nicks``) and junction (``stitch_junctions``) stitching
-add symmetry-aware joins found by the NAtopo-derived rules in ``stitching.py``;
-the default is unchanged.
+Optional nick (``stitch_nicks``) and chain-end stack (``stitch_terminal_stacks``)
+stitching add symmetry-aware joins found by the rules in ``stitching.py``; the
+default is unchanged. Optional ASU quotient graphs (chain and residue
+resolution, covalent bonds and stitched joins) come from ``asu_graphs.py``.
 """
 from __future__ import annotations
 
@@ -20,8 +21,10 @@ import gemmi
 
 from . import __version__
 from .converter import ConversionError, _fractional_transform, _select, read_structure
+from .asu_graphs import build_asu_graphs, numbered_operations
+from .asu_view import render_html
 from .graph_viewer import marker_xml
-from .stitching import JUNCTION_SCOPES, StitchContext, find_backbone_joins, find_junction_stacks
+from .stitching import StitchContext, find_backbone_joins, find_terminal_stacks
 
 
 def _space_group(pdb):
@@ -106,6 +109,11 @@ def _serialize(graph):
     return '\n'.join(lines)+'\n'
 
 
+def _triplet(g):
+    from .asu_graphs import to_gemmi
+    return to_gemmi(g).triplet()
+
+
 def _write_new_files(payloads):
     paths = [path.resolve() for path in payloads]
     if len(paths) != len(set(paths)):
@@ -130,7 +138,7 @@ def _write_new_files(payloads):
 def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
                name=None, model=1, altloc=None, input_format='auto',
                stitch_nicks=False, join_cutoff=3.5, o5_cutoff=6.0, include_o5_fallback=False,
-               stitch_junctions=False, junction_scope='face'):
+               stitch_terminal_stacks=False, asu_graphs=None, asu_chain_html=None, asu_residue_html=None):
     """Write a new CGD and optional ChimeraX views/JSON receipt; return receipt.
 
     Every output is self-contained and refused if it exists. cmm contains the
@@ -139,13 +147,19 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
 
     With stitch_nicks, unambiguous P...O3' backbone nick joins between segment
     termini (NAtopo rule, any symmetry image) become periodic edges. With
-    stitch_junctions, base stacks without verified backbone continuation
-    (NAtopo junction rule; scope 'face' or 'all') do too. Either option makes
-    the receipt schema 2. Other candidates are reported, never silently used.
+    stitch_terminal_stacks, pi stacks between chain ends (any polarity, any
+    image) do too, unless the two ends are already backbone joined. Either
+    option makes the receipt schema 2. Other candidates are reported, never
+    silently used.
+
+    asu_graphs (JSON), asu_chain_html and asu_residue_html write the ASU
+    quotient graphs of the covalent bonds and stitched joins.
     """
-    stitching = bool(stitch_nicks or stitch_junctions)
+    stitching = bool(stitch_nicks or stitch_terminal_stacks)
+    asu_requested = any(p is not None for p in (asu_graphs, asu_chain_html, asu_residue_html))
     source, output = Path(source), Path(output)
-    targets = [Path(p) for p in (output,cmm,crystal_cmm,receipt) if p is not None]
+    targets = [Path(p) for p in (output,cmm,crystal_cmm,receipt,asu_graphs,asu_chain_html,asu_residue_html)
+               if p is not None]
     # Check before dict construction so identical companion paths cannot collapse.
     if len({p.resolve() for p in targets}) != len(targets):
         raise ConversionError('Output paths must be distinct')
@@ -153,8 +167,8 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
         raise ConversionError('Input cannot be an output')
     if name is None:
         suffix = {(False, False): '_O3_chain_aware', (True, False): '_O3_nick_stitched',
-                  (False, True): '_O3_junction_stitched', (True, True): '_O3_stitched'}
-        name = re.sub(r'[^A-Za-z0-9_.-]', '_', source.stem)+suffix[bool(stitch_nicks), bool(stitch_junctions)]
+                  (False, True): '_O3_end_stack_stitched', (True, True): '_O3_stitched'}
+        name = re.sub(r'[^A-Za-z0-9_.-]', '_', source.stem)+suffix[bool(stitch_nicks), bool(stitch_terminal_stacks)]
     if not re.fullmatch(r'[A-Za-z0-9_][A-Za-z0-9_.-]*',name):
         raise ConversionError('Graph name must be a single ASCII identifier')
     raw = source.read_bytes()
@@ -169,10 +183,9 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
     for atom in atoms:
         counters[atom.segment] += 1
         labels.append(f'S{atom.segment}_N{counters[atom.segment]}')
-    stitched, candidates, junctions, nick_summary, junction_summary = [], [], [], None, None
-    if stitch_junctions and junction_scope not in JUNCTION_SCOPES:
-        raise ConversionError(f'junction_scope must be one of {", ".join(JUNCTION_SCOPES)}')
-    if stitching:
+    stitched, candidates, stacks, nick_summary, stack_summary = [], [], [], None, None
+    context = None
+    if stitching or asu_requested:
         context = StitchContext(pdb, altloc=altloc, node_atoms=atoms, node_labels=labels,
                                 transform=transform, operations=operations, trace_pairs=pairs)
         if stitch_nicks:
@@ -180,8 +193,8 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
                 context, join_cutoff=join_cutoff, o5_cutoff=o5_cutoff,
                 include_o5_fallback=include_o5_fallback)
             stitched += edges
-        if stitch_junctions:
-            edges, junctions, junction_summary = find_junction_stacks(context, scope=junction_scope)
+        if stitch_terminal_stacks:
+            edges, stacks, stack_summary = find_terminal_stacks(context)
             stitched += edges
     rows = _neighbor_rows([dict(label=label, fractional=frac) for label, frac in zip(labels, fracs)],
                           [[labels[a], labels[b]] for a, b in pairs], stitched)
@@ -196,7 +209,7 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
         warnings = []
         if stitch_nicks:
             counts = Counter(c['status'] for c in candidates)
-            nick_count = len(stitched) - kinds['junction_stack']
+            nick_count = len(stitched) - kinds['terminal_stack']
             warnings.append(f'Nick stitching: {nick_count} backbone joins stitched.')
             for status, text in (('ambiguous', 'ambiguous nick candidates (several partners) were not stitched'),
                                  ('segment_internal', 'nick candidates at segment-internal breaks were not stitched'),
@@ -205,19 +218,21 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
                                  ('duplicate_edge', 'nick candidates duplicating an existing edge were not stitched')):
                 if counts[status]:
                     warnings.append(f'{counts[status]} {text}.')
-        if stitch_junctions:
-            counts = Counter(c['status'] for c in junctions)
-            warnings.append(f"Junction stitching ({junction_scope} scope): {kinds['junction_stack']} base-stack junctions stitched.")
-            for status, text in (('not_face_junction', 'stacks with backbone on both faces reported only (junction_scope all stitches them)'),
-                                 ('no_graph_node', 'junction stacks without an O3-prime graph node were not stitched'),
-                                 ('duplicate_edge', 'junction stacks duplicating an existing edge were not stitched')):
+        if stitch_terminal_stacks:
+            counts = Counter(c['status'] for c in stacks)
+            same = sum(e['evidence']['same_polarity'] for e in stitched if e['kind'] == 'terminal_stack')
+            warnings.append(f"Chain-end stack stitching: {kinds['terminal_stack']} terminal stacks stitched"
+                            + (f' ({same} same-polarity 5\'-5\' or 3\'-3\').' if same else '.'))
+            for status, text in (('backbone_joined', 'chain-end stacks between ends already backbone joined were not stitched'),
+                                 ('no_graph_node', 'chain-end stacks without an O3-prime graph node were not stitched'),
+                                 ('duplicate_edge', 'chain-end stacks duplicating an existing edge were not stitched')):
                 if counts[status]:
                     warnings.append(f'{counts[status]} {text}.')
-            issues = junction_summary['plane_diagnostics']
+            issues = stack_summary['plane_diagnostics']
             if issues:
-                warnings.append(f'{len(issues)} nucleotide residues lack a usable base-ring plane; see stitch_parameters.')
-        if not stitch_junctions:
-            warnings.append('Junctions (non-backbone base stacks) are not stitched.')
+                warnings.append(f'{len(issues)} chain-end residues lack a usable base-ring plane; see stitch_parameters.')
+        if not stitch_terminal_stacks:
+            warnings.append('Chain-end pi stacks are not stitched.')
         if not stitch_nicks:
             warnings.append('Backbone nicks are not stitched.')
     else:
@@ -239,9 +254,29 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
     if stitching:
         graph.update(trace_edge_count=len(pairs),stitched_edge_count=len(stitched),
                      stitched_edge_counts=dict(sorted(Counter(e['kind'] for e in stitched).items())),
-                     stitched_edges=stitched,join_candidates=candidates,junction_candidates=junctions,
-                     stitch_parameters=dict(nicks=nick_summary,junctions=junction_summary))
+                     stitched_edges=stitched,join_candidates=candidates,terminal_stack_candidates=stacks,
+                     stitch_parameters=dict(nicks=nick_summary,terminal_stacks=stack_summary))
     payloads = {output:_serialize(graph).encode()}
+    if asu_requested:
+        quotients = build_asu_graphs(context, numbered_operations(pdb, operations), name=name,
+                                     space_group=graph['space_group'])
+        document = dict(schema_version=1, format='TopoStich ASU quotient graphs', tool_version=__version__,
+                        name=name, source_name=source.name, source_sha256=graph['source_sha256'],
+                        model=model, altloc=altloc, cell=list(pdb.cell), space_group=graph['space_group'],
+                        symmetry_operations=[dict(id=i, operation=_triplet(g))
+                                             for i, g in numbered_operations(pdb, operations)],
+                        stitching=dict(nicks=bool(stitch_nicks), terminal_stacks=bool(stitch_terminal_stacks)),
+                        chain_graph=quotients['chain'], residue_graph=quotients['residue'])
+        if asu_graphs is not None:
+            payloads[Path(asu_graphs)] = (json.dumps(document, indent=2, allow_nan=False)+'\n').encode()
+        if asu_chain_html is not None:
+            payloads[Path(asu_chain_html)] = render_html(quotients['chain']).encode()
+        if asu_residue_html is not None:
+            payloads[Path(asu_residue_html)] = render_html(quotients['residue']).encode()
+        graph['asu_graphs'] = {resolution: dict(nodes=len(q['nodes']), edges=len(q['edges']),
+                                                edge_type_counts=q['edge_type_counts'],
+                                                periodicity=q['summary'])
+                               for resolution, q in quotients.items()}
     if cmm is not None:
         payloads[Path(cmm)] = marker_xml(graph).encode()
     if crystal_cmm is not None:
@@ -255,7 +290,7 @@ def export_cgd(source, output, *, cmm=None, crystal_cmm=None, receipt=None,
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description='O3-prime trace to Systre CRYSTAL CGD; chains stay separate unless --stitch-nicks/--stitch-junctions.')
+    parser = argparse.ArgumentParser(description='O3-prime trace to Systre CRYSTAL CGD; chains stay separate unless --stitch-nicks/--stitch-terminal-stacks.')
     parser.add_argument('input',type=Path,help='PDB or native PDBx/mmCIF')
     parser.add_argument('--out','-out',required=True,type=Path,help='new .cgd file')
     parser.add_argument('--cmm',type=Path,help='ChimeraX asymmetric-unit graph view')
@@ -271,10 +306,11 @@ def main(argv=None):
     parser.add_argument('--o5-cutoff',type=float,default=6.0,help="missing-phosphate O5'...O3' cutoff (default 6.0)")
     parser.add_argument('--include-o5-fallback',action='store_true',
                         help="also stitch unambiguous O5' fallback joins (reported only by default)")
-    parser.add_argument('--stitch-junctions',action='store_true',
-                        help='join base stacks without backbone continuation across chains/images (NAtopo junction rule)')
-    parser.add_argument('--junction-scope',choices=JUNCTION_SCOPES,default='face',
-                        help="face (default): only stacks on a base face with no backbone neighbor; all: every non-backbone stack")
+    parser.add_argument('--stitch-terminal-stacks',action='store_true',
+                        help="join chain ends whose bases pi-stack (5'-3', 5'-5' or 3'-3'; any symmetry image) unless already backbone joined")
+    parser.add_argument('--asu-graphs',type=Path,help='save the ASU quotient graphs (chain and residue resolution) as JSON')
+    parser.add_argument('--asu-chain-html',type=Path,help='interactive HTML view of the chain-resolution ASU graph')
+    parser.add_argument('--asu-residue-html',type=Path,help='interactive HTML view of the residue-resolution ASU graph')
     parser.add_argument('--json',action='store_true',help='print the receipt as JSON')
     parser.add_argument('--version',action='version',version=f'TopoStich {__version__}')
     args=parser.parse_args(argv)
@@ -284,16 +320,17 @@ def main(argv=None):
                           altloc=args.altloc,input_format=args.input_format,
                           stitch_nicks=args.stitch_nicks,join_cutoff=args.join_cutoff,
                           o5_cutoff=args.o5_cutoff,include_o5_fallback=args.include_o5_fallback,
-                          stitch_junctions=args.stitch_junctions,junction_scope=args.junction_scope)
+                          stitch_terminal_stacks=args.stitch_terminal_stacks,asu_graphs=args.asu_graphs,
+                          asu_chain_html=args.asu_chain_html,asu_residue_html=args.asu_residue_html)
     except (ConversionError,OSError,UnicodeError) as error:
         parser.exit(2,f'topostich-cgd: {error}\n')
     if args.json:
         print(json.dumps(result,indent=2,allow_nan=False))
     elif result['stitching']:
         kinds = result['stitched_edge_counts']
-        nicks = result['stitched_edge_count'] - kinds.get('junction_stack', 0)
+        nicks = result['stitched_edge_count'] - kinds.get('terminal_stack', 0)
         parts = ([f"{nicks} stitched nick joins"] if args.stitch_nicks else []) + \
-                ([f"{kinds.get('junction_stack', 0)} stitched junction stacks"] if args.stitch_junctions else [])
+                ([f"{kinds.get('terminal_stack', 0)} stitched chain-end stacks"] if args.stitch_terminal_stacks else [])
         print(f"Wrote {args.out}: {result['node_count']} nodes, {result['edge_count']} edges "
               f"({result['trace_edge_count']} trace, {', '.join(parts)}), "
               f"{result['segment_count']} strand segments")
@@ -301,6 +338,10 @@ def main(argv=None):
         print(f"Wrote {args.out}: {result['node_count']} nodes, {result['edge_count']} edges, "
               f"{result['segment_count']} separate strand segments")
     if not args.json:
+        for resolution, quotient in result.get('asu_graphs', {}).items():
+            print(f"ASU {resolution} graph: {quotient['nodes']} nodes, {quotient['edges']} edge orbits")
+            for line in quotient['periodicity']:
+                print('  '+line)
         for warning in result['warnings']:
             print('Note: '+warning,file=sys.stderr)
     return 0

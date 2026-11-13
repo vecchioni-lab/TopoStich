@@ -2,7 +2,7 @@
 
 No distance-based bonding is performed. Every chain/TER segment and symmetry
 copy is a separate model so ChimeraX's Models panel can toggle it independently.
-Stitched nick joins and junction stacks cross segments and images, so each
+Stitched nick joins and chain-end stacks cross segments and images, so each
 family gets its own model with explicit endpoint markers; every stitched edge
 is drawn in each view.
 """
@@ -14,7 +14,7 @@ import gemmi
 
 PALETTE = ((.16,.65,.85),(.95,.55,.18),(.50,.78,.35),(.72,.46,.85),(.93,.35,.45),(.28,.77,.70))
 JOIN_FAMILIES = (('nick joins', ('backbone_join', 'backbone_join_o5', 'deposited_link'), dict(r='1', g='0.84', b='0')),
-                 ('junction stacks', ('junction_stack',), dict(r='0.9', g='0.2', b='0.75')))
+                 ('terminal stacks', ('terminal_stack',), dict(r='0.9', g='0.2', b='0.75')))
 
 
 def _xyz(values):

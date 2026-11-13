@@ -95,7 +95,7 @@ def read_mmcif(text: str, model: int = 1) -> Pdb:
         if index <= 0 or (index in symops and symops[index] != op):
             raise ConversionError('Conflicting mmCIF symmetry operator IDs')
         symops[index] = op.replace(' ','').lower()
-    connections, warnings = [], []
+    connections, connection_types, warnings = [], [], []
     for row in category('_struct_conn.', preserve_unknown=True):
         # Do not invent an image for a connection involving crystallographic symmetry.
         identity_images = True
@@ -142,8 +142,10 @@ def read_mmcif(text: str, model: int = 1) -> Pdb:
             endpoints.append(candidates[0].serial)
         if not out_of_model:
             connections.append(tuple(endpoints))
+            connection_types.append((row.get('conn_type_id') or '').lower())
     # PDB-derived mmCIF often carries a six-decimal SCALE approximation. Full
     # precision native matrices and every nonzero origin shift must stay exact.
     rounded = scale is None or (all(row[3] == 0 for row in scale) and
         all(abs(v-round(v,6)) < 1e-14 for row in scale for v in row[:3]))
-    return Pdb(atoms, cell, group, scale, symops, connections, [], len(model_ids), 'mmcif', warnings, rounded)
+    return Pdb(atoms, cell, group, scale, symops, connections, [], len(model_ids), 'mmcif', warnings, rounded,
+               connection_types)

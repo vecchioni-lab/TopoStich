@@ -1,0 +1,1784 @@
+{
+  "schema_version": 1,
+  "format": "TopoStich ASU quotient graphs",
+  "tool_version": "0.4.0",
+  "name": "8D93_stiched",
+  "source_name": "8d93.cif",
+  "source_sha256": "9f67eb6a7193d1ff06b68105e4ba8a066f4b02bef55787fc096404a99fa1d7bb",
+  "model": 1,
+  "altloc": null,
+  "cell": [
+    105.547,
+    105.547,
+    96.268,
+    90.0,
+    90.0,
+    120.0
+  ],
+  "space_group": "R3:H",
+  "symmetry_operations": [
+    {
+      "id": 1,
+      "operation": "x,y,z"
+    },
+    {
+      "id": 2,
+      "operation": "-y,x-y,z"
+    },
+    {
+      "id": 3,
+      "operation": "-x+y,-x,z"
+    },
+    {
+      "id": 4,
+      "operation": "x+1/3,y+2/3,z+2/3"
+    },
+    {
+      "id": 5,
+      "operation": "-y+1/3,x-y+2/3,z+2/3"
+    },
+    {
+      "id": 6,
+      "operation": "-x+y+1/3,-x+2/3,z+2/3"
+    },
+    {
+      "id": 7,
+      "operation": "x+2/3,y+1/3,z+1/3"
+    },
+    {
+      "id": 8,
+      "operation": "-y+2/3,x-y+1/3,z+1/3"
+    },
+    {
+      "id": 9,
+      "operation": "-x+y+2/3,-x+1/3,z+1/3"
+    }
+  ],
+  "stitching": {
+    "nicks": true,
+    "terminal_stacks": true
+  },
+  "chain_graph": {
+    "resolution": "chain",
+    "name": "8D93_stiched",
+    "space_group": "R3:H",
+    "nodes": [
+      {
+        "id": "S1",
+        "label": "A",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "kind": "polymer",
+        "residue_count": 12,
+        "internal_covalent_edges": 11
+      },
+      {
+        "id": "S2",
+        "label": "B",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "kind": "polymer",
+        "residue_count": 7,
+        "internal_covalent_edges": 6
+      },
+      {
+        "id": "S3",
+        "label": "C",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "kind": "polymer",
+        "residue_count": 14,
+        "internal_covalent_edges": 13
+      },
+      {
+        "id": "S4",
+        "label": "D",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "kind": "polymer",
+        "residue_count": 9,
+        "internal_covalent_edges": 8
+      }
+    ],
+    "edges": [
+      {
+        "source": "S1",
+        "target": "S4",
+        "type": "backbone_join",
+        "symmetry_code": "3_555",
+        "operator": "3",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "-x+y,-x,z",
+        "intra_asu": false,
+        "distance_min_A": 2.930955947091795,
+        "distance_max_A": 2.930955947091795,
+        "residue_pairs": [
+          "A:DA112 <-> D:DC113"
+        ],
+        "residue_edge_count": 1
+      },
+      {
+        "source": "S1",
+        "target": "S4",
+        "type": "terminal_stack",
+        "symmetry_code": "9_555",
+        "operator": "9",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "-x+y+2/3,-x+1/3,z+1/3",
+        "intra_asu": false,
+        "distance_min_A": 3.9102316384633764,
+        "distance_max_A": 3.9102316384633764,
+        "residue_pairs": [
+          "A:DG101 <-> D:DA121 (5'-3')"
+        ],
+        "residue_edge_count": 1,
+        "polarities": [
+          "5'-3'"
+        ],
+        "same_polarity": false
+      },
+      {
+        "source": "S2",
+        "target": "S2",
+        "type": "backbone_join",
+        "symmetry_code": "3_555",
+        "operator": "3",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "-x+y,-x,z",
+        "intra_asu": false,
+        "distance_min_A": 3.117419985597283,
+        "distance_max_A": 3.117419985597283,
+        "residue_pairs": [
+          "B:DA105 <-> B:DT114"
+        ],
+        "residue_edge_count": 1
+      },
+      {
+        "source": "S3",
+        "target": "S3",
+        "type": "terminal_stack",
+        "symmetry_code": "9_555",
+        "operator": "9",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "-x+y+2/3,-x+1/3,z+1/3",
+        "intra_asu": false,
+        "distance_min_A": 3.3751629802021794,
+        "distance_max_A": 3.3751629802021794,
+        "residue_pairs": [
+          "C:DC114 <-> C:DT101 (5'-3')"
+        ],
+        "residue_edge_count": 1,
+        "polarities": [
+          "5'-3'"
+        ],
+        "same_polarity": false
+      }
+    ],
+    "edge_type_counts": {
+      "backbone_join": 2,
+      "terminal_stack": 2
+    },
+    "self_loops": 2,
+    "symmetry_edges": 4,
+    "periodicity": [
+      {
+        "nodes": [
+          "S1",
+          "S4"
+        ],
+        "dimension": 1,
+        "translation_basis": [
+          "[2/3, 1/3, 1/3]"
+        ],
+        "point_group_order": 1,
+        "space_group_point_order": 3,
+        "interpenetrating_copies": null,
+        "independent_cycles": 1
+      },
+      {
+        "nodes": [
+          "S2"
+        ],
+        "dimension": 0,
+        "translation_basis": [],
+        "point_group_order": 3,
+        "space_group_point_order": 3,
+        "interpenetrating_copies": null,
+        "independent_cycles": 1
+      },
+      {
+        "nodes": [
+          "S3"
+        ],
+        "dimension": 1,
+        "translation_basis": [
+          "[0, 0, 1]"
+        ],
+        "point_group_order": 3,
+        "space_group_point_order": 3,
+        "interpenetrating_copies": null,
+        "independent_cycles": 1
+      }
+    ],
+    "summary": [
+      "A, D: 1-periodic rod/chain along [2/3, 1/3, 1/3]",
+      "C: 1-periodic rod/chain along [0, 0, 1]",
+      "1 single node(s) with no join, finite: B"
+    ]
+  },
+  "residue_graph": {
+    "resolution": "residue",
+    "name": "8D93_stiched",
+    "space_group": "R3:H",
+    "nodes": [
+      {
+        "id": "S1:DG101#1",
+        "label": "A:DG101",
+        "residue": "DG",
+        "seq": "101",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 0
+      },
+      {
+        "id": "S1:DA102#2",
+        "label": "A:DA102",
+        "residue": "DA",
+        "seq": "102",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 1
+      },
+      {
+        "id": "S1:DG103#3",
+        "label": "A:DG103",
+        "residue": "DG",
+        "seq": "103",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 2
+      },
+      {
+        "id": "S1:DC104#4",
+        "label": "A:DC104",
+        "residue": "DC",
+        "seq": "104",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 3
+      },
+      {
+        "id": "S1:DA105#5",
+        "label": "A:DA105",
+        "residue": "DA",
+        "seq": "105",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 4
+      },
+      {
+        "id": "S1:DG106#6",
+        "label": "A:DG106",
+        "residue": "DG",
+        "seq": "106",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 5
+      },
+      {
+        "id": "S1:DC107#7",
+        "label": "A:DC107",
+        "residue": "DC",
+        "seq": "107",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 6
+      },
+      {
+        "id": "S1:DC108#8",
+        "label": "A:DC108",
+        "residue": "DC",
+        "seq": "108",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 7
+      },
+      {
+        "id": "S1:DT109#9",
+        "label": "A:DT109",
+        "residue": "DT",
+        "seq": "109",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 8
+      },
+      {
+        "id": "S1:DG110#10",
+        "label": "A:DG110",
+        "residue": "DG",
+        "seq": "110",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 9
+      },
+      {
+        "id": "S1:DT111#11",
+        "label": "A:DT111",
+        "residue": "DT",
+        "seq": "111",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 10
+      },
+      {
+        "id": "S1:DA112#12",
+        "label": "A:DA112",
+        "residue": "DA",
+        "seq": "112",
+        "insertion": "",
+        "chain": "A",
+        "label_asym": "A",
+        "segment": 1,
+        "chain_node": "S1",
+        "chain_label": "A",
+        "kind": "polymer",
+        "position_in_chain": 11
+      },
+      {
+        "id": "S2:DA105#1",
+        "label": "B:DA105",
+        "residue": "DA",
+        "seq": "105",
+        "insertion": "",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "chain_node": "S2",
+        "chain_label": "B",
+        "kind": "polymer",
+        "position_in_chain": 0
+      },
+      {
+        "id": "S2:DC106#2",
+        "label": "B:DC106",
+        "residue": "DC",
+        "seq": "106",
+        "insertion": "",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "chain_node": "S2",
+        "chain_label": "B",
+        "kind": "polymer",
+        "position_in_chain": 1
+      },
+      {
+        "id": "S2:DA107#3",
+        "label": "B:DA107",
+        "residue": "DA",
+        "seq": "107",
+        "insertion": "",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "chain_node": "S2",
+        "chain_label": "B",
+        "kind": "polymer",
+        "position_in_chain": 2
+      },
+      {
+        "id": "S2:DC111#4",
+        "label": "B:DC111",
+        "residue": "DC",
+        "seq": "111",
+        "insertion": "",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "chain_node": "S2",
+        "chain_label": "B",
+        "kind": "polymer",
+        "position_in_chain": 3
+      },
+      {
+        "id": "S2:DC112#5",
+        "label": "B:DC112",
+        "residue": "DC",
+        "seq": "112",
+        "insertion": "",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "chain_node": "S2",
+        "chain_label": "B",
+        "kind": "polymer",
+        "position_in_chain": 4
+      },
+      {
+        "id": "S2:DG113#6",
+        "label": "B:DG113",
+        "residue": "DG",
+        "seq": "113",
+        "insertion": "",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "chain_node": "S2",
+        "chain_label": "B",
+        "kind": "polymer",
+        "position_in_chain": 5
+      },
+      {
+        "id": "S2:DT114#7",
+        "label": "B:DT114",
+        "residue": "DT",
+        "seq": "114",
+        "insertion": "",
+        "chain": "B",
+        "label_asym": "B",
+        "segment": 2,
+        "chain_node": "S2",
+        "chain_label": "B",
+        "kind": "polymer",
+        "position_in_chain": 6
+      },
+      {
+        "id": "S3:DT101#1",
+        "label": "C:DT101",
+        "residue": "DT",
+        "seq": "101",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 0
+      },
+      {
+        "id": "S3:DC102#2",
+        "label": "C:DC102",
+        "residue": "DC",
+        "seq": "102",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 1
+      },
+      {
+        "id": "S3:DT103#3",
+        "label": "C:DT103",
+        "residue": "DT",
+        "seq": "103",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 2
+      },
+      {
+        "id": "S3:DG104#4",
+        "label": "C:DG104",
+        "residue": "DG",
+        "seq": "104",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 3
+      },
+      {
+        "id": "S3:DA105#5",
+        "label": "C:DA105",
+        "residue": "DA",
+        "seq": "105",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 4
+      },
+      {
+        "id": "S3:DT106#6",
+        "label": "C:DT106",
+        "residue": "DT",
+        "seq": "106",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 5
+      },
+      {
+        "id": "S3:DG107#7",
+        "label": "C:DG107",
+        "residue": "DG",
+        "seq": "107",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 6
+      },
+      {
+        "id": "S3:DT108#8",
+        "label": "C:DT108",
+        "residue": "DT",
+        "seq": "108",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 7
+      },
+      {
+        "id": "S3:DG109#9",
+        "label": "C:DG109",
+        "residue": "DG",
+        "seq": "109",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 8
+      },
+      {
+        "id": "S3:DG110#10",
+        "label": "C:DG110",
+        "residue": "DG",
+        "seq": "110",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 9
+      },
+      {
+        "id": "S3:DC111#11",
+        "label": "C:DC111",
+        "residue": "DC",
+        "seq": "111",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 10
+      },
+      {
+        "id": "S3:DT112#12",
+        "label": "C:DT112",
+        "residue": "DT",
+        "seq": "112",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 11
+      },
+      {
+        "id": "S3:DG113#13",
+        "label": "C:DG113",
+        "residue": "DG",
+        "seq": "113",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 12
+      },
+      {
+        "id": "S3:DC114#14",
+        "label": "C:DC114",
+        "residue": "DC",
+        "seq": "114",
+        "insertion": "",
+        "chain": "C",
+        "label_asym": "C",
+        "segment": 3,
+        "chain_node": "S3",
+        "chain_label": "C",
+        "kind": "polymer",
+        "position_in_chain": 13
+      },
+      {
+        "id": "S4:DC113#1",
+        "label": "D:DC113",
+        "residue": "DC",
+        "seq": "113",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 0
+      },
+      {
+        "id": "S4:DG114#2",
+        "label": "D:DG114",
+        "residue": "DG",
+        "seq": "114",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 1
+      },
+      {
+        "id": "S4:DG115#3",
+        "label": "D:DG115",
+        "residue": "DG",
+        "seq": "115",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 2
+      },
+      {
+        "id": "S4:DA116#4",
+        "label": "D:DA116",
+        "residue": "DA",
+        "seq": "116",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 3
+      },
+      {
+        "id": "S4:DC117#5",
+        "label": "D:DC117",
+        "residue": "DC",
+        "seq": "117",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 4
+      },
+      {
+        "id": "S4:DA118#6",
+        "label": "D:DA118",
+        "residue": "DA",
+        "seq": "118",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 5
+      },
+      {
+        "id": "S4:DT119#7",
+        "label": "D:DT119",
+        "residue": "DT",
+        "seq": "119",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 6
+      },
+      {
+        "id": "S4:DC120#8",
+        "label": "D:DC120",
+        "residue": "DC",
+        "seq": "120",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 7
+      },
+      {
+        "id": "S4:DA121#9",
+        "label": "D:DA121",
+        "residue": "DA",
+        "seq": "121",
+        "insertion": "",
+        "chain": "D",
+        "label_asym": "D",
+        "segment": 4,
+        "chain_node": "S4",
+        "chain_label": "D",
+        "kind": "polymer",
+        "position_in_chain": 8
+      }
+    ],
+    "edges": [
+      {
+        "source": "S1:DG101#1",
+        "target": "S1:DA102#2",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6111601424439463,
+        "distance_max_A": 1.6111601424439463,
+        "intra_chain": true,
+        "contacts": [
+          "A:DG101 O3' - A:DA102 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DG101#1",
+        "target": "S4:DA121#9",
+        "type": "terminal_stack",
+        "symmetry_code": "9_555",
+        "operator": "9",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "-x+y+2/3,-x+1/3,z+1/3",
+        "intra_asu": false,
+        "distance_min_A": 3.9102316384633764,
+        "distance_max_A": 3.9102316384633764,
+        "intra_chain": false,
+        "polarities": [
+          "5'-3'"
+        ],
+        "same_polarity": false,
+        "contacts": [
+          "D:DA121 (3' end) stacks on A:DG101 (5' end), centroids 3.91 A, polarity 5'-3'"
+        ]
+      },
+      {
+        "source": "S1:DA102#2",
+        "target": "S1:DG103#3",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6115405895291623,
+        "distance_max_A": 1.6115405895291623,
+        "intra_chain": true,
+        "contacts": [
+          "A:DA102 O3' - A:DG103 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DG103#3",
+        "target": "S1:DC104#4",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6145689739679734,
+        "distance_max_A": 1.6145689739679734,
+        "intra_chain": true,
+        "contacts": [
+          "A:DG103 O3' - A:DC104 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DC104#4",
+        "target": "S1:DA105#5",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.608497899843205,
+        "distance_max_A": 1.608497899843205,
+        "intra_chain": true,
+        "contacts": [
+          "A:DC104 O3' - A:DA105 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DA105#5",
+        "target": "S1:DG106#6",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6088996682826449,
+        "distance_max_A": 1.6088996682826449,
+        "intra_chain": true,
+        "contacts": [
+          "A:DA105 O3' - A:DG106 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DG106#6",
+        "target": "S1:DC107#7",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6191909355601017,
+        "distance_max_A": 1.6191909355601017,
+        "intra_chain": true,
+        "contacts": [
+          "A:DG106 O3' - A:DC107 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S1:DC107#7",
+        "target": "S1:DC108#8",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.614073256484972,
+        "distance_max_A": 1.614073256484972,
+        "intra_chain": true,
+        "contacts": [
+          "A:DC107 O3' - A:DC108 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DC108#8",
+        "target": "S1:DT109#9",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.60202172625717,
+        "distance_max_A": 1.60202172625717,
+        "intra_chain": true,
+        "contacts": [
+          "A:DC108 O3' - A:DT109 P 1.60 A"
+        ]
+      },
+      {
+        "source": "S1:DT109#9",
+        "target": "S1:DG110#10",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6083762585601675,
+        "distance_max_A": 1.6083762585601675,
+        "intra_chain": true,
+        "contacts": [
+          "A:DT109 O3' - A:DG110 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DG110#10",
+        "target": "S1:DT111#11",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6075731699677003,
+        "distance_max_A": 1.6075731699677003,
+        "intra_chain": true,
+        "contacts": [
+          "A:DG110 O3' - A:DT111 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S1:DT111#11",
+        "target": "S1:DA112#12",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6011350430866222,
+        "distance_max_A": 1.6011350430866222,
+        "intra_chain": true,
+        "contacts": [
+          "A:DT111 O3' - A:DA112 P 1.60 A"
+        ]
+      },
+      {
+        "source": "S1:DA112#12",
+        "target": "S4:DC113#1",
+        "type": "backbone_join",
+        "symmetry_code": "3_555",
+        "operator": "3",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "-x+y,-x,z",
+        "intra_asu": false,
+        "distance_min_A": 2.930955947091795,
+        "distance_max_A": 2.930955947091795,
+        "intra_chain": false,
+        "contacts": [
+          "A:DA112 O3' ... D:DC113 P 2.93 A (stitched)"
+        ]
+      },
+      {
+        "source": "S2:DA105#1",
+        "target": "S2:DC106#2",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.600408807930024,
+        "distance_max_A": 1.600408807930024,
+        "intra_chain": true,
+        "contacts": [
+          "B:DA105 O3' - B:DC106 P 1.60 A"
+        ]
+      },
+      {
+        "source": "S2:DA105#1",
+        "target": "S2:DT114#7",
+        "type": "backbone_join",
+        "symmetry_code": "3_555",
+        "operator": "3",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "-x+y,-x,z",
+        "intra_asu": false,
+        "distance_min_A": 3.117419985597283,
+        "distance_max_A": 3.117419985597283,
+        "intra_chain": false,
+        "contacts": [
+          "B:DT114 O3' ... B:DA105 P 3.12 A (stitched)"
+        ]
+      },
+      {
+        "source": "S2:DC106#2",
+        "target": "S2:DA107#3",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.591016230998289,
+        "distance_max_A": 1.591016230998289,
+        "intra_chain": true,
+        "contacts": [
+          "B:DC106 O3' - B:DA107 P 1.59 A"
+        ]
+      },
+      {
+        "source": "S2:DA107#3",
+        "target": "S2:DC111#4",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6057071854482063,
+        "distance_max_A": 1.6057071854482063,
+        "intra_chain": true,
+        "contacts": [
+          "B:DA107 O3' - B:DC111 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S2:DC111#4",
+        "target": "S2:DC112#5",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6088326293931257,
+        "distance_max_A": 1.6088326293931257,
+        "intra_chain": true,
+        "contacts": [
+          "B:DC111 O3' - B:DC112 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S2:DC112#5",
+        "target": "S2:DG113#6",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6086468754515393,
+        "distance_max_A": 1.6086468754515393,
+        "intra_chain": true,
+        "contacts": [
+          "B:DC112 O3' - B:DG113 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S2:DG113#6",
+        "target": "S2:DT114#7",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.615976468176439,
+        "distance_max_A": 1.615976468176439,
+        "intra_chain": true,
+        "contacts": [
+          "B:DG113 O3' - B:DT114 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DT101#1",
+        "target": "S3:DC102#2",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.618370766357326,
+        "distance_max_A": 1.618370766357326,
+        "intra_chain": true,
+        "contacts": [
+          "C:DT101 O3' - C:DC102 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DT101#1",
+        "target": "S3:DC114#14",
+        "type": "terminal_stack",
+        "symmetry_code": "5_544",
+        "operator": "5",
+        "lattice_translation": [
+          0,
+          -1,
+          -1
+        ],
+        "operation": "-y+1/3,x-y-1/3,z-1/3",
+        "intra_asu": false,
+        "distance_min_A": 3.3751629802021794,
+        "distance_max_A": 3.3751629802021794,
+        "intra_chain": false,
+        "polarities": [
+          "5'-3'"
+        ],
+        "same_polarity": false,
+        "contacts": [
+          "C:DC114 (3' end) stacks on C:DT101 (5' end), centroids 3.38 A, polarity 5'-3'"
+        ]
+      },
+      {
+        "source": "S3:DC102#2",
+        "target": "S3:DT103#3",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6157774913025649,
+        "distance_max_A": 1.6157774913025649,
+        "intra_chain": true,
+        "contacts": [
+          "C:DC102 O3' - C:DT103 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DT103#3",
+        "target": "S3:DG104#4",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6179874925041924,
+        "distance_max_A": 1.6179874925041924,
+        "intra_chain": true,
+        "contacts": [
+          "C:DT103 O3' - C:DG104 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DG104#4",
+        "target": "S3:DA105#5",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6007371073664793,
+        "distance_max_A": 1.6007371073664793,
+        "intra_chain": true,
+        "contacts": [
+          "C:DG104 O3' - C:DA105 P 1.60 A"
+        ]
+      },
+      {
+        "source": "S3:DA105#5",
+        "target": "S3:DT106#6",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6114180043055253,
+        "distance_max_A": 1.6114180043055253,
+        "intra_chain": true,
+        "contacts": [
+          "C:DA105 O3' - C:DT106 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S3:DT106#6",
+        "target": "S3:DG107#7",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6053249174855535,
+        "distance_max_A": 1.6053249174855535,
+        "intra_chain": true,
+        "contacts": [
+          "C:DT106 O3' - C:DG107 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S3:DG107#7",
+        "target": "S3:DT108#8",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6073261302548392,
+        "distance_max_A": 1.6073261302548392,
+        "intra_chain": true,
+        "contacts": [
+          "C:DG107 O3' - C:DT108 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S3:DT108#8",
+        "target": "S3:DG109#9",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6187297936653895,
+        "distance_max_A": 1.6187297936653895,
+        "intra_chain": true,
+        "contacts": [
+          "C:DT108 O3' - C:DG109 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DG109#9",
+        "target": "S3:DG110#10",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6167124632723036,
+        "distance_max_A": 1.6167124632723036,
+        "intra_chain": true,
+        "contacts": [
+          "C:DG109 O3' - C:DG110 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DG110#10",
+        "target": "S3:DC111#11",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6177658459121935,
+        "distance_max_A": 1.6177658459121935,
+        "intra_chain": true,
+        "contacts": [
+          "C:DG110 O3' - C:DC111 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DC111#11",
+        "target": "S3:DT112#12",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6195902791755703,
+        "distance_max_A": 1.6195902791755703,
+        "intra_chain": true,
+        "contacts": [
+          "C:DC111 O3' - C:DT112 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S3:DT112#12",
+        "target": "S3:DG113#13",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6130278504105244,
+        "distance_max_A": 1.6130278504105244,
+        "intra_chain": true,
+        "contacts": [
+          "C:DT112 O3' - C:DG113 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S3:DG113#13",
+        "target": "S3:DC114#14",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6062173230917405,
+        "distance_max_A": 1.6062173230917405,
+        "intra_chain": true,
+        "contacts": [
+          "C:DG113 O3' - C:DC114 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S4:DC113#1",
+        "target": "S4:DG114#2",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6087750822908706,
+        "distance_max_A": 1.6087750822908706,
+        "intra_chain": true,
+        "contacts": [
+          "D:DC113 O3' - D:DG114 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S4:DG114#2",
+        "target": "S4:DG115#3",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6085427867483033,
+        "distance_max_A": 1.6085427867483033,
+        "intra_chain": true,
+        "contacts": [
+          "D:DG114 O3' - D:DG115 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S4:DG115#3",
+        "target": "S4:DA116#4",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6184150688250518,
+        "distance_max_A": 1.6184150688250518,
+        "intra_chain": true,
+        "contacts": [
+          "D:DG115 O3' - D:DA116 P 1.62 A"
+        ]
+      },
+      {
+        "source": "S4:DA116#4",
+        "target": "S4:DC117#5",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.604690597716579,
+        "distance_max_A": 1.604690597716579,
+        "intra_chain": true,
+        "contacts": [
+          "D:DA116 O3' - D:DC117 P 1.60 A"
+        ]
+      },
+      {
+        "source": "S4:DC117#5",
+        "target": "S4:DA118#6",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.60458458443299,
+        "distance_max_A": 1.60458458443299,
+        "intra_chain": true,
+        "contacts": [
+          "D:DC117 O3' - D:DA118 P 1.60 A"
+        ]
+      },
+      {
+        "source": "S4:DA118#6",
+        "target": "S4:DT119#7",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6069188725321497,
+        "distance_max_A": 1.6069188725321497,
+        "intra_chain": true,
+        "contacts": [
+          "D:DA118 O3' - D:DT119 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S4:DT119#7",
+        "target": "S4:DC120#8",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6134897172588363,
+        "distance_max_A": 1.6134897172588363,
+        "intra_chain": true,
+        "contacts": [
+          "D:DT119 O3' - D:DC120 P 1.61 A"
+        ]
+      },
+      {
+        "source": "S4:DC120#8",
+        "target": "S4:DA121#9",
+        "type": "covalent",
+        "symmetry_code": "1_555",
+        "operator": "1",
+        "lattice_translation": [
+          0,
+          0,
+          0
+        ],
+        "operation": "x,y,z",
+        "intra_asu": true,
+        "distance_min_A": 1.6046730735885104,
+        "distance_max_A": 1.6046730735885104,
+        "intra_chain": true,
+        "contacts": [
+          "D:DC120 O3' - D:DA121 P 1.60 A"
+        ]
+      }
+    ],
+    "edge_type_counts": {
+      "backbone_join": 2,
+      "covalent": 38,
+      "terminal_stack": 2
+    },
+    "self_loops": 0,
+    "symmetry_edges": 4,
+    "periodicity": [
+      {
+        "nodes": [
+          "S1:DG101#1",
+          "S1:DA102#2",
+          "S1:DG103#3",
+          "S1:DC104#4",
+          "S1:DA105#5",
+          "S1:DG106#6",
+          "S1:DC107#7",
+          "S1:DC108#8",
+          "S1:DT109#9",
+          "S1:DG110#10",
+          "S1:DT111#11",
+          "S1:DA112#12",
+          "S4:DC113#1",
+          "S4:DG114#2",
+          "S4:DG115#3",
+          "S4:DA116#4",
+          "S4:DC117#5",
+          "S4:DA118#6",
+          "S4:DT119#7",
+          "S4:DC120#8",
+          "S4:DA121#9"
+        ],
+        "dimension": 1,
+        "translation_basis": [
+          "[2/3, 1/3, 1/3]"
+        ],
+        "point_group_order": 1,
+        "space_group_point_order": 3,
+        "interpenetrating_copies": null,
+        "independent_cycles": 1
+      },
+      {
+        "nodes": [
+          "S3:DT101#1",
+          "S3:DC102#2",
+          "S3:DT103#3",
+          "S3:DG104#4",
+          "S3:DA105#5",
+          "S3:DT106#6",
+          "S3:DG107#7",
+          "S3:DT108#8",
+          "S3:DG109#9",
+          "S3:DG110#10",
+          "S3:DC111#11",
+          "S3:DT112#12",
+          "S3:DG113#13",
+          "S3:DC114#14"
+        ],
+        "dimension": 1,
+        "translation_basis": [
+          "[0, 0, 1]"
+        ],
+        "point_group_order": 3,
+        "space_group_point_order": 3,
+        "interpenetrating_copies": null,
+        "independent_cycles": 1
+      },
+      {
+        "nodes": [
+          "S2:DA105#1",
+          "S2:DC106#2",
+          "S2:DA107#3",
+          "S2:DC111#4",
+          "S2:DC112#5",
+          "S2:DG113#6",
+          "S2:DT114#7"
+        ],
+        "dimension": 0,
+        "translation_basis": [],
+        "point_group_order": 3,
+        "space_group_point_order": 3,
+        "interpenetrating_copies": null,
+        "independent_cycles": 1
+      }
+    ],
+    "summary": [
+      "A (12), D (9) residues: 1-periodic rod/chain along [2/3, 1/3, 1/3]",
+      "C (14) residues: 1-periodic rod/chain along [0, 0, 1]",
+      "B (7) residues: finite (0-periodic)"
+    ]
+  }
+}

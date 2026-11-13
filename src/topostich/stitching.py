@@ -1,6 +1,6 @@
-"""Backbone nick and junction stitching for the O3-prime CGD graph.
+"""Backbone nick and chain-end stack stitching for the O3-prime CGD graph.
 
-Both rules are ported from the lab's NAtopo project, without its NetworkX,
+The nick rule and the stack geometry are ported from the lab's NAtopo project, without its NetworkX,
 NumPy or SciPy dependencies. Gemmi supplies the symmetry operator algebra.
 
 **Nicks** (``nucleotide_interactions.find_backbone_join_candidates`` with the
@@ -19,21 +19,22 @@ endpoint rules of ``prepare_nucleotides`` and the polymer links of
   ``o5_cutoff`` (6.0 A); it is stitched only on request.
 * Only one-to-one joins between segment termini become edges.
 
-**Junctions** (``find_pi_interactions``/``fit_base_planes`` and
-``junctions.find_junction_candidates``, method ``nonbackbone_pi_stack_v2``):
+**Terminal stacks** (TopoStich rule over NAtopo's ``find_pi_interactions`` stack
+geometry and ``fit_base_planes`` ring planes):
 
+* Chain ends are the first (5') and last (3') nucleotide residues of each
+  chain/TER segment with at least two nucleotide residues. Single-residue
+  segments (free nucleotides, nucleoside ligands) are counted, not stitched.
 * Base planes are SVD fits of complete ring heavy atoms (9 purine, 6
   pyrimidine). Ring atom names come from TopoStich's NARestraints-derived
   residue catalog, so modified residues map canonical ring positions to their
   actual names; unmapped or ambiguous residues are reported, not guessed.
 * A **pi stack** has centroids < 5.5 A, normals within 30 deg, both normal
   separations 2.0-4.5 A and both lateral shifts <= 3.0 A.
-* A **junction candidate** is a stack whose two residues are not joined by a
-  verified O3'-P bond. Its reason is ``stack_on_face_without_backbone_continuation``
-  when, for either endpoint, every verified backbone neighbor lies on the
-  opposite face (0.5 A side tolerance); otherwise ``non_backbone_stack``.
-* ``junction_scope='face'`` (default) stitches face junctions only: the helix
-  continues by stacking past a strand end. ``'all'`` stitches every candidate.
+* Every stack between two chain ends is stitched, in any symmetry image and
+  for any end polarity (5'-3', 5'-5' or 3'-3'; same-polarity stacks are
+  flagged), unless the two ends are already backbone joined: a verified
+  O3'-P link in the same image, or a nick join stitched in this run.
 
 Every symmetry operation and every lattice translation that can satisfy a
 cutoff is enumerated exactly (no finite cell window). Candidates that are not
@@ -46,10 +47,10 @@ import math
 
 import gemmi
 
-from .converter import ConversionError, normalized_name
+from .converter import ConversionError, covalent_connections, normalized_name
 
 NICK_METHOD = 'natopo_backbone_join_v1'
-JUNCTION_METHOD = 'natopo_nonbackbone_pi_stack_v2'
+TERMINAL_STACK_METHOD = 'topostich_terminal_pi_stack_v1'
 POLYMER_LINK_A = (0.8, 2.2)
 EXPLICIT_COVALENT_A = (0.8, 2.3)
 ENDPOINT_ATOMS = ('P', "O5'", "C5'", "C3'", "O3'")
@@ -58,8 +59,7 @@ PURINE_RING = ('N9', 'C8', 'N7', 'C5', 'C6', 'N1', 'C2', 'N3', 'C4')
 PYRIMIDINE_RING = ('N1', 'C2', 'N3', 'C4', 'C5', 'C6')
 RING_ELEMENTS = {'C', 'N', 'O', 'S', 'SE'}
 PI_DEFAULTS = dict(centroid_cutoff_A=5.5, max_angle_deg=30.0, max_lateral_shift_A=3.0,
-                   min_plane_separation_A=2.0, max_plane_separation_A=4.5, min_side_projection_A=0.5)
-JUNCTION_SCOPES = ('face', 'all')
+                   min_plane_separation_A=2.0, max_plane_separation_A=4.5)
 
 
 def _positive(value, name):
@@ -186,13 +186,15 @@ class StitchContext:
     """Residues, verified backbone links, nodes and existing edges of one graph."""
 
     def __init__(self, pdb, *, altloc, node_atoms, node_labels, transform, operations, trace_pairs):
-        self.pdb, self.frame, self.operations = pdb, _Frame(transform), operations
+        self.pdb, self.frame, self.operations, self.altloc = pdb, _Frame(transform), operations, altloc
         self.node_atoms, self.node_labels = node_atoms, node_labels
         self.node_of = {atom.residue_key: i for i, atom in enumerate(node_atoms)}
         self._read_residues(altloc)
         self._read_links()
         # Existing neighbors per node as (neighbor index, rounded image coordinates).
         self.occupied = defaultdict(set)
+        # Stitched joins at residue resolution: dict(kind, a, b, g, distance, edge).
+        self.stitched_links = []
         for i, j in trace_pairs:
             self._occupy(i, j, IDENTITY_OP)
 
@@ -224,19 +226,21 @@ class StitchContext:
     def _read_links(self):
         residues = self.residues
         linked = defaultdict(set)   # (residue key, atom name) -> {(other key, other atom name)}
+        self.polymer_links = []     # (3' residue, 5' residue, O3', P) within a segment
         for keys in self.by_segment.values():
             for left, right in zip(keys, keys[1:]):
                 o3, p = residues[left].get("O3'"), residues[right].get('P')
                 if o3 is not None and p is not None and POLYMER_LINK_A[0] <= math.dist(o3.xyz, p.xyz) <= POLYMER_LINK_A[1]:
                     linked[left, "O3'"].add((right, 'P'))
                     linked[right, 'P'].add((left, "O3'"))
+                    self.polymer_links.append((left, right, o3, p))
         serials = defaultdict(list)
         for key, atoms in residues.items():
             for name, atom in atoms.items():
                 serials[atom.serial].append((key, name, atom))
         by_serial = {atom.serial: atom for atom in self.pdb.atoms}
         explicit = []
-        for a, b in self.pdb.conect:
+        for a, b in covalent_connections(self.pdb):
             for here, there in ((a, b), (b, a)):
                 other = by_serial.get(there)
                 for key, name, atom in serials.get(here, ()):
@@ -271,13 +275,16 @@ class StitchContext:
         self.occupied[target].add(key_r)
         return forward, reverse
 
-    def add_edge(self, source, target, g, *, kind, distance, source_atom, target_atom, evidence):
-        """Register a periodic edge; return its record, or None if it duplicates one."""
+    def add_edge(self, source, target, g, *, kind, distance, source_atom, target_atom, evidence, residues):
+        """Register a periodic edge; return its record, or None if it duplicates one.
+
+        residues = (a, b): the joined residue keys, b taken in image g of a's frame.
+        """
         images = self._occupy(source, target, g)
         if images is None:
             return None
         forward, reverse = images
-        return dict(source=self.node_labels[source], target=self.node_labels[target], kind=kind,
+        edge = dict(source=self.node_labels[source], target=self.node_labels[target], kind=kind,
                     operation=_wrapped(g).triplet(), lattice_translation=_shift(g),
                     image_operation=g.triplet(), reverse_image_operation=g.inverse().triplet(),
                     target_image_fractional=list(forward), reverse_image_fractional=list(reverse),
@@ -286,6 +293,14 @@ class StitchContext:
                     source_description=_residue_identity(source_atom)['description'],
                     target_description=_residue_identity(target_atom)['description'],
                     evidence=evidence)
+        self.stitched_links.append(dict(kind=kind, a=residues[0], b=residues[1], g=g, distance=distance,
+                                        evidence=evidence))
+        return edge
+
+
+def op_key(g):
+    """Exact hashable key of a fractional operation (rotation, translation x24)."""
+    return tuple(map(tuple, g.rot)), tuple(g.tran)
 
 
 def _wrapped(g):
@@ -390,7 +405,8 @@ def find_backbone_joins(ctx, *, join_cutoff=3.5, o5_cutoff=6.0, include_o5_fallb
         if status == 'stitched':
             edge = ctx.add_edge(source, target, g, kind=c['kind'], distance=c['distance'],
                                 source_atom=o3_atom, target_atom=p_atom,
-                                evidence=dict(o3_atom=record['o3_atom'], p_atom=record['p_atom']))
+                                evidence=dict(o3_atom=record['o3_atom'], p_atom=record['p_atom']),
+                                residues=(o3_key, p_key))
             if edge is None:
                 record['status'] = 'duplicate_edge'
             else:
@@ -406,7 +422,7 @@ def find_backbone_joins(ctx, *, join_cutoff=3.5, o5_cutoff=6.0, include_o5_fallb
     return stitched, records, summary
 
 
-# ------------------------------------------------------------------------- junctions
+# ------------------------------------------------------------------- terminal stacks
 
 def _ring_names(code, observed):
     """Canonical ring -> actual atom names for one residue, or an issue string."""
@@ -430,14 +446,12 @@ def _ring_names(code, observed):
     return names, None
 
 
-def base_planes(ctx):
-    """(planes keyed by residue key, diagnostics) for nucleotide-like residues."""
+def base_planes(ctx, keys):
+    """(planes keyed by residue key, diagnostics) for the given residues."""
     planes, diagnostics = {}, []
-    for key in ctx.order:
+    for key in keys:
         atoms = ctx.all_atoms[key]
-        if key not in ctx.nucleotide and "C1'" not in atoms:
-            continue
-        sample = next(a for a in atoms.values() if a is not None) if any(atoms.values()) else None
+        sample = next((a for a in atoms.values() if a is not None), None)
         if sample is None:
             continue
         code = sample.residue
@@ -479,96 +493,119 @@ def _transform_plane(frame, g, plane):
     return moved, _sub(tip, moved)
 
 
-def find_junction_stacks(ctx, *, scope='face'):
-    """Return (stitched edges, junction candidate records, summary)."""
-    if scope not in JUNCTION_SCOPES:
-        raise ConversionError(f'junction_scope must be one of {", ".join(JUNCTION_SCOPES)}')
+def chain_ends(ctx):
+    """({residue key: "5'" or "3'"}, single-residue segment keys) in file order."""
+    ends, singles = {}, []
+    for keys in ctx.by_segment.values():
+        if len(keys) < 2:
+            singles.extend(keys)
+            continue
+        ends[keys[0]], ends[keys[-1]] = "5'", "3'"
+    return ends, singles
+
+
+def _polarity(first, second):
+    return "5'-3'" if {first, second} == {"5'", "3'"} else f'{first}-{second}'
+
+
+def _stack_geometry(frame, plane_a, plane_b, g):
+    """NAtopo pi-stack measurements for plane_b moved by g, or None if not a stack."""
+    p = PI_DEFAULTS
+    cb, nb = _transform_plane(frame, g, plane_b)
+    ca, na = plane_a['centroid'], plane_a['normal']
+    delta = _sub(cb, ca)
+    angle = math.degrees(math.acos(min(1., abs(_dot(na, nb)))))
+    heights = [abs(_dot(delta, n)) for n in (na, nb)]
+    shifts = [_norm(_sub(delta, [_dot(delta, n)*x for x in n])) for n in (na, nb)]
+    if (angle > p['max_angle_deg'] or max(shifts) > p['max_lateral_shift_A']
+            or min(heights) < p['min_plane_separation_A'] or max(heights) > p['max_plane_separation_A']):
+        return None
+    return dict(plane_angle_deg=angle, plane_separation_A=heights, lateral_shift_A=shifts)
+
+
+def find_terminal_stacks(ctx):
+    """Return (stitched edges, candidate records, summary) for chain-end pi stacks.
+
+    A 5'-3' stack is oriented from the 3' end (source, stored position) to the
+    5' end (target, in image g), like a nick join. Same-polarity stacks keep
+    file order. Each end maps to its segment's outermost O3' graph node.
+    """
     p = PI_DEFAULTS
     frame = ctx.frame
-    planes, diagnostics = base_planes(ctx)
+    ends, singles = chain_ends(ctx)
+    planes, diagnostics = base_planes(ctx, ends)
     keys = list(planes)
-    candidates, excluded = [], 0
+    nick_orbits = set()
+    for link in ctx.stitched_links:
+        if link['kind'] in ('backbone_join', 'backbone_join_o5', 'deposited_link'):
+            nick_orbits.add((link['a'], link['b'], op_key(link['g'])))
+            nick_orbits.add((link['b'], link['a'], op_key(link['g'].inverse())))
+    candidates = []
     for ia, a in enumerate(keys):
         fa = frame.fractional(planes[a]['centroid'])
         for b in keys[ia:]:
             for op, shift, d in frame.images(ctx.operations, fa, frame.fractional(planes[b]['centroid']),
                                              p['centroid_cutoff_A']):
                 g = _image_op(op, shift)
-                if a == b:
-                    if g.triplet() == IDENTITY or g.triplet() > g.inverse().triplet():
-                        continue  # self, or the reverse description of the same orbit
-                cb, nb = _transform_plane(frame, g, planes[b])
-                ca, na = planes[a]['centroid'], planes[a]['normal']
-                delta = _sub(cb, ca)
-                angle = math.degrees(math.acos(min(1., abs(_dot(na, nb)))))
-                heights = [abs(_dot(delta, n)) for n in (na, nb)]
-                shifts = [_norm(_sub(delta, [_dot(delta, n)*x for x in n])) for n in (na, nb)]
-                if (angle > p['max_angle_deg'] or max(shifts) > p['max_lateral_shift_A']
-                        or min(heights) < p['min_plane_separation_A'] or max(heights) > p['max_plane_separation_A']):
+                if a == b and (g.triplet() == IDENTITY or g.triplet() > g.inverse().triplet()):
+                    continue  # self, or the reverse description of the same orbit
+                measured = _stack_geometry(frame, planes[a], planes[b], g)
+                if measured is None:
                     continue
-                if g.triplet() == IDENTITY and b in ctx.bonded[a]:
-                    excluded += 1  # verified backbone neighbors stack normally
-                    continue
-                candidates.append(dict(a=a, b=b, g=g, distance=d, angle=angle, heights=heights, shifts=shifts))
+                if (ends[a], ends[b]) == ("5'", "3'"):
+                    a2, b2, g2 = b, a, g.inverse()  # orient 3' end -> 5' end
+                    measured = dict(measured, plane_separation_A=measured['plane_separation_A'][::-1],
+                                    lateral_shift_A=measured['lateral_shift_A'][::-1])
+                else:
+                    a2, b2, g2 = a, b, g
+                candidates.append(dict(a=a2, b=b2, g=g2, distance=d, measured=measured))
 
-    def side(height):
-        tol = p['min_side_projection_A']
-        return None if height is None or abs(height) <= tol else (1 if height > 0 else -1)
-
-    def context(anchor, partner_centroid):
-        """Face context of one endpoint; neighbors share the anchor's image."""
-        plane = planes[anchor]
-        pi_height = _dot(_sub(partner_centroid, plane['centroid']), plane['normal'])
-        pi_side = side(pi_height)
-        neighbors = []
-        for other in sorted(ctx.bonded[anchor], key=str):
-            other_plane = planes.get(other)
-            height = None if other_plane is None else _dot(_sub(other_plane['centroid'], plane['centroid']), plane['normal'])
-            nside = side(height)
-            neighbors.append(dict(residue=_residue_identity(next(x for x in ctx.all_atoms[other].values() if x))['description'],
-                                  signed_projection_A=height,
-                                  same_side_as_pi=None if pi_side is None or nside is None else pi_side == nside))
-        empty = bool(neighbors) and all(n['same_side_as_pi'] is False for n in neighbors)
-        return dict(anchor=_residue_identity(plane['atom'])['description'], pi_projection_A=pi_height,
-                    verified_backbone_neighbors=neighbors, stack_face_without_verified_backbone=empty)
+    def node_for(key):
+        keys_in_segment = ctx.by_segment[key[0]]
+        order = keys_in_segment if ends[key] == "5'" else keys_in_segment[::-1]
+        for other in order:
+            if other in ctx.node_of:
+                return ctx.node_of[other]
+        return None
 
     stitched, records = [], []
     for c in sorted(candidates, key=lambda c: (c['distance'], str(c['a']), str(c['b']), c['g'].triplet())):
         a, b, g = c['a'], c['b'], c['g']
-        cb, _ = _transform_plane(frame, g, planes[b])
-        ca_in_b, _ = _transform_plane(frame, g.inverse(), planes[a])
-        contexts = [context(a, cb), context(b, ca_in_b)]
-        reason = ('stack_on_face_without_backbone_continuation'
-                  if any(x['stack_face_without_verified_backbone'] for x in contexts) else 'non_backbone_stack')
-        source, target = ctx.node_of.get(a), ctx.node_of.get(b)
+        polarity = _polarity(ends[a], ends[b])
+        same = ends[a] == ends[b]
+        source, target = node_for(a), node_for(b)
         status = 'stitched'
-        if scope == 'face' and reason == 'non_backbone_stack':
-            status = 'not_face_junction'
+        if (g.triplet() == IDENTITY and b in ctx.bonded[a]) or (a, b, op_key(g)) in nick_orbits:
+            status = 'backbone_joined'
         elif source is None or target is None:
             status = 'no_graph_node'
-        evidence = dict(reason=reason, centroid_distance_A=c['distance'], plane_angle_deg=c['angle'],
-                        plane_separation_A=c['heights'], lateral_shift_A=c['shifts'])
-        record = dict(kind='junction_stack', status=status, method=JUNCTION_METHOD, reason=reason, scope=scope,
-                      distance_A=c['distance'], operation=_wrapped(g).triplet(), lattice_translation=_shift(g),
-                      image_operation=g.triplet(), residue1=_residue_identity(planes[a]['atom']),
-                      residue2=_residue_identity(planes[b]['atom']),
+        evidence = dict(polarity=polarity, same_polarity=same, source_end=ends[a], target_end=ends[b],
+                        centroid_distance_A=c['distance'], **c['measured'])
+        residue1 = dict(_residue_identity(planes[a]['atom']), end=ends[a])
+        residue2 = dict(_residue_identity(planes[b]['atom']), end=ends[b])
+        record = dict(kind='terminal_stack', status=status, method=TERMINAL_STACK_METHOD, polarity=polarity,
+                      same_polarity=same, distance_A=c['distance'], operation=_wrapped(g).triplet(),
+                      lattice_translation=_shift(g), image_operation=g.triplet(),
+                      residue1=residue1, residue2=residue2,
                       source=ctx.node_labels[source] if source is not None else None,
                       target=ctx.node_labels[target] if target is not None else None,
-                      measurements={k: v for k, v in evidence.items() if k != 'reason'}, backbone_context=contexts)
+                      measurements=dict(centroid_distance_A=c['distance'], **c['measured']))
         if status == 'stitched':
-            edge = ctx.add_edge(source, target, g, kind='junction_stack', distance=c['distance'],
-                                source_atom=planes[a]['atom'], target_atom=planes[b]['atom'], evidence=evidence)
+            edge = ctx.add_edge(source, target, g, kind='terminal_stack', distance=c['distance'],
+                                source_atom=planes[a]['atom'], target_atom=planes[b]['atom'],
+                                evidence=evidence, residues=(a, b))
             if edge is None:
                 record['status'] = 'duplicate_edge'
             else:
                 stitched.append(edge)
         records.append(record)
-    summary = dict(method=JUNCTION_METHOD,
-                   source='Ported from NAtopo nucleotide_interactions.find_pi_interactions and junctions.find_junction_candidates',
-                   scope=scope, **p, ring_atom_source='TopoStich NARestraints-derived residue catalog',
+    summary = dict(method=TERMINAL_STACK_METHOD,
+                   source="Stack geometry ported from NAtopo nucleotide_interactions.find_pi_interactions",
+                   **p, ring_atom_source='TopoStich NARestraints-derived residue catalog',
                    image_search='every symmetry operation and every lattice translation within the centroid cutoff',
-                   base_planes=len(planes), verified_backbone_stacks_excluded=excluded,
+                   chain_ends=len(ends), single_residue_segments=len(singles), base_planes=len(planes),
                    plane_diagnostics=diagnostics,
                    candidate_status_counts=dict(sorted(Counter(r['status'] for r in records).items())),
-                   reason_counts=dict(sorted(Counter(r['reason'] for r in records).items())))
+                   polarity_counts=dict(sorted(Counter(r['polarity'] for r in records).items())),
+                   stitched_polarity_counts=dict(sorted(Counter(e['evidence']['polarity'] for e in stitched).items())))
     return stitched, records, summary
